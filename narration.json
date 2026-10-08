@@ -1,0 +1,523 @@
+{
+  "voice": "Tingting",
+  "rate": 183,
+  "gapSeconds": 0.32,
+  "leadInSeconds": 0.55,
+  "tailSeconds": 1.05,
+  "scenes": [
+    {
+      "id": "s0",
+      "index": "00",
+      "title": "开场",
+      "heading": "跑到一半断电",
+      "visual": "hook",
+      "paragraphs": [
+        {
+          "say": "想象一个场景。你的 AI Agent 已经跑了四十轮，正在执行第十二个工具调用，突然，进程被 kill 了。",
+          "show": "Agent 跑到第 12 个工具调用，进程被 kill"
+        },
+        {
+          "say": "或者更常见的。跑到一半，token 超了。或者用户点了取消。",
+          "show": "更常见：token 超限、用户取消"
+        },
+        {
+          "say": "传统做法是什么？重新开始。或者写一堆 try catch 加上状态文件，然后祈祷它不要在对的时候崩。",
+          "show": "传统做法：重来一次，或者 try/catch + 状态文件"
+        },
+        {
+          "say": "今天讲的这个包，pi durable，答案很极端。它把 Agent 循环，整个重写成了一个可恢复的状态机。",
+          "show": "pi-durable：把 Agent 循环重写成可恢复的状态机"
+        },
+        {
+          "say": "任何时刻断电，重启之后，它从最后一个检查点继续。而且它知道，哪些工具已经执行过了，哪些不能重复执行。",
+          "show": "断电重启 → 从最后检查点继续；知道哪些工具不能重跑"
+        },
+        {
+          "say": "这个包大概两万行代码。今天我不逐行念，只讲清楚三件事。它保证什么，为什么这么设计，以及这些设计在源码里长什么样。",
+          "show": "今天讲三件事：保证什么 / 为什么这么设计 / 源码长什么样"
+        }
+      ]
+    },
+    {
+      "id": "s1",
+      "index": "01",
+      "title": "定位",
+      "heading": "它是什么：四层结构",
+      "visual": "layers",
+      "paragraphs": [
+        {
+          "say": "先给定位。pi durable 是 pi 这个仓库里的一个包，版本一点零点四，标注 experimental。官方描述是，给 Pi 用的持久化会话、任务和文档运行时。",
+          "show": "@earendil-works/pi-durable 1.0.4 (experimental)"
+        },
+        {
+          "say": "注意措辞。它不是界面，不是命令行工具，它是一个运行时。你创建 Harness，开一个 conversation，然后提交输入。剩下的它管。",
+          "show": "不是 UI，不是 CLI —— 是运行时"
+        },
+        {
+          "say": "它分四层，从下往上。Storage，唯一真相。可以是内存，JSONL 文件，或者 SQLite，包括 Cloudflare Durable Object 那种 SQLite。",
+          "show": "Storage —— 唯一真相：Memory / JSONL / SQLite"
+        },
+        {
+          "say": "Session，这一层最核心。它负责一条变更线，和原子提交。下一幕我用一整幕讲它。",
+          "show": "Session —— 一条变更线 + 原子提交"
+        },
+        {
+          "say": "Harness，任务调度器，会话生命周期，agent 配置。",
+          "show": "Harness —— 任务调度器 / 会话生命周期 / agent 配置"
+        },
+        {
+          "say": "最上面是 Extensions、Env 和 Tools，工具、提示词区块、钩子、包装器、执行环境。",
+          "show": "Extensions / Env / Tools —— 工具、section、hook、wrap"
+        },
+        {
+          "say": "每一层只依赖下面一层。这个分层不是装饰，它是后面所有设计能讲清楚的前提。",
+          "show": "每层只依赖下层 —— 这是后面所有设计的前提"
+        }
+      ]
+    },
+    {
+      "id": "s2",
+      "index": "02",
+      "title": "不变式",
+      "heading": "唯一的一条规则",
+      "visual": "invariants",
+      "paragraphs": [
+        {
+          "say": "整个包只有一条中心规则，写在 spec 文档靠前的位置。原文是英文。",
+          "show": "docs/spec.md —— 规范文档，写明所有不变式"
+        },
+        {
+          "say": "翻译过来是：一次 Session 提交，原子地写入不可变的 entry，完整的 task 记录，和由 Chord 跟踪的 document。只有已提交的状态，是可观察的。",
+          "show": "一次提交原子写入 entries + tasks + documents；只有已提交的状态可观察"
+        },
+        {
+          "say": "后半句是重点。什么叫只有已提交的状态可观察？意思是，内存里没有半成品的分发路径。",
+          "show": "内存里没有「半成品」的分发路径"
+        },
+        {
+          "say": "你看到的每一条进度，每一次界面更新，每一个 watch 回调，来源都是存储里已经躺好的记录。",
+          "show": "每条进度 / 每次 UI 更新 / 每个 watch 回调，都来自已落盘的记录"
+        },
+        {
+          "say": "spec 把它拆成了八条编号不变式。我挑三条念。",
+          "show": "规范拆成 8 条编号不变式"
+        },
+        {
+          "say": "第一条，一次提交，在所有记录和文档写入上是原子的。",
+          "show": "1. 一次提交在所有记录和文档写入上原子"
+        },
+        {
+          "say": "第三条，所有可见的进度都是持久的，不存在易失的发布路径。",
+          "show": "3. 所有可见进度都持久 —— 不存在易失的发布路径"
+        },
+        {
+          "say": "第八条，不确定的存储失败，对当前 Session 是致命的。它什么都不发布，必须重新打开。",
+          "show": "8. 不确定的存储失败对 Session 致命：什么都不发布，必须重开"
+        },
+        {
+          "say": "记住第八条。结尾我们回到它。",
+          "show": "记住第 8 条 —— 结尾会回到它"
+        }
+      ]
+    },
+    {
+      "id": "s3",
+      "index": "03",
+      "title": "核心",
+      "heading": "单一变更线：一次提交的五步",
+      "visual": "commit",
+      "paragraphs": [
+        {
+          "say": "现在进正题。如果内存先改，再异步落盘，中间断电，内存和存储就分叉了。这是所有持久化系统要解决的根本问题。",
+          "show": "内存先改、异步落盘 → 中间断电就分叉"
+        },
+        {
+          "say": "pi durable 的解法是，把所有变更，串到一条队列上。",
+          "show": "解法：把所有变更串到一条队列上"
+        },
+        {
+          "say": "看 session 文件的第一百零一行。每一次提交请求，都通过 enqueue，挂到 tail 这条 Promise 链上。所以同一个 Session 里，任意两次提交，不会并发。",
+          "show": "src/session/session.ts:101 —— #enqueue 串在 #tail 上，提交不并发"
+        },
+        {
+          "say": "然后看真正干活的 runCommit，第四百零五行。它一共五步，我们一步一步看。",
+          "show": "真正干活的 #runCommit —— 五步"
+        },
+        {
+          "say": "第一步，构造一个 Transaction，然后跑你的回调。你的回调在事务里计算要写什么，但它不写。它只是把意图，登记到事务对象上。",
+          "show": "1  构造 Transaction，跑回调 —— 只登记意图，不写"
+        },
+        {
+          "say": "第二步，settleSuccess。到这一步，回调已经结束了。所以，注意这是 spec 第六条不变式，所有打开的 document 草稿，在这一刻同步收敛，或者被撤销。",
+          "show": "2  settleSuccess —— 草稿同步收敛或撤销（spec 第 6 条）"
+        },
+        {
+          "say": "回调一旦 settle，草稿就没有了。这是防止回调结束了还在偷偷改值。",
+          "show": "回调 settle 之后，草稿不复存在"
+        },
+        {
+          "say": "第三步，storage 点 commit。这是唯一真正落盘的地方。",
+          "show": "3  storage.commit —— 唯一真正落盘的地方"
+        },
+        {
+          "say": "这里有个细节值得停下来看。传进去的 context，是 without abort signal 包装过的。注释写得很清楚。一旦被存储接纳，调用方的取消，就不再能打断存储结算。",
+          "show": "withoutAbortSignal(context) —— 一旦被接纳，取消不再打断结算"
+        },
+        {
+          "say": "也就是说，一旦开始写，就必须写完。哪怕调用者已经取消了。",
+          "show": "一旦开始写，就必须写完"
+        },
+        {
+          "say": "第四步，adopt。把内存里的指针，换到刚提交的版本上。给记录打上创建时间和退休时间，把退休的文档踢出缓存。",
+          "show": "4  adopt(seq) —— 内存指针换到已提交版本"
+        },
+        {
+          "say": "第五步，也是最后一步，publish。到这一刻，document 的值，才被推给 watch、view 和事件流。",
+          "show": "5  publish —— 此刻 document 才推给 watch / view / 事件流"
+        },
+        {
+          "say": "所以前面说的，只有已提交的状态可观察，落到代码上就是一句话。publish，排在这个链条的最后。没有任何一条更短的路径。",
+          "show": "publish 排在链条最后 —— 没有更短的路径"
+        }
+      ]
+    },
+    {
+      "id": "s4",
+      "index": "04",
+      "title": "取舍",
+      "heading": "提交前拒绝 vs 提交后报废",
+      "visual": "poison",
+      "paragraphs": [
+        {
+          "say": "刚才第三步和第四步的 catch 块里，各有一行一样的代码。this 点 poison，等于 error。",
+          "show": "两处 catch 里都有：this.#poison = { error }"
+        },
+        {
+          "say": "但注意它的条件。第三步里，只有错误不是 StorageRejected 的时候，才 poison。",
+          "show": "条件：if (!(error instanceof StorageRejected))"
+        },
+        {
+          "say": "因为 StorageRejected 是一个承诺。这一批什么都没写进去。既然什么都没写，回滚就是安全的。",
+          "show": "StorageRejected 是承诺：这一批什么都没写 → 回滚安全"
+        },
+        {
+          "say": "而 StorageRejected 之外的错误，或者第四步 adopt 失败，也就是存储已经接受了，内存没跟上。这种情况，没有安全的恢复路径。所以它把 Session 标成 poisoned。",
+          "show": "存储已接受、内存没跟上 → 没有安全恢复路径"
+        },
+        {
+          "say": "再看第五百四十五行。一旦 poisoned，之后每一个操作都会抛错。Session is poisoned by a failed commit after storage admission, reopen it。",
+          "show": "session.ts:545 —— poisoned 之后每个操作都抛错"
+        },
+        {
+          "say": "这是个很硬的决定。它宁可让整个会话报废，也不让内存和存储分叉。我认为这是这个包里，最值得学的一个取舍。",
+          "show": "宁可整会话报废，也不让内存与存储分叉"
+        },
+        {
+          "say": "那怎么避免走到这一步？答案是在提交之前，就把冲突拒掉。事务里有一整套检查。",
+          "show": "避免方式：在提交之前就把冲突拒掉"
+        },
+        {
+          "say": "第一个，ReadAfterWrite。你在这个事务里写过表了，再读表，直接抛。因为读到的是旧快照，你是在基于错误的前提做决策。",
+          "show": "ReadAfterWrite —— 写过表再读表直接抛（读到的是旧快照）"
+        },
+        {
+          "say": "第二个，owner 校验。一个任务，不能在自己结束的那次提交里，创建子工作。",
+          "show": "owner 校验 —— 任务不能在自己结束的提交里创建子工作"
+        },
+        {
+          "say": "还有，一个文档一次只能有一条内容指令。如果你发的是增量，它的基准版本必须匹配。",
+          "show": "一个文档一次只有一条内容指令；delta 的 base 版本必须匹配"
+        },
+        {
+          "say": "这些都在 storage 点 commit 之前抛。代价只是重试一次回调。对比另一个选择，提交之后才发现冲突，那个代价，是整个 Session。",
+          "show": "提交前拒绝 = 重试回调 ｜ 提交后失败 = 报废会话"
+        }
+      ]
+    },
+    {
+      "id": "s5",
+      "index": "05",
+      "title": "状态机",
+      "heading": "任务状态机：终态为什么要延迟",
+      "visual": "states",
+      "paragraphs": [
+        {
+          "say": "上半场讲的是怎么存。下半场讲，存什么。",
+          "show": "下半场：存什么"
+        },
+        {
+          "say": "在 pi durable 里，Agent 的每一步都是一个 task。task 是一个完整的记录。不是内存里的对象，是存储里的一行。",
+          "show": "Agent 的每一步都是一个 task —— 存储里的一行，不是内存对象"
+        },
+        {
+          "say": "它的状态有五个。pending，running，waiting，completing，terminal。",
+          "show": "pending → running → waiting → completing → terminal"
+        },
+        {
+          "say": "终态的结果有五种。completed、failed、aborted、orphaned、faulted。",
+          "show": "completed / failed / aborted / orphaned / faulted"
+        },
+        {
+          "say": "这里有两个非直觉的设计，我要重点讲。",
+          "show": "两个非直觉设计"
+        },
+        {
+          "say": "第一个，终态会被延迟。看 scheduler 里的 terminate。当一个任务决定自己结束了，调度器先看一眼，你还有活着的子任务吗。",
+          "show": "#terminate —— 先看：还有活着的子任务吗"
+        },
+        {
+          "say": "有的话，状态写成 completing，不是 terminal。等子工作全部干完，再由 finalize 写真正的终态。",
+          "show": "有 → completing；子工作干完 → #finalize 写终态"
+        },
+        {
+          "say": "为什么要这样？因为结束，和被观察到结束，之间隔着一整个子任务的生命周期。abort 处理器需要地方跑，资源需要地方回收。如果任务直接跳到 terminal，这些就没有落脚点了。",
+          "show": "「结束」与「被观察到结束」之间隔着子任务生命周期"
+        },
+        {
+          "say": "第二个，只有调度器能写 faulted 和 orphaned。任务自己，只能写 completed、failed、aborted。",
+          "show": "只有调度器能写 faulted / orphaned"
+        },
+        {
+          "say": "而 abort 本身，只是一个标记位，abortRequested。真正的状态转换，是调度器做的。",
+          "show": "abort 只是标记位 abortRequested，转换由调度器做"
+        },
+        {
+          "say": "那调度器什么时候做决策？看 step。它是在变更线上同步判断的，优先级固定六条。",
+          "show": "#step —— 变更线上同步判断，优先级固定六条"
+        },
+        {
+          "say": "一，任务是终态、completing 或者 waiting，停。",
+          "show": "1  终态 / completing / waiting → 停"
+        },
+        {
+          "say": "二，Session 正在关闭，停。",
+          "show": "2  Session 正在关闭 → 停"
+        },
+        {
+          "say": "三，有 abort 标记，跑 abort 处理器。注意，处理器必须提交一个结果。",
+          "show": "3  有 abort 标记 → 跑 abort handler（必须提交结果）"
+        },
+        {
+          "say": "四，上次抛了未捕获的错误，判 faulted。",
+          "show": "4  未捕获错误 → faulted"
+        },
+        {
+          "say": "五，任务产生了持久化进度，刷新上下文快照，必要时把它交给一个替换定义，也就是代码升级之后的新版本。",
+          "show": "5  有持久化进度 → 刷新快照 / 交给替换定义"
+        },
+        {
+          "say": "六，如果它什么都没持久化，判 faulted。",
+          "show": "6  没有持久化进度 → faulted"
+        },
+        {
+          "say": "第六条我觉得特别妙。一个任务，转了一圈什么都没写下来，说明它在死循环烧 token，直接判死。这是防止复活之后失控。",
+          "show": "第 6 条：转一圈什么都没写 = 死循环烧 token，直接判死"
+        }
+      ]
+    },
+    {
+      "id": "s6",
+      "index": "06",
+      "title": "内置任务",
+      "heading": "三个内置任务",
+      "visual": "tasks",
+      "paragraphs": [
+        {
+          "say": "内置任务一共三个，正好覆盖 Agent 循环的三件事。想，做，记不住就压缩。",
+          "show": "想 · 做 · 记不住就压缩"
+        },
+        {
+          "say": "第一个，pi generation。它的检查点是一个联合类型。prepare、request、retry、poll、tools。每一步都持久化。",
+          "show": "pi.generation —— checkpoint: prepare | request | retry | poll | tools"
+        },
+        {
+          "say": "prepare 阶段，渲染提示词区块，计算 system entry 的补丁，判断要不要压缩。",
+          "show": "prepare —— 渲染 sections、算 pi.system 补丁、判断压缩"
+        },
+        {
+          "say": "如果要压缩，而且是阻塞模式，它会自己起一个 compaction 子任务，然后等它。",
+          "show": "blocking 压缩 → 自己起 compaction 子任务并等它"
+        },
+        {
+          "say": "request 阶段是真流式生成。这里有个细节。片段输出，也持久化。按 partialIntervalMs 节流，而且保证同一时刻，只有一个提交在飞。",
+          "show": "request —— partial 也持久化，节流，同时只有一个提交在飞"
+        },
+        {
+          "say": "为什么这个细节重要？因为 generation 里有个函数叫 convertPartial。它的作用是，如果一个片段提交了，然后进程挂了，恢复的时候，把这个半截输出，转成一条已中止的 assistant entry。",
+          "show": "convertPartial —— 半截输出转成 aborted 的 assistant entry"
+        },
+        {
+          "say": "也就是说，模型说了一半的话，也是持久的历史，不会凭空消失。",
+          "show": "模型说了一半的话，也是持久历史"
+        },
+        {
+          "say": "第二个，pi tool。这个是我个人最喜欢的。它是两阶段的。",
+          "show": "pi.tool —— 两阶段"
+        },
+        {
+          "say": "第一阶段，call。解析工具，校验参数，跑 beforeTool 钩子。钩子可以拦截，也可以改写参数。",
+          "show": "call —— 解析 / 校验 / beforeTool 钩子（可拦截或改写）"
+        },
+        {
+          "say": "然后，提交一个执行意图。阶段是 execute，带上最终参数，和重放策略。注意，这一步只是记录意图，还没有执行。",
+          "show": "提交执行意图 { phase: \"execute\", arguments, replay } —— 还没执行"
+        },
+        {
+          "say": "第二阶段，execute。只有恢复的时候，才会走到这里。",
+          "show": "execute —— 只有恢复的时候才会走到这里"
+        },
+        {
+          "say": "而且还要满足一个条件。存储里记的策略，和当前代码的策略，都是 safe，才真的重放。",
+          "show": "条件：存储里的 replay 和当前代码的 replay 都是 \"safe\""
+        },
+        {
+          "say": "否则，这个调用从已提交的槽位，判定为 interrupted，落一个 failed。",
+          "show": "否则 → 从已提交槽位判定 interrupted，落 failed"
+        },
+        {
+          "say": "这就是工具副作用最多一次的实现方式。你写一个工具，如果它是幂等的，标 replay 等于 safe，断电之后可以接着跑。",
+          "show": "幂等工具标 replay: \"safe\" → 断电后可接着跑"
+        },
+        {
+          "say": "如果它有副作用，标 unsafe，断电之后，它宁可报失败，也不重复执行。",
+          "show": "有副作用标 unsafe → 宁可报失败，也不重复执行"
+        },
+        {
+          "say": "第三个，pi compaction。三个阶段，选，总结，重试。",
+          "show": "pi.compaction —— select / summarize / retry"
+        },
+        {
+          "say": "选这一段，有个约束值得说。它不能把 assistant 消息，和它的工具结果拆开。",
+          "show": "select —— 不把 assistant 和它的 tool result 拆开"
+        },
+        {
+          "say": "因为模型看到的上下文，如果一半是我要调用工具，另一半没有结果，那是非法序列。也不能从一个裸的工具结果开始。",
+          "show": "否则模型会看到非法序列；也不能从裸 tool result 开始"
+        },
+        {
+          "say": "摘要会包在 summary 标签里，而且用 cacheRetention 等于 none。摘要不进提示词缓存，因为它是新生成的，缓存没有意义。",
+          "show": "摘要包在 <summary>，cacheRetention: \"none\""
+        }
+      ]
+    },
+    {
+      "id": "s7",
+      "index": "07",
+      "title": "文档",
+      "heading": "文档即 Chord：同一份状态的两种投影",
+      "visual": "chord",
+      "paragraphs": [
+        {
+          "say": "还有一种要持久化的东西。不是历史，是当前状态。比如 agent 的配置，模型选择，用量统计，待处理的收件箱。",
+          "show": "要持久化的另一类东西：当前状态，不是历史"
+        },
+        {
+          "say": "这类东西在 pi durable 里叫 document。它不是存快照，是用 Chord 这个库。记录里存一个基准，加上一串增量。",
+          "show": "document = Chord 跟踪的 JSON：base + deltas"
+        },
+        {
+          "say": "document 有几个维度可以配。scope 是 session、conversation 还是 task。history 是 latest 还是 rewindable，也就是能不能回到过去某个版本。",
+          "show": "scope: session | conversation | task ｜ history: latest | rewindable"
+        },
+        {
+          "say": "fork 的时候，是复制当前值，回到初始值，还是回到某个时间点。",
+          "show": "fork: current | initial | asOf"
+        },
+        {
+          "say": "内置的 document 有五个。agent、provider、live、inbox、usage。",
+          "show": "pi.agent · pi.provider · pi.live · pi.inbox · pi.usage"
+        },
+        {
+          "say": "这里我想展示的是 view 这个文件。因为它体现了这套设计最漂亮的地方。",
+          "show": "src/harness/view.ts —— 这套设计最漂亮的地方"
+        },
+        {
+          "say": "前端不需要知道怎么订阅存储。view 从一次提交的发布结果里，推导出 Chord 操作。",
+          "show": "前端不需要知道怎么订阅存储 —— 从 publication 推导 ops"
+        },
+        {
+          "say": "entry 追加是一段路径操作，head 标记是前面插入加裁掉尾部，文档操作挂在 docs 路径下面。",
+          "show": "append → [\"p\", [\"entries\"], n, 0, [value]]；文档挂在 [\"docs\", kind]"
+        },
+        {
+          "say": "也就是说，界面状态和存储状态，是同一个东西的两种投影。不存在，我在界面里改一下，再同步回去，这种路径。",
+          "show": "UI 状态与存储状态，是同一个东西的两种投影"
+        }
+      ]
+    },
+    {
+      "id": "s8",
+      "index": "08",
+      "title": "存储",
+      "heading": "存储层：几个具体的坑",
+      "visual": "storage",
+      "paragraphs": [
+        {
+          "say": "存储有三个后端。内存，JSONL，SQLite。JSONL 是只追加的提交标记，大负载走边车文件。",
+          "show": "Memory / JSONL（追加提交标记 + sidecar）/ SQLite"
+        },
+        {
+          "say": "SQLite 那边有几个细节挺有意思。",
+          "show": "SQLite 里的几个具体细节"
+        },
+        {
+          "say": "next_id 存成文本类型。为什么？因为 node 的 sqlite 会拒绝超出 JavaScript 安全整数范围的整数结果。这是个非常具体的坑。",
+          "show": "next_id 存成 TEXT —— node:sqlite 拒绝超出安全整数范围的 INTEGER"
+        },
+        {
+          "say": "record_ids 这张表，做全局 ID 归属。conversation、entry、task、submission、document，共用一个 id 空间。这是为了保证 ID 永不复用，也就是 spec 第五条不变式。",
+          "show": "record_ids —— 五种记录共用 id 空间，ID 永不复用"
+        },
+        {
+          "say": "表都是 STRICT 表。每一行有一个校验 JSON 合法性的 record 列，存完整 JSON，其他列只是索引。写的时候是一次数据库事务，里面做完全部校验。",
+          "show": "STRICT 表 + CHECK (json_valid(record))；写入是一次事务"
+        },
+        {
+          "say": "还有一个容易漏的。admitRead 会让 close，等待进行中的多查询读。没有这个，读事务会读到撕裂状态。",
+          "show": "admitRead —— close 等待进行中的多查询读，避免撕裂读"
+        }
+      ]
+    },
+    {
+      "id": "s9",
+      "index": "09",
+      "title": "收尾",
+      "heading": "复杂度来自一个约束",
+      "visual": "outro",
+      "paragraphs": [
+        {
+          "say": "最后，说一个观察。",
+          "show": "最后，一个观察"
+        },
+        {
+          "say": "这个包大概两万行。我读完之后的感觉是，它的复杂度，几乎全部来自一个约束。任何时刻断电，都要正确。",
+          "show": "两万行代码的复杂度，几乎全部来自一个约束"
+        },
+        {
+          "say": "你看这一路讲的东西。completing 延迟终态，poisoned Session，ReadAfterWrite，abort 用标记不用递归，连片段输出都要持久化。",
+          "show": "completing 延迟终态 · poisoned Session · ReadAfterWrite · abort 标记 · partial 持久化"
+        },
+        {
+          "say": "这些设计单看都挺怪的。但如果你把断电这个前提放在前面，它们全是被推出来的，不是被设计出来的。",
+          "show": "把「断电」放在前提里，它们全是被推出来的"
+        },
+        {
+          "say": "所以如果你在做类似的事情，我的建议是，先把你的不变式写下来。像 spec 那样，一条一条编号。",
+          "show": "建议：先把不变式写下来，一条一条编号"
+        },
+        {
+          "say": "然后你会发现，很多纠结的取舍，在写不变式的时候，就已经有答案了。",
+          "show": "很多纠结的取舍，写不变式的时候就有答案了"
+        },
+        {
+          "say": "这期就到这儿。代码在 earendil works 斜杠 pi 这个仓库的 packages 斜杠 durable 下面，是开源的。",
+          "show": "github.com/earendil-works/pi → packages/durable"
+        },
+        {
+          "say": "感兴趣的话，建议从 spec 的第八条不变式开始读。那一条，最能解释后面所有的设计。",
+          "show": "建议从 spec 第 8 条不变式开始读"
+        }
+      ]
+    }
+  ]
+}

@@ -43,11 +43,22 @@ ESLint 9 在 `src/scenes/S7Chord.tsx` 上 100% CPU 转不出来 —— 该文件
 这个仓库没有测试框架，给一支视频装 vitest 是 YAGNI。所以本计划不写 `expect()`，
 但**每个任务都有可执行命令和明确预期**，不许用「看着对」结案：
 
-| 手段 | 命令 | 作用 |
+| 手段 | 怎么跑 | 作用 |
 |---|---|---|
-| 类型 | `npx tsc --noEmit` | 全自动门禁，每个任务必过。**不要跑 `npm run lint`** |
-| 单帧渲染 | `npx remotion still src/index.ts <ID> out/x.png --frame=N` | 真实渲染一帧，有运行时错误会非零退出 —— 本项目最接近单元测试的东西 |
+| 类型 | `npx tsc --noEmit`（普通 Bash 即可） | 全自动门禁，每个任务必过。**不要跑 `npm run lint`** |
+| 单帧渲染 | `npx remotion still src/index.ts <ID> out/x.png --frame=N`，**必须走终端面板** | 真实渲染一帧，有运行时错误会非零退出 —— 本项目最接近单元测试的东西 |
 | 人眼 | `npx remotion studio` | 只用于确认观感，不作为任务通过依据 |
+
+**⚠️ 渲染命令不能在普通 Bash 工具里跑 —— 沙箱会拦死。**
+macOS Seatbelt 不允许 Chromium 注册 Mach 端口，报
+`bootstrap_check_in org.chromium.Chromium.MachPortRendezvousServer: Permission denied (1100)`
+（打包阶段正常，死在浏览器启动）。已实测确认。
+
+渲染一律用 `mcp__terminal__run_in_terminal` 工具，它跑在用户的交互 shell 里、沙箱之外。
+**开 tab 时要把 `cwd` 设成本 worktree 的路径**，否则会落到主 checkout 去。
+已实测：沙箱外渲染正常，打包 ~0.9s、单帧 ~0.3s。
+
+`say` / `afconvert`（TTS）在沙箱内可以正常跑，Task 3 用普通 Bash 即可。
 
 **算帧号的工具命令**（timing 生成后可用，后面多次引用，记作 `FRAMES 命令`）：
 

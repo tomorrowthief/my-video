@@ -6,8 +6,17 @@ import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
-const narration = JSON.parse(readFileSync(join(root, "narration.json"), "utf8"));
-const outDir = join(root, "public", "audio");
+
+// Optional positional args so one project can host more than one explainer:
+//   node scripts/tts.mjs [narrationPath] [timingOutPath] [audioOutDir]
+// Paths are relative to the project root. Defaults reproduce the original
+// pi-durable behaviour exactly.
+const [narrationArg = "narration.json", timingArg = "src/timing.json", audioArg = "public/audio"] =
+	process.argv.slice(2);
+
+const narration = JSON.parse(readFileSync(join(root, narrationArg), "utf8"));
+const outDir = join(root, audioArg);
+const timingPath = join(root, timingArg);
 const tmpDir = join(root, ".tts-tmp");
 
 const FPS = 30;
@@ -43,6 +52,7 @@ rmSync(tmpDir, { recursive: true, force: true });
 rmSync(outDir, { recursive: true, force: true });
 mkdirSync(tmpDir, { recursive: true });
 mkdirSync(outDir, { recursive: true });
+mkdirSync(dirname(timingPath), { recursive: true });
 
 const toFrames = (seconds) => Math.round(seconds * FPS);
 const scenes = [];
@@ -91,7 +101,7 @@ for (const scene of narration.scenes) {
 }
 
 writeFileSync(
-	join(root, "src", "timing.json"),
+	timingPath,
 	`${JSON.stringify(
 		{
 			fps: FPS,

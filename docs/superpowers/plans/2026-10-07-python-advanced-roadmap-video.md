@@ -3496,16 +3496,30 @@ npx remotion render PiDurable out/pi-durable-regression.mp4
 
 - [ ] **Step 6: 确认没动过的文件真的没动**
 
+基线是 **Task 0 的提交 `b8bcfbc`**，不是 `main`——`main` 上只有 Remotion 脚手架（16 个文件），pi-durable 的全部产物都是本分支新增的，拿 `main` 比会看到 119 个 `A`（added）而不是空。
+
 ```bash
-git diff --stat main -- narration.json src/timing.json src/scenes src/PiDurable.tsx public/audio
+git diff --stat b8bcfbc -- narration.json src/timing.json src/scenes src/PiDurable.tsx public/audio
 ```
 
 Expected: **输出为空**。任何一行输出都说明改到了不该改的地方，必须查明。
 
 - [ ] **Step 7: 提交最终产物**
 
+⚠️ **不要用 `git add -A`。** 本仓库实测有别的会话在**同一条分支**上做另一个视频（chicken-rabbit 讲解），工作区里可能出现不属于本计划的改动；`git add -A` 会把别人的工作一起提交。只加本计划产出的路径：
+
 ```bash
-git add -A
+git add src/PythonRoadmap.tsx src/Root.tsx src/components/Stage.tsx scripts/tts.mjs \
+        src/scenes-py narration.python.json src/timing.python.json public/audio-py \
+        docs/superpowers/plans/2026-10-07-python-advanced-roadmap-video.md
+git status --short
+```
+
+Expected: `git status` 里只出现上面这些路径。如果还有别的文件被暂存，说明加多了，先 `git restore --staged <那个文件>`。
+
+确认无误后再提交：
+
+```bash
 git commit -m "chore: python roadmap video final render checks
 
 Co-Authored-By: Claude Code <noreply@anthropic.com>"

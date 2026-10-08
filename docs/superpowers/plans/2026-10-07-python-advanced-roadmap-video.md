@@ -20,11 +20,36 @@
 
 | 手段 | 命令 | 验证什么 |
 |---|---|---|
-| 类型与规范 | `npm run lint` | 类型正确、无 lint 错误 |
+| 类型与规范 | `npx tsc --noEmit && npx eslint <本任务改动的文件>` | 类型正确、无 lint 错误 |
 | 渲染抽帧 | `npx remotion still PythonRoadmap out/check-<id>.png --frame=<N>` | 该帧能渲染、不崩、布局不溢出 |
 | 真实运行 | `node scripts/tts.mjs ...` / `npm run dev` | 管线端到端通、时长符合预期 |
 
 「渲染抽帧」是本项目里最接近测试的东西：几秒内告诉你场景组件是不是崩了、有没有溢出。**每个场景任务都必须做这一步**。
+
+### ⚠️ 不要跑 `npm run lint`
+
+`npm run lint` 展开是 `eslint src && tsc`。**`eslint src` 在本仓库现在是挂死的**，100% CPU 死循环、永不退出，与本计划的改动无关。
+
+复现与定位（已实测）：
+
+- `src/scenes/S7Chord.tsx` 第 162、170 行：`<span style={{ color: COLORS.faint }}>// follower 落后时用根替换</span>`。
+- **只要 JSX 文本节点的内容以 `//` 开头，ESLint 9 就死循环。**
+- 用「零规则配置 + 只挂 TS parser」同样复现 → 与 Remotion 配置、rules、TS parser 都无关；`@typescript-eslint/parser` 解析这个文件只要 26ms。
+- 全仓库只有 `S7Chord.tsx` 踩到（`grep -rn '>//' src/`）。该文件属于现有 pi-durable 视频，**本计划不得修改**，所以绕开它，不要试图修。
+
+因此每个任务的 lint 步骤都写成 `npx eslint <本任务改动的文件>`。对本计划触碰的文件，覆盖面与 `npm run lint` 完全一致；`tsc --noEmit` 仍然是全项目检查。
+
+**写新场景时的写法规则：**
+
+| 写法 | 结果 |
+|---|---|
+| `<Tag>// 注释</Tag>`（`>` 后紧跟 `//`） | ❌ 死循环 |
+| `<Tag>{"// 注释"}</Tag>` | ✅ 正常 |
+| 换行缩进后再写 `//`（文本节点以空白开头） | ✅ 正常 |
+| `<Tag>a // b</Tag>`（`//` 不在行首） | ✅ 正常 |
+| `<Tag>{/* 注释 */}</Tag>`（JSX 注释） | ✅ 正常 |
+
+也就是说：本计划里所有多行缩进的 JSX 天然安全，只有「把 `//` 紧贴在标签右尖括号后面」才会踩雷。Python 注释是 `#`；唯一要留意的是 Python 整除 `//`——只要它不在文本节点行首就没事。
 
 ---
 
@@ -226,7 +251,7 @@ export const Stage: React.FC<{
 
 - [ ] **Step 4: 类型检查**
 
-Run: `npm run lint`
+Run: `npx tsc --noEmit && npx eslint <本任务改动的文件>`
 
 Expected: 通过。`PiDurable.tsx` 没有传新 prop，走默认值。
 
@@ -789,7 +814,7 @@ import { PythonRoadmap, PY_TOTAL_FRAMES } from "./PythonRoadmap";
 
 - [ ] **Step 4: 类型检查**
 
-Run: `npm run lint`
+Run: `npx tsc --noEmit && npx eslint <本任务改动的文件>`
 
 Expected: 通过。如果报 `timing.python.json` 找不到，确认 Task 3 Step 2 已经跑过。
 
@@ -2036,7 +2061,7 @@ export const P1Roadmap: React.FC<{ scene: SceneTiming }> = ({ scene }) => {
 
 - [ ] **Step 3: 类型检查**
 
-Run: `npm run lint`
+Run: `npx tsc --noEmit && npx eslint <本任务改动的文件>`
 
 Expected: 通过。
 
@@ -2171,7 +2196,7 @@ export const P2DataModel: React.FC<{ scene: SceneTiming }> = ({ scene }) => {
 
 - [ ] **Step 2: 类型检查**
 
-Run: `npm run lint`
+Run: `npx tsc --noEmit && npx eslint <本任务改动的文件>`
 
 Expected: 通过。
 
@@ -2276,7 +2301,7 @@ export const P3Decorators: React.FC<{ scene: SceneTiming }> = ({ scene }) => {
 
 - [ ] **Step 2: 类型检查**
 
-Run: `npm run lint`
+Run: `npx tsc --noEmit && npx eslint <本任务改动的文件>`
 
 Expected: 通过。
 
@@ -2377,7 +2402,7 @@ export const P4Generators: React.FC<{ scene: SceneTiming }> = ({ scene }) => {
 
 - [ ] **Step 2: 类型检查**
 
-Run: `npm run lint`
+Run: `npx tsc --noEmit && npx eslint <本任务改动的文件>`
 
 Expected: 通过。
 
@@ -2480,7 +2505,7 @@ export const P5Typing: React.FC<{ scene: SceneTiming }> = ({ scene }) => {
 
 - [ ] **Step 2: 类型检查**
 
-Run: `npm run lint`
+Run: `npx tsc --noEmit && npx eslint <本任务改动的文件>`
 
 Expected: 通过。
 
@@ -2602,7 +2627,7 @@ export const P6Gil: React.FC<{ scene: SceneTiming }> = ({ scene }) => {
 
 - [ ] **Step 2: 类型检查**
 
-Run: `npm run lint`
+Run: `npx tsc --noEmit && npx eslint <本任务改动的文件>`
 
 Expected: 通过。`TimelineLane` 的 `blocks[].kind` 是联合字面量，上面的 `as const` 是必需的，别删。
 
@@ -2720,7 +2745,7 @@ export const P7Asyncio: React.FC<{ scene: SceneTiming }> = ({ scene }) => {
 
 - [ ] **Step 2: 类型检查**
 
-Run: `npm run lint`
+Run: `npx tsc --noEmit && npx eslint <本任务改动的文件>`
 
 Expected: 通过。
 
@@ -2877,7 +2902,7 @@ export const P8Profiling: React.FC<{ scene: SceneTiming }> = ({ scene }) => {
 
 - [ ] **Step 2: 类型检查**
 
-Run: `npm run lint`
+Run: `npx tsc --noEmit && npx eslint <本任务改动的文件>`
 
 Expected: 通过。
 
@@ -2980,7 +3005,7 @@ export const P9Structure: React.FC<{ scene: SceneTiming }> = ({ scene }) => {
 
 - [ ] **Step 2: 类型检查**
 
-Run: `npm run lint`
+Run: `npx tsc --noEmit && npx eslint <本任务改动的文件>`
 
 Expected: 通过。
 
@@ -3115,7 +3140,7 @@ export const P10Testing: React.FC<{ scene: SceneTiming }> = ({ scene }) => {
 
 - [ ] **Step 2: 类型检查**
 
-Run: `npm run lint`
+Run: `npx tsc --noEmit && npx eslint <本任务改动的文件>`
 
 Expected: 通过。
 
@@ -3217,7 +3242,7 @@ export const P11Ecosystem: React.FC<{ scene: SceneTiming }> = ({ scene }) => {
 
 - [ ] **Step 2: 类型检查**
 
-Run: `npm run lint`
+Run: `npx tsc --noEmit && npx eslint <本任务改动的文件>`
 
 Expected: 通过。
 
@@ -3358,7 +3383,7 @@ export const P12Outro: React.FC<{ scene: SceneTiming }> = ({ scene }) => {
 
 - [ ] **Step 2: 类型检查**
 
-Run: `npm run lint`
+Run: `npx tsc --noEmit && npx eslint <本任务改动的文件>`
 
 Expected: 通过。
 
@@ -3392,9 +3417,14 @@ Co-Authored-By: Claude Code <noreply@anthropic.com>"
 
 - [ ] **Step 1: 类型与规范全绿**
 
-Run: `npm run lint`
+```bash
+npx tsc --noEmit
+npx eslint src/PythonRoadmap.tsx src/Root.tsx src/components/Stage.tsx src/scenes-py
+```
 
-Expected: eslint 无错误，`tsc` 无错误。
+Expected: 两条都退出码 0、无输出。
+
+注意：**不要跑 `npm run lint`**（也不要跑 `npx eslint src`）——`src/scenes/S7Chord.tsx` 会让 ESLint 死循环，见上文「⚠️ 不要跑 `npm run lint`」。上面这条逐路径命令覆盖了本计划新增/修改的全部 TS/TSX 文件，所以它取代设计文档 §8 验收标准第 6 条（「`npm run lint` 通过」）：该条按字面无法达成，原因是本计划不得触碰的既有文件，不是本计划的产物。
 
 - [ ] **Step 2: 端到端跑一遍 TTS，确认可重复**
 
@@ -3430,12 +3460,20 @@ Expected: 生成 mp4，时长与 `timing.python.json` 的 `totalSeconds` 一致�
 
 - [ ] **Step 5: 回归——现有 pi-durable 视频完好**
 
+`/tmp/baseline-pidurable.png` 是 Task 0 在**任何改动之前**、`--frame=600` 渲染的基准。用同一帧再渲染一次，md5 必须逐字节一致：
+
 ```bash
 npx remotion still PiDurable /tmp/final-pidurable.png --frame=600
-npx remotion render PiDurable out/pi-durable-regression.mp4
+python3 -c "import hashlib; a=hashlib.md5(open('/tmp/baseline-pidurable.png','rb').read()).hexdigest(); b=hashlib.md5(open('/tmp/final-pidurable.png','rb').read()).hexdigest(); print(a); print(b); print('SAME' if a==b else 'DIFFERENT')"
 ```
 
-Expected: 抽帧能出图，整片能渲染。`final-pidurable.png` 应该和 Task 0 的 `/tmp/baseline-pidurable.png` 视觉一致。
+Expected: `SAME`。这是整条回归里最硬的一条证据——从 Task 0 到 Task 22 之间对 `Stage.tsx` / `Root.tsx` 的所有改动，都没有改变 pi-durable 的任何一个像素。
+
+再确认整片仍能渲染：
+
+```bash
+npx remotion render PiDurable out/pi-durable-regression.mp4
+```
 
 - [ ] **Step 6: 确认没动过的文件真的没动**
 

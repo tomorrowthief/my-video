@@ -52,7 +52,7 @@ const Backdrop: React.FC<{ scene: SceneTiming }> = ({ scene }) => {
 	);
 };
 
-const SceneHeader: React.FC<{ scene: SceneTiming }> = ({ scene }) => {
+const SceneHeader: React.FC<{ scene: SceneTiming; brand: string }> = ({ scene, brand }) => {
 	const frame = useCurrentFrame();
 	const enter = easeOut(since(frame, 0, 16));
 	return (
@@ -94,7 +94,7 @@ const SceneHeader: React.FC<{ scene: SceneTiming }> = ({ scene }) => {
 					letterSpacing: "0.08em",
 				}}
 			>
-				pi-durable
+				{brand}
 			</span>
 		</div>
 	);
@@ -161,7 +161,7 @@ const ProgressBar: React.FC<{ scene: SceneTiming }> = ({ scene }) => {
 	);
 };
 
-const Narration: React.FC<{ scene: SceneTiming }> = ({ scene }) => {
+const Narration: React.FC<{ scene: SceneTiming; audioDir: string }> = ({ scene, audioDir }) => {
 	const { fps } = useVideoConfig();
 	return (
 		<>
@@ -172,7 +172,7 @@ const Narration: React.FC<{ scene: SceneTiming }> = ({ scene }) => {
 					durationInFrames={paragraph.durationInFrames + 8}
 					premountFor={fps}
 				>
-					<Audio src={staticFile(`audio/${paragraph.file}`)} />
+					<Audio src={staticFile(`${audioDir}/${paragraph.file}`)} />
 				</Sequence>
 			))}
 		</>
@@ -182,18 +182,26 @@ const Narration: React.FC<{ scene: SceneTiming }> = ({ scene }) => {
 /**
  * One scene: backdrop, header, the scene's own content, narration audio and the
  * caption band. Scenes own everything between the header and the caption.
+ *
+ * `brand` and `audioDir` default to the pi-durable explainer's values so that
+ * composition keeps rendering exactly as before.
  */
-export const Stage: React.FC<{ scene: SceneTiming; children: ReactNode }> = ({ scene, children }) => {
+export const Stage: React.FC<{
+	scene: SceneTiming;
+	brand?: string;
+	audioDir?: string;
+	children: ReactNode;
+}> = ({ scene, brand = "pi-durable", audioDir = "audio", children }) => {
 	const { frame, paragraph, local } = useSceneFrame(scene);
 	const out = since(frame, scene.durationInFrames - 14, 14);
 	return (
 		<AbsoluteFill style={{ width: W, height: H, overflow: "hidden", opacity: 1 - out * 0.9 }}>
 			<Backdrop scene={scene} />
-			<SceneHeader scene={scene} />
+			<SceneHeader scene={scene} brand={brand} />
 			<div style={{ position: "absolute", left: PAD, right: PAD, top: 132, bottom: 148 }}>{children}</div>
 			<Caption scene={scene} paragraph={paragraph} local={local} />
 			<ProgressBar scene={scene} />
-			<Narration scene={scene} />
+			<Narration scene={scene} audioDir={audioDir} />
 		</AbsoluteFill>
 	);
 };

@@ -8,3 +8,6 @@ out
 
 # Worktrees
 .worktrees
+
+# TTS scratch
+.tts-tmp

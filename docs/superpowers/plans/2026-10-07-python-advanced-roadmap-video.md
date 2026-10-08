@@ -74,10 +74,26 @@
 | 文件 | 改动 |
 |---|---|
 | `src/components/Stage.tsx` | `Stage` 加可选 `brand` / `audioDir` prop，透传给 `SceneHeader` / `Narration` |
-| `scripts/tts.mjs` | 加三个可选位置参数，缺省行为不变 |
+| `scripts/tts.mjs` | 加三个可选位置参数，缺省行为不变；并加路径守卫（见下） |
 | `src/Root.tsx` | 新增 `Composition id="PythonRoadmap"` |
 
 **不动：** `narration.json`、`src/timing.json`、`public/audio/`、`src/scenes/`、`src/PiDurable.tsx`。
+
+### `tts.mjs` 的调用契约（务必照做）
+
+参数是**相对项目根**的路径，`join(root, arg)` 拼接，所以绝对路径会被静默重写成根目录下的相对路径（`/tmp/x` → `<root>/tmp/x`）。
+
+**永远显式传满三个参数**，或一个都不传：
+
+```bash
+node scripts/tts.mjs narration.python.json src/timing.python.json public/audio-py   # ✅
+node scripts/tts.mjs                                                                # ✅ 缺省 = pi-durable
+node scripts/tts.mjs narration.python.json                                          # ❌ 另外两个回落到缺省，会重写冻结的 src/timing.json 和 public/audio/
+```
+
+第三种写法是真实陷阱：脚本对音频目录执行 `rmSync(..., { recursive: true, force: true })`，所以在迭代 python 旁白时漏掉后两个参数，会删掉 pi-durable 的 106 个 wav。脚本已加守卫，会拒绝空参数、`.`、`..` 这类会删掉项目本身的路径，但**「只传一个参数」它拦不住**，因为那是合法的缺省行为。
+
+本计划里 4 处调用全部合规。如果你临时手敲，先存档：`git stash` 或先确认 `git status` 干净。
 
 ---
 

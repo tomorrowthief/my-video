@@ -353,27 +353,46 @@ writeFileSync(
 
 - [ ] **Step 4: 冒烟测试——缺省行为不变**
 
-先备份现有 timing：
+⚠️ 缺省运行会**重写 `src/timing.json` 和 `public/audio/` 里的每一个 wav**，这两个都是冻结产物，必须先快照：
 
-Run: `cp src/timing.json /tmp/timing.json.bak`
+```bash
+cp src/timing.json /tmp/timing.json.bak
+rm -rf /tmp/audio-before && cp -R public/audio /tmp/audio-before
+```
 
 Run: `node scripts/tts.mjs`
 
-Expected: 终端逐场景打印句数和秒数，最后一行形如 `total 15m 42s 28289 frames`。**帧数必须和备份一致。**
+Expected: 终端逐场景打印句数和秒数，最后一行 `total 15m 43s  28289 frames`。**帧数必须和备份一致**（28289）。
 
-Run: `diff /tmp/timing.json.bak src/timing.json && echo "IDENTICAL"`
+Run:
 
-Expected: `IDENTICAL`。如果不同，缺省路径的行为被改坏了。
+```bash
+diff /tmp/timing.json.bak src/timing.json && echo "TIMING_IDENTICAL"
+git status --short -- public/audio && echo "AUDIO_CLEAN"
+```
+
+Expected: `TIMING_IDENTICAL`，且 `git status` 在 `public/audio` 下**没有输出**（重新生成的 wav 与已提交的逐字节一致），随后打印 `AUDIO_CLEAN`。
+
+如果不同：先还原冻结产物（`cp /tmp/timing.json.bak src/timing.json`；`rm -rf public/audio && cp -R /tmp/audio-before public/audio`），再排查，不要提交。
 
 - [ ] **Step 5: 冒烟测试——新参数可用**
 
-Run: `node scripts/tts.mjs narration.json /tmp/timing-probe.json /tmp/audio-probe`
+参数是**相对项目根**的路径。脚本用 `join(root, arg)` 拼接，所以传绝对路径（如 `/tmp/x`）不会被当成绝对路径，而会变成 `<root>/tmp/x` —— 输出会悄悄落进仓库里。**必须传相对路径。**
 
-Expected: 成功，且 `/tmp/timing-probe.json` 与 `src/timing.json` 内容一致（同样的旁白，同样的结果）。
+Run: `node scripts/tts.mjs narration.json .tts-probe/timing.json .tts-probe/audio`
 
-Run: `diff /tmp/timing.json.bak /tmp/timing-probe.json && echo "IDENTICAL"`
+Expected: 成功，退出码 0，最后一行 `total 15m 43s  28289 frames`。
 
-Expected: `IDENTICAL`（`voice`/`rate` 等字段一致，路径无关）。
+Run:
+
+```bash
+diff /tmp/timing.json.bak .tts-probe/timing.json && echo "IDENTICAL"
+ls .tts-probe/audio/*.wav | wc -l ; ls public/audio/*.wav | wc -l
+```
+
+Expected: `IDENTICAL`（同样的旁白 → 同样的时长，与输出路径无关），两个 wav 数都是 106。
+
+Run: `rm -rf .tts-probe`（清理探针产物，别留进仓库）
 
 - [ ] **Step 6: 提交**
 

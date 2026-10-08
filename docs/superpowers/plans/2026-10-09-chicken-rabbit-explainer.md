@@ -2,9 +2,9 @@
 
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
-**Goal:** 在现有 Remotion 仓库里做出一支约 3 分钟的鸡兔同笼讲解视频，和 pi-durable 共存互不干扰。
+**Goal:** 在现有 Remotion 仓库里做出一支约 3 分钟的鸡兔同笼讲解视频，和 pi-durable、python-roadmap 两支片子共存互不干扰。
 
-**Architecture:** 素材按视频分家（`narration/<slug>.json` → `public/audio/<slug>/` + `src/timing/<slug>.json`），`tts.mjs` 收 slug 参数。新 composition `ChickenRabbit` 复用现成的 `Stage`（它已经把 backdrop / 标题 / 字幕 / 进度条 / 旁白音频封装好，`brand` 和 `audioDir` 可传参）。六个场景组件只管内容区，时间全部从 `scene.paragraphs[i].startFrame` 推导。
+**Architecture:** 沿用仓库里已经定下的**兄弟文件命名**约定 —— 每支视频拥有自己的 `narration.<name>.json`、`src/timing.<name>.json`、`public/audio-<short>/` 和 `src/scenes-<short>/`，pi-durable 的原有路径保持不动。`tts.mjs` 已经支持三个位置路径参数。新 composition `ChickenRabbit` 复用现成的 `Stage`（backdrop / 标题 / 字幕 / 进度条 / 旁白音频都已封装，`brand` 和 `audioDir` 可传参）。六个场景组件只管内容区，时间全部从 `scene.paragraphs[i].startFrame` 推导。
 
 **Tech Stack:** Remotion 4.0.533、React 19、TypeScript、macOS `say` + `afconvert`（TTS）
 
@@ -12,25 +12,50 @@
 
 ---
 
-## 关于验证方式（先读这段）
+## 开工前必读：三件已成事实
+
+**1. 仓库里有三支视频，命名约定已经定了。** 本片按同一约定取名，不要另起一套：
+
+| | pi-durable | python-roadmap | 本片 |
+|---|---|---|---|
+| 旁白 | `narration.json` | `narration.python.json` | `narration.math.json` |
+| 时间轴 | `src/timing.json` | `src/timing.python.json` | `src/timing.math.json` |
+| 音频 | `public/audio/` | `public/audio-py/` | `public/audio-math/` |
+| 场景 | `src/scenes/` | `src/scenes-py/` | `src/scenes-math/` |
+| brand | `pi-durable` | `python-roadmap` | `小学数学` |
+| audioDir | `audio` | `audio-py` | `audio-math` |
+
+python-roadmap 的文件此刻**还不存在**（只有计划文档和两个基础设施提交）。本计划不碰它预留的任何路径。
+
+**2. `eslint src` 在这个仓库会挂死，不要用 `npm run lint`。**
+ESLint 9 在 `src/scenes/S7Chord.tsx` 上 100% CPU 转不出来 —— 该文件第 162、170 行是以 `//`
+开头的 JSX 文本（`<span ...>// follower 落后时用根替换</span>`）。已实测确认：60 秒不返回。
+那个文件属于已冻结的 pi-durable，本计划绕开它，不去修。
+
+**本计划所有任务的类型门禁一律是 `npx tsc --noEmit`**（实测 4 秒通过）。
+
+**3. `scripts/tts.mjs` 的参数化改动已写好但未提交。** Task 1 负责验证并提交它。
+
+---
+
+## 验证方式
 
 这个仓库没有测试框架，给一支视频装 vitest 是 YAGNI。所以本计划不写 `expect()`，
-但**每个任务都有可执行的验证命令和明确的预期输出**，不许用「看着对」结案：
+但**每个任务都有可执行命令和明确预期**，不许用「看着对」结案：
 
 | 手段 | 命令 | 作用 |
 |---|---|---|
-| 类型 + lint | `npm run lint`（= `eslint src && tsc`） | 唯一的全自动门禁，每个任务必过 |
-| 单帧渲染 | `npx remotion still src/index.ts <ID> out/x.png --frame=N` | 真实渲染一帧。有运行时错误会非零退出 —— 这是本项目最接近单元测试的东西 |
-| 回归 | 重新生成 pi-durable 的 timing，`git diff` 必须为空 | Task 2 的真实回归测试 |
-| 人眼 | `npx remotion studio` | 只用于确认观感，不作为任务通过的依据 |
+| 类型 | `npx tsc --noEmit` | 全自动门禁，每个任务必过。**不要跑 `npm run lint`** |
+| 单帧渲染 | `npx remotion still src/index.ts <ID> out/x.png --frame=N` | 真实渲染一帧，有运行时错误会非零退出 —— 本项目最接近单元测试的东西 |
+| 人眼 | `npx remotion studio` | 只用于确认观感，不作为任务通过依据 |
 
-**算帧号的工具命令**（timing 生成后随时可用，后面多次引用，记作 `FRAMES 命令`）：
+**算帧号的工具命令**（timing 生成后可用，后面多次引用，记作 `FRAMES 命令`）：
 
 ```bash
 node -e '
-const t = require("./src/timing/chicken-rabbit.json");
+const t = require("./src/timing.math.json");
 for (const s of t.scenes) for (const p of s.paragraphs)
-  console.log(`${s.id}-${p.index}\tframe ${s.startFrame + p.startFrame + 20}\t${p.show}`);
+  console.log(`${s.id}-${p.index}\tframe ${s.startFrame + p.startFrame + 25}\t${p.show}`);
 '
 ```
 
@@ -40,26 +65,23 @@ for (const s of t.scenes) for (const p of s.paragraphs)
 
 | 文件 | 职责 |
 |---|---|
-| `narration/pi-durable.json` | pi-durable 的旁白（从仓库根 `narration.json` 移入） |
-| `narration/chicken-rabbit.json` | 本片旁白，40 句，`say`/`show` 分开 |
-| `src/timing/pi-durable.json` | pi-durable 的时间轴（从 `src/timing.json` 移入） |
-| `src/timing/chicken-rabbit.json` | 本片时间轴，由 `tts.mjs` 生成，不手改 |
-| `public/audio/pi-durable/*.wav` | 106 个既有 wav 移入 |
-| `public/audio/chicken-rabbit/*.wav` | 本片 40 个 wav |
-| `scripts/tts.mjs` | 改：收 slug 参数，只清理自己 slug 的目录 |
+| `scripts/tts.mjs` | 已改好待提交：三个可选位置参数 `[narrationPath] [timingOutPath] [audioOutDir]` |
+| `narration.math.json` | 内容源：6 场景 40 句旁白，`say`/`show` 分开 |
+| `src/timing.math.json` | TTS 生成，**勿手改** |
+| `public/audio-math/*.wav` | 本片 40 个 wav |
 | `src/theme.ts` | 改：新增 `MATH_COLORS` 导出，不动 `COLORS` |
-| `src/components/math/Critters.tsx` | 新增：鸡兔形状、35 格阵列、脚点阵、脚数条。**≥2 幕用到的才放这里** |
-| `src/scenes/math/M0Pose.tsx` … `M5Outro.tsx` | 新增：六幕，各自独立。幕内专用的视觉留在幕内 |
+| `src/scenes-math/components/Critters.tsx` | 新增：鸡兔形状、35 格阵列、脚点阵、脚数条。**≥2 幕用到的才放这里** |
+| `src/scenes-math/M0Pose.tsx` … `M5Outro.tsx` | 新增：六幕，各自独立。幕内专用的视觉留在幕内 |
 | `src/ChickenRabbit.tsx` | 新增：按 timing 的绝对帧摆六个 `Sequence` |
 | `src/Root.tsx` | 改：新增 `Folder name="Math"` + composition |
-| `src/PiDurable.tsx` | 改：import 路径 + 显式 `audioDir` |
+
+**不动：** `narration.json`、`src/timing.json`、`public/audio/`、`src/scenes/`、`src/PiDurable.tsx`、`src/components/`、以及 python-roadmap 预留的 `narration.python.json`、`src/timing.python.json`、`public/audio-py/`、`src/scenes-py/`。
 
 ### 代码粒度说明
 
-Task 3（共享原语）和 Task 6（M0）给出**完整代码** —— 原语的接口必须精确，M0 是后面五幕的
-样板。Task 7–11（M1–M5）给出完整的数据常量、逐句画面映射、要调用的原语签名和验证帧号，
-不逐个 div 预写：执行时手上已经有 M0 这个同仓库的样板，和 `src/scenes/S5States.tsx` 这个
-房屋风格参照。这是刻意的取舍，不是省略。
+Task 2（共享原语）和 Task 5（M0）给出**完整代码** —— 原语接口必须精确，M0 是后面五幕的样板。
+Task 6–10（M1–M5）给出完整数据常量、逐句画面映射、要调用的原语签名和验证帧号，不逐个 div 预写：
+执行时手上已有 M0 这个同仓库样板，和 `src/scenes/S5States.tsx` 这个房屋风格参照。这是刻意取舍，不是省略。
 
 ### 房屋风格（必须遵守）
 
@@ -69,183 +91,84 @@ Task 3（共享原语）和 Task 6（M0）给出**完整代码** —— 原语�
 - 内联 style，场景里不写 Tailwind class
 - 缩进用 tab
 - **禁止写死帧号。** 一切时间从 `scene.paragraphs[i].startFrame` / `durationInFrames` 推导
+- **不要在 JSX 文本里写以 `//` 开头的内容** —— 就是它让 eslint 挂死的
 
 ---
 
-## Task 1: 素材按视频分家
-
-把 pi-durable 的素材移到带 slug 的布局下，并同步修好 import。移动和改代码放在**同一个任务**里 —— 分两次提交会留下一个跑不起来的中间提交。
+## Task 1: 落地 TTS 参数化 + 忽略临时产物
 
 **Files:**
-- Move: `narration.json` → `narration/pi-durable.json`
-- Move: `src/timing.json` → `src/timing/pi-durable.json`
-- Move: `public/audio/*.wav`（106 个）→ `public/audio/pi-durable/`
-- Modify: `src/PiDurable.tsx`
+- Commit（已改好待提交）: `scripts/tts.mjs`
+- Modify: `.gitignore`
 
-- [ ] **Step 1: 建目录并移动三类素材**
+- [ ] **Step 1: 确认 tts.mjs 的待提交改动长什么样**
 
 ```bash
-mkdir -p narration src/timing public/audio/pi-durable
-git mv narration.json narration/pi-durable.json
-git mv src/timing.json src/timing/pi-durable.json
-git ls-files 'public/audio/*.wav' | while read -r f; do
-  git mv "$f" "public/audio/pi-durable/$(basename "$f")"
-done
+git diff scripts/tts.mjs
 ```
 
-- [ ] **Step 2: 确认移动结果**
+预期：看到三个位置参数 `[narrationArg = "narration.json", timingArg = "src/timing.json", audioArg = "public/audio"]`、
+`timingPath` 变量、以及 `mkdirSync(dirname(timingPath), { recursive: true })`。
+**若 diff 为空**，说明已被别处提交，跳到 Step 4。
+
+- [ ] **Step 2: 确认不带参数时行为与原来完全一致（回归测试）**
+
+缺省参数必须复现 pi-durable 的老行为。写到临时路径验证，不碰真实素材：
 
 ```bash
-git status --short | head -5
-echo "wav in pi-durable: $(git ls-files 'public/audio/pi-durable/*.wav' | wc -l)"
-echo "wav left at root:  $(git ls-files 'public/audio/*.wav' | wc -l)"
+node scripts/tts.mjs narration.json /tmp/timing-probe.json /tmp/audio-probe >/dev/null \
+  && diff /tmp/timing-probe.json src/timing.json && echo "IDENTICAL"
 ```
 
-预期：`wav in pi-durable: 106`、`wav left at root: 0`
+预期：打印 `IDENTICAL`。`say` 是确定性的，同样的旁白必须产出同样的 timing。
+若有 diff，停下来查清楚再继续 —— 这说明参数化改坏了东西。
 
-- [ ] **Step 3: 确认此刻是坏的（import 还指向老路径）**
+- [ ] **Step 3: 确认 pi-durable 的真实素材一字未动**
 
 ```bash
-npm run lint
+git status --short public/audio src/timing.json narration.json
 ```
 
-预期：FAIL，`src/PiDurable.tsx` 报 `Cannot find module './timing.json'`。
-这一步是故意的 —— 先看到失败，再修。
+预期：无输出。
 
-- [ ] **Step 4: 修 `src/PiDurable.tsx`**
+- [ ] **Step 4: 把 TTS 临时目录加进 `.gitignore`**
 
-改 import 路径，并显式传 `audioDir`（`Stage` 的默认值是 `"audio"`，分家后不再成立）：
+`.tts-tmp/` 和 `tmp/` 现在是未跟踪的垃圾。在 `.gitignore` 末尾追加：
 
-```tsx
-import timingJson from "./timing/pi-durable.json";
+```
+# TTS scratch
+.tts-tmp
+tmp
 ```
 
-以及把渲染 `Stage` 的那一行改成：
+- [ ] **Step 5: `npx tsc --noEmit`**
 
-```tsx
-<Stage scene={scene} brand="pi-durable" audioDir="audio/pi-durable">
-	<Body scene={scene} />
-</Stage>
-```
-
-- [ ] **Step 5: 确认修好了**
-
-```bash
-npm run lint
-```
-
-预期：PASS，无输出。
-
-- [ ] **Step 6: 渲染一帧验证音频路径真的能解析**
-
-```bash
-mkdir -p out && npx remotion still src/index.ts PiDurable out/regress-pi.png --frame=800
-```
-
-预期：退出码 0，生成 `out/regress-pi.png`。用 Read 工具看一眼，应该是 pi-durable 的画面。
-
-- [ ] **Step 7: Commit**
-
-```bash
-git add -A
-git commit -m "refactor: split video assets per slug
-
-tts.mjs wipes public/audio and overwrites src/timing.json wholesale, so a
-second video cannot coexist with pi-durable until each video owns its own
-narration, timing and audio directory. Moves pi-durable's assets under a
-slug and makes PiDurable pass its audioDir explicitly.
-
-Co-Authored-By: Claude Opus 5 (1M context) <noreply@anthropic.com>"
-```
-
----
-
-## Task 2: `tts.mjs` 收 slug 参数
-
-**Files:**
-- Modify: `scripts/tts.mjs`
-
-- [ ] **Step 1: 改成按 slug 取路径**
-
-把顶部读文件那段（`const narration = JSON.parse(...)` 和 `outDir` / `tmpDir` 三行）替换成：
-
-```js
-const slug = process.argv[2];
-if (slug === undefined || /[^a-z0-9-]/.test(slug)) {
-	console.error("Usage: node scripts/tts.mjs <slug>   e.g. chicken-rabbit");
-	process.exit(1);
-}
-
-const root = join(dirname(fileURLToPath(import.meta.url)), "..");
-const narration = JSON.parse(readFileSync(join(root, "narration", `${slug}.json`), "utf8"));
-const outDir = join(root, "public", "audio", slug);
-const tmpDir = join(root, ".tts-tmp", slug);
-```
-
-（原来的 `const root = ...` 那行删掉，上面这段已经包含了。）
-
-- [ ] **Step 2: 改写 timing 的输出路径**
-
-把文件末尾 `writeFileSync(join(root, "src", "timing.json"), ...)` 的第一个参数改成：
-
-```js
-join(root, "src", "timing", `${slug}.json`),
-```
-
-- [ ] **Step 3: 确认不带参数会明确报错，而不是默默删东西**
-
-```bash
-node scripts/tts.mjs; echo "exit=$?"
-```
-
-预期：打印 `Usage: node scripts/tts.mjs <slug>   e.g. chicken-rabbit`，`exit=1`。
-**关键**：此时 `public/audio/pi-durable/` 必须还在。确认：
-
-```bash
-ls public/audio/pi-durable/*.wav | wc -l
-```
-
-预期：`106`
-
-- [ ] **Step 4: 回归测试 —— 重新生成 pi-durable，结果必须逐字节一致**
-
-`say` 是确定性的，所以重跑应该产出完全相同的 timing。这是本任务的真实测试。
-
-```bash
-node scripts/tts.mjs pi-durable >/dev/null && git diff --stat src/timing/pi-durable.json public/audio/pi-durable
-```
-
-预期：**无任何输出**（diff 为空）。若 timing.json 有 diff，说明路径改错或 `say` 环境变了，停下来查清楚再继续。
-
-- [ ] **Step 5: lint**
-
-```bash
-npm run lint
-```
-
-预期：PASS（`eslint src` 不扫 `scripts/`，但确认没连带破坏别的）。
+预期：PASS，无输出。（`scripts/` 不在 tsc 范围内，这步只确认没连带破坏。）
 
 - [ ] **Step 6: Commit**
 
 ```bash
-git add scripts/tts.mjs
-git commit -m "feat: take a video slug in the TTS script
+rm -rf .tts-tmp tmp /tmp/audio-probe /tmp/timing-probe.json
+git add scripts/tts.mjs .gitignore
+git commit -m "feat: take narration, timing and audio paths in the TTS script
 
-Reading narration/<slug>.json and writing public/audio/<slug>/ plus
-src/timing/<slug>.json means regenerating one video's voice-over cannot
-delete another's. Refuses to run without a slug rather than defaulting to
-a path that would wipe assets.
+The script hardcoded narration.json, src/timing.json and public/audio,
+and wipes the audio directory on every run — so generating a second
+video's voice-over would delete the first's. Three optional positional
+args whose defaults reproduce the original behaviour exactly; verified by
+regenerating pi-durable's timing to a scratch path and diffing it against
+the committed one.
 
 Co-Authored-By: Claude Opus 5 (1M context) <noreply@anthropic.com>"
 ```
 
 ---
 
-## Task 3: `MATH_COLORS` + 数学视觉原语
+## Task 2: `MATH_COLORS` + 数学视觉原语
 
 **Files:**
 - Modify: `src/theme.ts`
-- Create: `src/components/math/Critters.tsx`
+- Create: `src/scenes-math/components/Critters.tsx`
 
 - [ ] **Step 1: 在 `src/theme.ts` 的 `COLORS` 之后加 `MATH_COLORS`**
 
@@ -268,7 +191,9 @@ export const MATH_COLORS = {
 } as const;
 ```
 
-- [ ] **Step 2: 建 `src/components/math/Critters.tsx`**
+- [ ] **Step 2: 建 `src/scenes-math/components/Critters.tsx`**
+
+注意 import 深度是 `../../theme`（文件在 `src/scenes-math/components/` 下）。
 
 ```tsx
 import type { CSSProperties } from "react";
@@ -396,7 +321,7 @@ export const CritterGrid: React.FC<{
 /**
  * A dense row of foot dots. `shown` reveals them progressively; `lifted`
  * raises and fades the first N, which is the whole point of the whistle scene.
- * `paired` tints the remaining dots two at a time in rabbit lilac.
+ * `paired` tints the dots just past the lifted ones in rabbit lilac.
  */
 export const FootDots: React.FC<{
 	count?: number;
@@ -459,7 +384,6 @@ export const LegBar: React.FC<{
 					borderRadius: 13,
 					background: MATH_COLORS.keySoft,
 					border: `1px solid ${MATH_COLORS.key}33`,
-					overflow: "visible",
 				}}
 			>
 				<div
@@ -502,18 +426,14 @@ export const LegBar: React.FC<{
 };
 ```
 
-- [ ] **Step 3: lint**
+- [ ] **Step 3: `npx tsc --noEmit`**
 
-```bash
-npm run lint
-```
-
-预期：PASS。原语还没人用，这一步只验类型。
+预期：PASS。原语还没人用，这步只验类型。
 
 - [ ] **Step 4: Commit**
 
 ```bash
-git add src/theme.ts src/components/math/Critters.tsx
+git add src/theme.ts src/scenes-math/components/Critters.tsx
 git commit -m "feat: add the maths explainer's visual primitives
 
 Chickens and rabbits differ in shape as well as hue so the video still
@@ -527,13 +447,13 @@ Co-Authored-By: Claude Opus 5 (1M context) <noreply@anthropic.com>"
 
 ---
 
-## Task 4: 旁白文案 + 生成音频
+## Task 3: 旁白文案 + 生成音频
 
 **Files:**
-- Create: `narration/chicken-rabbit.json`
-- Generates: `public/audio/chicken-rabbit/*.wav`、`src/timing/chicken-rabbit.json`
+- Create: `narration.math.json`
+- Generates: `public/audio-math/*.wav`、`src/timing.math.json`
 
-- [ ] **Step 1: 写 `narration/chicken-rabbit.json`**
+- [ ] **Step 1: 写 `narration.math.json`**
 
 `say` 里的数字**一律写中文汉字** —— `say -v Tingting` 对阿拉伯数字的读法不可控。
 `show` 里用阿拉伯数字，屏幕上更好读。
@@ -647,7 +567,7 @@ Co-Authored-By: Claude Opus 5 (1M context) <noreply@anthropic.com>"
 - [ ] **Step 2: 生成音频和时间轴**
 
 ```bash
-node scripts/tts.mjs chicken-rabbit
+node scripts/tts.mjs narration.math.json src/timing.math.json public/audio-math
 ```
 
 预期：逐句打印时长，末尾 `total 2m XXs  NNNN frames`。
@@ -655,9 +575,9 @@ node scripts/tts.mjs chicken-rabbit
 - [ ] **Step 3: 验证产物的形状**
 
 ```bash
-echo "wav: $(ls public/audio/chicken-rabbit/*.wav | wc -l)"
+echo "wav: $(ls public/audio-math/*.wav | wc -l)"
 node -e '
-const t = require("./src/timing/chicken-rabbit.json");
+const t = require("./src/timing.math.json");
 const paras = t.scenes.reduce((n, s) => n + s.paragraphs.length, 0);
 console.log("scenes", t.scenes.length, "paragraphs", paras, "seconds", t.totalSeconds.toFixed(1));
 if (t.scenes.length !== 6) throw new Error("expected 6 scenes");
@@ -670,18 +590,26 @@ console.log("OK");
 预期：`wav: 40`、`scenes 6 paragraphs 40 seconds 1XX.X`、`OK`。
 若 `duration out of range`，按 spec 的规定**调旁白句子的多少**，不要去改场景帧数。
 
-- [ ] **Step 4: 确认 pi-durable 没被动过**
+- [ ] **Step 4: 听一句，确认数字念对了**
 
 ```bash
-git status --short public/audio/pi-durable src/timing/pi-durable.json
+afplay public/audio-math/s0-2.wav
+```
+
+预期：听到「再数一数脚，一共九十四只。」—— 数字念成「九十四」而不是别的。
+
+- [ ] **Step 5: 确认其它两支视频的素材没被动过**
+
+```bash
+git status --short public/audio src/timing.json narration.json
 ```
 
 预期：无输出。
 
-- [ ] **Step 5: Commit**
+- [ ] **Step 6: Commit**
 
 ```bash
-git add narration/chicken-rabbit.json src/timing/chicken-rabbit.json public/audio/chicken-rabbit
+git add narration.math.json src/timing.math.json public/audio-math
 git commit -m "feat: add narration for the chicken-rabbit explainer
 
 40 lines at rate 165 with 0.42s gaps — slower than pi-durable's 183/0.32
@@ -694,24 +622,24 @@ Co-Authored-By: Claude Opus 5 (1M context) <noreply@anthropic.com>"
 
 ---
 
-## Task 5: 走通骨架 —— composition + 六个占位场景
+## Task 4: 走通骨架 —— composition + 六个占位场景
 
 先让整条片子从头到尾能播（旁白、字幕、标题、进度条全部到位），一个动画都还没写。
-这样后面每一幕的工作都是纯粹的内容填充，不会和接线问题纠缠。
+这样后面每一幕都是纯粹的内容填充，不和接线问题纠缠。
 
 **Files:**
 - Create: `src/ChickenRabbit.tsx`
-- Create: `src/scenes/math/M0Pose.tsx` … `M5Outro.tsx`（六个占位）
+- Create: `src/scenes-math/M0Pose.tsx` … `M5Outro.tsx`（六个占位）
 - Modify: `src/Root.tsx`
 
 - [ ] **Step 1: 建六个占位场景**
 
-六个文件都用这个形状，把 `M0Pose` 和显示的文字换成各自的（`M1Table`、`M2Assume`、`M3Lift`、`M4Converge`、`M5Outro`）：
+六个文件都用这个形状，把组件名和 `scene.title` 换成各自的（`M0Pose`、`M1Table`、`M2Assume`、`M3Lift`、`M4Converge`、`M5Outro`）。注意 import 深度是 `../components/Stage`（文件在 `src/scenes-math/` 下）：
 
 ```tsx
-import { useSceneFrame } from "../../components/Stage";
-import { COLORS, FONT } from "../../theme";
-import type { SceneTiming } from "../../types";
+import { useSceneFrame } from "../components/Stage";
+import { COLORS, FONT } from "../theme";
+import type { SceneTiming } from "../types";
 
 export const M0Pose: React.FC<{ scene: SceneTiming }> = ({ scene }) => {
 	const { active } = useSceneFrame(scene);
@@ -732,14 +660,14 @@ export const M0Pose: React.FC<{ scene: SceneTiming }> = ({ scene }) => {
 ```tsx
 import { AbsoluteFill, Sequence, useVideoConfig } from "remotion";
 import { Stage } from "./components/Stage";
-import { M0Pose } from "./scenes/math/M0Pose";
-import { M1Table } from "./scenes/math/M1Table";
-import { M2Assume } from "./scenes/math/M2Assume";
-import { M3Lift } from "./scenes/math/M3Lift";
-import { M4Converge } from "./scenes/math/M4Converge";
-import { M5Outro } from "./scenes/math/M5Outro";
+import { M0Pose } from "./scenes-math/M0Pose";
+import { M1Table } from "./scenes-math/M1Table";
+import { M2Assume } from "./scenes-math/M2Assume";
+import { M3Lift } from "./scenes-math/M3Lift";
+import { M4Converge } from "./scenes-math/M4Converge";
+import { M5Outro } from "./scenes-math/M5Outro";
 import { COLORS } from "./theme";
-import timingJson from "./timing/chicken-rabbit.json";
+import timingJson from "./timing.math.json";
 import type { SceneTiming, Timing } from "./types";
 
 const timing = timingJson as unknown as Timing;
@@ -755,8 +683,8 @@ const BODIES: Record<string, React.FC<{ scene: SceneTiming }>> = {
 
 /**
  * 鸡兔同笼. Every scene sits at the absolute frame its narration starts, so the
- * audio timeline in timing/chicken-rabbit.json is the only source of pacing:
- * regenerating the voice-over re-cuts the whole video.
+ * audio timeline in timing.math.json is the only source of pacing: regenerating
+ * the voice-over re-cuts the whole video.
  */
 export const ChickenRabbit: React.FC = () => {
 	const { fps } = useVideoConfig();
@@ -772,7 +700,7 @@ export const ChickenRabbit: React.FC = () => {
 						durationInFrames={scene.durationInFrames}
 						premountFor={fps}
 					>
-						<Stage scene={scene} brand="小学数学" audioDir="audio/chicken-rabbit">
+						<Stage scene={scene} brand="小学数学" audioDir="audio-math">
 							<Body scene={scene} />
 						</Stage>
 					</Sequence>
@@ -808,40 +736,36 @@ import { ChickenRabbit, CR_TOTAL_FRAMES } from "./ChickenRabbit";
 </Folder>
 ```
 
-- [ ] **Step 4: lint**
-
-```bash
-npm run lint
-```
+- [ ] **Step 4: `npx tsc --noEmit`**
 
 预期：PASS。
 
 - [ ] **Step 5: 每一幕渲染一帧，确认六幕都能起来**
 
-先拿到帧号（上面的 `FRAMES 命令`），然后每幕取第一句：
-
 ```bash
 node -e '
-const t = require("./src/timing/chicken-rabbit.json");
-console.log(t.scenes.map((s) => s.startFrame + s.paragraphs[0].startFrame + 20).join(" "));
+const t = require("./src/timing.math.json");
+console.log(t.scenes.map((s) => s.startFrame + s.paragraphs[0].startFrame + 25).join(" "));
 '
 ```
 
 把打印出的六个帧号依次代入：
 
 ```bash
+mkdir -p out
 for f in <六个帧号>; do
   npx remotion still src/index.ts ChickenRabbit "out/skeleton-$f.png" --frame="$f" || exit 1
 done
 echo "all six rendered"
 ```
 
-预期：退出码 0，`all six rendered`，生成六张 png。用 Read 工具看其中两张，应该看到左上角场景编号、标题、底部字幕、底部进度条，中间是占位文字。
+预期：退出码 0、`all six rendered`、六张 png。用 Read 工具看其中两张：左上角场景编号 + 标题、
+右上角「小学数学」、底部字幕条、底部进度条，中间是占位文字。
 
 - [ ] **Step 6: Commit**
 
 ```bash
-git add src/ChickenRabbit.tsx src/scenes/math src/Root.tsx
+git add src/ChickenRabbit.tsx src/scenes-math src/Root.tsx
 git commit -m "feat: wire up the ChickenRabbit composition skeleton
 
 Placeholder scene bodies on purpose: getting narration, captions, headers
@@ -853,21 +777,21 @@ Co-Authored-By: Claude Opus 5 (1M context) <noreply@anthropic.com>"
 
 ---
 
-## Task 6: M0 出题（样板幕）
+## Task 5: M0 出题（样板幕）
 
 这一幕给出完整代码，后面五幕照这个形状写。
 
 **Files:**
-- Modify: `src/scenes/math/M0Pose.tsx`
+- Modify: `src/scenes-math/M0Pose.tsx`
 
 - [ ] **Step 1: 实现**
 
 ```tsx
-import { Chip, Hero, Reveal } from "../../components/Bits";
-import { CritterGrid, FootDots } from "../../components/math/Critters";
-import { useSceneFrame } from "../../components/Stage";
-import { COLORS, FONT, MATH_COLORS, MONO, easeOut, since } from "../../theme";
-import type { SceneTiming } from "../../types";
+import { Chip, Hero, Reveal } from "../components/Bits";
+import { useSceneFrame } from "../components/Stage";
+import { COLORS, FONT, MATH_COLORS, MONO, easeOut, since } from "../theme";
+import type { SceneTiming } from "../types";
+import { CritterGrid, FootDots } from "./components/Critters";
 
 const Counter: React.FC<{ label: string; value: string; color: string }> = ({ label, value, color }) => (
 	<div style={{ display: "flex", alignItems: "baseline", gap: 14 }}>
@@ -880,7 +804,7 @@ export const M0Pose: React.FC<{ scene: SceneTiming }> = ({ scene }) => {
 	const { active, frame } = useSceneFrame(scene);
 	const heads = easeOut(since(frame, scene.paragraphs[1].startFrame, 34));
 	const feet = since(frame, scene.paragraphs[2].startFrame, 46);
-	// The question mark pulses so the pause for guessing reads as an invitation.
+	// The chip pulses so the pause for guessing reads as an invitation.
 	const pulse = 0.72 + Math.sin(frame / 7) * 0.28;
 
 	return (
@@ -932,39 +856,27 @@ export const M0Pose: React.FC<{ scene: SceneTiming }> = ({ scene }) => {
 };
 ```
 
-- [ ] **Step 2: lint**
-
-```bash
-npm run lint
-```
-
-预期：PASS。
+- [ ] **Step 2: `npx tsc --noEmit`** — 预期 PASS
 
 - [ ] **Step 3: 五句各渲一帧**
 
 ```bash
 node -e '
-const t = require("./src/timing/chicken-rabbit.json");
+const t = require("./src/timing.math.json");
 const s = t.scenes[0];
 console.log(s.paragraphs.map((p) => s.startFrame + p.startFrame + 25).join(" "));
 '
+for f in <五个帧号>; do npx remotion still src/index.ts ChickenRabbit "out/m0-$f.png" --frame="$f" || exit 1; done
 ```
 
-把五个帧号代入：
-
-```bash
-for f in <五个帧号>; do
-  npx remotion still src/index.ts ChickenRabbit "out/m0-$f.png" --frame="$f" || exit 1
-done
-```
-
-逐张用 Read 工具检查，确认：第 1 句只有标题；第 2 句头在逐个弹入、计数在涨；第 3 句脚点阵在铺开；
-第 4 句出现「鸡 ? 兔 ?」；第 5 句出现「先猜一猜」。**没有文字溢出、没有元素重叠。**
+逐张用 Read 工具检查：第 1 句只有标题；第 2 句头在弹入、计数在涨；第 3 句脚点阵在铺开；
+第 4 句出现「鸡 ? 兔 ?」；第 5 句出现「先猜一猜」。**35 只动物必须是虚线 unknown，不是鸡。
+没有文字溢出、没有元素重叠。**
 
 - [ ] **Step 4: Commit**
 
 ```bash
-git add src/scenes/math/M0Pose.tsx
+git add src/scenes-math/M0Pose.tsx
 git commit -m "feat: pose the problem in M0
 
 The 35 animals are drawn as dashed unknowns rather than chickens: not
@@ -976,10 +888,10 @@ Co-Authored-By: Claude Opus 5 (1M context) <noreply@anthropic.com>"
 
 ---
 
-## Task 7: M1 列表法
+## Task 6: M1 列表法
 
 **Files:**
-- Modify: `src/scenes/math/M1Table.tsx`
+- Modify: `src/scenes-math/M1Table.tsx`
 
 **数据常量**（照抄，`at` 是这一行在第几句出现）：
 
@@ -996,50 +908,51 @@ const ROWS = [
 
 | 句 | 画面 |
 |---|---|
-| 0 | 只有一行小标题「最笨的办法：一个一个试」+ 空表头（鸡 / 兔 / 脚） |
+| 0 | 一行小标题「最笨的办法：一个一个试」+ 空表头（鸡 / 兔 / 脚） |
 | 1 | 第 1 行写入；右侧 `LegBar value={70}` |
 | 2 | 第 1 行的「70」变 `MATH_COLORS.key` 并脉冲，LegBar 的「还差 24」高亮 |
 | 3 | 第 2 行写入，LegBar 平滑走到 80 |
 | 4 | 第 3 行写入，LegBar 走到 90 |
 | 5 | 第 4 行写入，LegBar 走到 94 且 `hit` 为 true（变绿发光） |
-| 6 | 相邻行之间浮出 `+5 兔 → +10 脚` 的小箭头，底部一条 `MATH_COLORS.key` 的横幅：**每多 1 只兔，脚多 2 只** |
+| 6 | 相邻行之间浮出 `+5 兔 → +10 脚` 小箭头，底部一条 `MATH_COLORS.key` 横幅：**每多 1 只兔，脚多 2 只** |
 
 **实现要点：**
 - 表格用 `display: grid`、`gridTemplateColumns: "140px 140px 180px"`，行间 `gap: 14`
-- 每行用 `<Reveal at={scene.paragraphs[row.at].startFrame} from="left">` 包起来，`active >= row.at` 才渲染
-- `LegBar` 的 `value` 要平滑：取当前已出现的最后一行作为目标，用 `easeInOut(since(frame, scene.paragraphs[row.at].startFrame, 20))` 在前一行和这一行的 `legs` 之间插值
-- 第 6 句的横幅用 `<Reveal at={scene.paragraphs[6].startFrame} from="scale">`
+- 每行 `<Reveal at={scene.paragraphs[row.at].startFrame} from="left">` 包起来，`active >= row.at` 才渲染
+- `LegBar` 的 `value` 要平滑：取当前已出现的最后一行为目标，用
+  `easeInOut(since(frame, scene.paragraphs[row.at].startFrame, 20))` 在前一行和这一行的 `legs` 之间插值
+- 第 6 句横幅用 `<Reveal at={scene.paragraphs[6].startFrame} from="scale">`
 
 - [ ] **Step 1: 实现上表**
-- [ ] **Step 2: `npm run lint`** — 预期 PASS
+- [ ] **Step 2: `npx tsc --noEmit`** — 预期 PASS
 - [ ] **Step 3: 七句各渲一帧并逐张检查**
 
 ```bash
 node -e '
-const t = require("./src/timing/chicken-rabbit.json");
+const t = require("./src/timing.math.json");
 const s = t.scenes[1];
 console.log(s.paragraphs.map((p) => s.startFrame + p.startFrame + 25).join(" "));
 '
 for f in <七个帧号>; do npx remotion still src/index.ts ChickenRabbit "out/m1-$f.png" --frame="$f" || exit 1; done
 ```
 
-检查点：四行按序出现、LegBar 刻度线在 94 处、最后一行命中时变绿、第 7 帧有规律横幅、无溢出重叠。
+检查点：四行按序出现、LegBar 刻度线在 94 处、最后一行命中时变绿、末帧有规律横幅、无溢出重叠。
 
 - [ ] **Step 4: Commit** — `feat: lay out the enumeration method in M1`
-  提交信息里说明：这一幕的目的不是解题，是让观众自己看见「每多一只兔脚多两只」，后两幕都站在它上面。
+  提交信息说明：这一幕的目的不是解题，是让观众自己看见「每多一只兔脚多两只」，后两幕都站在它上面。
 
 ---
 
-## Task 8: M2 假设法
+## Task 7: M2 假设法
 
 **Files:**
-- Modify: `src/scenes/math/M2Assume.tsx`
+- Modify: `src/scenes-math/M2Assume.tsx`
 
 **逐句画面：**
 
 | 句 | 画面 |
 |---|---|
-| 0 | 居中大字横幅：**每多 1 只兔，脚多 2 只**（接上一幕的结论） |
+| 0 | 居中大字横幅：**每多 1 只兔，脚多 2 只**（接上一幕结论） |
 | 1 | 横幅缩小上移到顶部，变成常驻提示条 |
 | 2 | `CritterGrid` 35 只**全鸡**（`rabbits={0}`）staggered 入场 |
 | 3 | 右侧 `35 × 2 = 70`，`LegBar value={70}` |
@@ -1050,19 +963,19 @@ for f in <七个帧号>; do npx remotion still src/index.ts ChickenRabbit "out/m
 | 8 | `35 − 12 = 23`，底部答案条：鸡 23 / 兔 12 |
 
 **实现要点：**
-- 第 7 句的换脚是本幕的高潮：`const swap = easeInOut(since(frame, scene.paragraphs[7].startFrame, 48))`，
+- 第 7 句是本幕高潮：`const swap = easeInOut(since(frame, scene.paragraphs[7].startFrame, 48))`，
   然后 `<CritterGrid rabbits={swap * 12} />` 和 `<LegBar value={70 + swap * 24} hit={swap > 0.98} />`。
-  `CritterGrid` 的 `rabbits` 接受小数，会一只一只地变 —— 不要取整
+  `CritterGrid` 的 `rabbits` 接受小数，会一只一只地变 —— **不要取整**
 - 第 0/1 句横幅的「缩小上移」用同一个 `since(frame, scene.paragraphs[1].startFrame, 24)` 同时驱动
   `fontSize`、`translate` 和容器 `gap`，别用两套插值
 
 - [ ] **Step 1: 实现上表**
-- [ ] **Step 2: `npm run lint`** — 预期 PASS
-- [ ] **Step 3: 九句各渲一帧 + 换脚动画中段多渲两帧**
+- [ ] **Step 2: `npx tsc --noEmit`** — 预期 PASS
+- [ ] **Step 3: 九句各渲一帧 + 换脚动画中段两帧**
 
 ```bash
 node -e '
-const t = require("./src/timing/chicken-rabbit.json");
+const t = require("./src/timing.math.json");
 const s = t.scenes[2];
 const p7 = s.startFrame + s.paragraphs[7].startFrame;
 console.log(s.paragraphs.map((p) => s.startFrame + p.startFrame + 25).join(" "), p7 + 16, p7 + 32);
@@ -1070,20 +983,20 @@ console.log(s.paragraphs.map((p) => s.startFrame + p.startFrame + 25).join(" "),
 for f in <十一个帧号>; do npx remotion still src/index.ts ChickenRabbit "out/m2-$f.png" --frame="$f" || exit 1; done
 ```
 
-检查点：中段两帧必须能看到**部分已变紫、部分还是黄**的半途状态（证明 `rabbits` 的小数插值生效了，
-不是一下全变）；末帧 LegBar 命中 94 变绿；答案条 鸡 23 / 兔 12。
+检查点：中段两帧必须能看到**部分已变紫、部分还是黄**的半途状态（证明小数插值生效，不是一下全变）；
+末帧 LegBar 命中 94 变绿；答案条 鸡 23 / 兔 12。
 
 - [ ] **Step 4: Commit** — `feat: work the substitution method in M2`
 
 ---
 
-## Task 9: M3 抬腿法
+## Task 8: M3 抬腿法
 
 本幕**不能暴露哪 12 只是兔子** —— 抬腿法的妙处正是不需要知道。所以主角是脚点，不是动物：
 上方 35 只 unknown 动物，一条地面线，线下 94 个脚点。吹哨后 70 个脚点升起淡出，剩 24 个两两配对。
 
 **Files:**
-- Modify: `src/scenes/math/M3Lift.tsx`
+- Modify: `src/scenes-math/M3Lift.tsx`
 
 **逐句画面：**
 
@@ -1091,28 +1004,28 @@ for f in <十一个帧号>; do npx remotion still src/index.ts ChickenRabbit "ou
 |---|---|
 | 0 | 顶部一行「还有更妙的办法」 |
 | 1 | 35 只 unknown 动物 + 地面线 + 线下 94 个脚点全部就位 |
-| 2 | 哨声：一圈白色脉冲从中心扩散（`since` 驱动 scale + 透明度），动物轻微上下弹一次 |
-| 3 | `FootDots lifted={70 × 进度}` —— 70 个脚点升起淡出；右侧计数 `抬起 70` |
-| 4 | `94 − 70 = 24` 大字；地上剩下的 24 个脚点高亮 |
-| 5 | 旁白讲「鸡的脚全抬完了」，升起的那批脚点染成 `MATH_COLORS.chicken` 再淡出 |
+| 2 | 哨声：一圈白色脉冲从中心扩散（`since` 驱动 scale + 透明度），动物轻微弹一次 |
+| 3 | `FootDots lifted={70 × 进度}` —— 70 个脚点升起淡出；右侧 `抬起 70` |
+| 4 | `94 − 70 = 24` 大字；地上剩的 24 个脚点高亮 |
+| 5 | 旁白讲「鸡的脚全抬完了」，升起那批脚点染成 `MATH_COLORS.chicken` 再淡出 |
 | 6 | 地上 24 个脚点全部染成 `MATH_COLORS.rabbit` |
 | 7 | `paired` 从 0 走到 24，两两之间画连接弧，右侧 `24 ÷ 2 = 12 只兔` |
 
 **实现要点：**
 - 用 `FootDots count={94} lifted={...} paired={...} perRow={47} dot={16}`
-- 地面线：一条 `height: 2`、`background: COLORS.border` 的横线，脚点容器放在它下面
+- 地面线：一条 `height: 2`、`background: COLORS.border` 的横线，脚点容器放它下面
 - 哨声脉冲：`const w = since(frame, scene.paragraphs[2].startFrame, 22)`，
   一个绝对定位的圆 `scale: 0.2 + w * 3`、`opacity: (1 - w) * 0.5`、`border: 2px solid #fff`
 - 两两配对的连接弧：24 个点分 12 组，每组用一个 `borderBottom` 圆角小方块跨在两点下方即可，
-  不要引 SVG
+  **不要引 SVG**
 
 - [ ] **Step 1: 实现上表**
-- [ ] **Step 2: `npm run lint`** — 预期 PASS
+- [ ] **Step 2: `npx tsc --noEmit`** — 预期 PASS
 - [ ] **Step 3: 八句各渲一帧 + 抬腿动画中段一帧**
 
 ```bash
 node -e '
-const t = require("./src/timing/chicken-rabbit.json");
+const t = require("./src/timing.math.json");
 const s = t.scenes[3];
 console.log(s.paragraphs.map((p) => s.startFrame + p.startFrame + 25).join(" "),
   s.startFrame + s.paragraphs[3].startFrame + 14);
@@ -1120,18 +1033,18 @@ console.log(s.paragraphs.map((p) => s.startFrame + p.startFrame + 25).join(" "),
 for f in <九个帧号>; do npx remotion still src/index.ts ChickenRabbit "out/m3-$f.png" --frame="$f" || exit 1; done
 ```
 
-检查点：**动物全程是虚线 unknown，一只都没变成兔子**（这是本幕的正确性要求）；
+检查点：**动物全程是虚线 unknown，一只都没变成兔子**（本幕的正确性要求）；
 中段帧能看到一部分脚点悬在空中；末帧地上恰好 24 个紫点、12 组配对弧。
 
 - [ ] **Step 4: Commit** — `feat: lift the legs in M3`
-  提交信息里说明：动物全程保持 unknown 是刻意的 —— 抬腿法不需要知道谁是兔子，画出来就漏答案了。
+  提交信息说明：动物全程保持 unknown 是刻意的 —— 抬腿法不需要知道谁是兔子，画出来就漏答案了。
 
 ---
 
-## Task 10: M4 三解合一
+## Task 9: M4 三解合一
 
 **Files:**
-- Modify: `src/scenes/math/M4Converge.tsx`
+- Modify: `src/scenes-math/M4Converge.tsx`
 
 **数据常量：**
 
@@ -1159,15 +1072,15 @@ const METHODS = [
   第 i 列 `translate: ${(1 - i) * conv * 300}px 0px`、`opacity: 1 - conv * 0.82`
 - 中间那行字同一个 `conv` 驱动 `opacity: conv` 和 `scale: 0.86 + conv * 0.14`，
   颜色 `MATH_COLORS.key`，`fontSize: 56`
-- 三列和中间那行要放在同一个相对定位容器里，中间那行绝对定位居中，否则收敛时会互相挤
+- 三列和中间那行放在同一个相对定位容器里，中间那行绝对定位居中，否则收敛时会互相挤
 
 - [ ] **Step 1: 实现上表**
-- [ ] **Step 2: `npm run lint`** — 预期 PASS
+- [ ] **Step 2: `npx tsc --noEmit`** — 预期 PASS
 - [ ] **Step 3: 六句各渲一帧 + 收敛中段一帧**
 
 ```bash
 node -e '
-const t = require("./src/timing/chicken-rabbit.json");
+const t = require("./src/timing.math.json");
 const s = t.scenes[4];
 console.log(s.paragraphs.map((p) => s.startFrame + p.startFrame + 25).join(" "),
   s.startFrame + s.paragraphs[5].startFrame + 17);
@@ -1178,14 +1091,14 @@ for f in <七个帧号>; do npx remotion still src/index.ts ChickenRabbit "out/m
 检查点：三列按序点亮；中段帧能看到三列正在往中间挪、中间的字半透明；末帧中间那句话清晰醒目，三列退成背景。
 
 - [ ] **Step 4: Commit** — `feat: converge the three methods in M4`
-  提交信息里说明：这一幕是全片的点，不是总结 —— 三种解法内核是同一句话。
+  提交信息说明：这一幕是全片的点，不是总结 —— 三种解法内核是同一句话。
 
 ---
 
-## Task 11: M5 验算 + 留题
+## Task 10: M5 验算 + 留题
 
 **Files:**
-- Modify: `src/scenes/math/M5Outro.tsx`
+- Modify: `src/scenes-math/M5Outro.tsx`
 
 **逐句画面：**
 
@@ -1194,24 +1107,24 @@ for f in <七个帧号>; do npx remotion still src/index.ts ChickenRabbit "out/m
 | 0 | `23 + 12 = 35 个头` 从左到右写出，末尾一个 `MATH_COLORS.ok` 的 ✓ 弹入 |
 | 1 | `23 × 2 + 12 × 4 = 94 只脚` 同样写出 + ✓ |
 | 2 | 两条验算上移淡化，中央「换你了」弹入 |
-| 3 | 变形题面板：10 辆车（`Critter` 换成两种轮子数的小车）+ `26 个轮子` |
+| 3 | 变形题面板：10 辆车 + `26 个轮子` |
 | 4 | 底部 `MATH_COLORS.key` 警示条：**这次每换一辆，轮子只多 1 个** |
 
 **实现要点：**
 - 「从左到右写出」用 `clipPath: inset(0 ${(1 - p) * 100}% 0 0)`，`p = easeOut(since(...))`
-- ✓ 的弹入用 `<Reveal from="scale">`，延后 12 帧（`at: paragraphs[i].startFrame + 12`）
+- ✓ 的弹入用 `<Reveal from="scale">`，延后 12 帧（`at: scene.paragraphs[i].startFrame + 12`）
 - 小车不要新建组件（只这一幕用）：一个 `borderRadius: 10` 的方块 + 下面 2 或 3 个轮子圆点，
-  自行车 `MATH_COLORS.chicken`、三轮车 `MATH_COLORS.rabbit`，**但 10 辆全部画成 unknown 虚线**
+  **但 10 辆全部画成虚线 unknown**（`border: 2px dashed ${MATH_COLORS.unknown}`、轮子也不画）
   —— 留给观众的题不能把答案画出来
 - 警示条是全片最后一个画面，`fontSize: 34`，给足 padding
 
 - [ ] **Step 1: 实现上表**
-- [ ] **Step 2: `npm run lint`** — 预期 PASS
+- [ ] **Step 2: `npx tsc --noEmit`** — 预期 PASS
 - [ ] **Step 3: 五句各渲一帧**
 
 ```bash
 node -e '
-const t = require("./src/timing/chicken-rabbit.json");
+const t = require("./src/timing.math.json");
 const s = t.scenes[5];
 console.log(s.paragraphs.map((p) => s.startFrame + p.startFrame + 25).join(" "));
 '
@@ -1222,38 +1135,39 @@ for f in <五个帧号>; do npx remotion still src/index.ts ChickenRabbit "out/m
 末帧警示条完整可读。
 
 - [ ] **Step 4: Commit** — `feat: verify and hand over in M5`
-  提交信息里说明：变形题每换一辆轮子只多 1 个，刻意打破 +2 的模式 —— 背公式的人会在这里翻车。
+  提交信息说明：变形题每换一辆轮子只多 1 个，刻意打破 +2 的模式 —— 背公式的人会在这里翻车。
 
 ---
 
-## Task 12: 整片验收
+## Task 11: 整片验收
 
 **Files:** 无改动，纯验证。
 
-- [ ] **Step 1: lint**
+- [ ] **Step 1: 类型**
 
 ```bash
-npm run lint
+npx tsc --noEmit
 ```
 
-预期：PASS。
+预期：PASS，无输出。
 
-- [ ] **Step 2: pi-durable 回归 —— 这一条最容易出错**
+- [ ] **Step 2: 另两支视频的回归**
+
+本片全程没碰 pi-durable 的任何文件，这步确认该事实成立、且 pi-durable 仍能渲染：
 
 ```bash
+git status --short narration.json src/timing.json public/audio src/scenes src/PiDurable.tsx
 npx remotion still src/index.ts PiDurable out/final-regress-pi.png --frame=1200 || exit 1
-git status --short public/audio/pi-durable src/timing/pi-durable.json narration/pi-durable.json
 ```
 
-预期：退出码 0；`git status` 无输出（pi-durable 的素材一字未动）。
-用 Read 工具看 png，确认是 pi-durable 的画面且正常。
+预期：`git status` 无输出；渲染退出码 0。用 Read 工具看 png，确认是 pi-durable 的正常画面。
 
 - [ ] **Step 3: 全片抽帧 —— 每一句都渲一帧，任何一句崩了都会在这里暴露**
 
 ```bash
 rm -rf out/sweep && mkdir -p out/sweep
 node -e '
-const t = require("./src/timing/chicken-rabbit.json");
+const t = require("./src/timing.math.json");
 for (const s of t.scenes) for (const p of s.paragraphs)
   console.log(`${s.id}-${p.index} ${s.startFrame + p.startFrame + 25}`);
 ' | while read -r name f; do
@@ -1267,6 +1181,7 @@ echo "rendered: $(ls out/sweep/*.png | wc -l)"
 - [ ] **Step 4: 逐张看 40 帧，确认没有文字溢出、元素重叠、空画面**
 
 用 Read 工具抽看，重点查这四项**正确性**要求（不只是美观）：
+
 1. M0 的 35 只动物是虚线 unknown，不是鸡
 2. M3 全程动物保持 unknown
 3. M5 的 10 辆车保持 unknown
@@ -1274,7 +1189,7 @@ echo "rendered: $(ls out/sweep/*.png | wc -l)"
 
 任一项不满足 → 回到对应任务修，不要在这里将就。
 
-- [ ] **Step 5: 渲染整片（可选，确认端到端能出片）**
+- [ ] **Step 5: 渲染整片**
 
 ```bash
 npx remotion render src/index.ts ChickenRabbit out/chicken-rabbit.mp4
@@ -1285,10 +1200,15 @@ npx remotion render src/index.ts ChickenRabbit out/chicken-rabbit.mp4
 - [ ] **Step 6: 更新 spec 的状态并提交**
 
 把 spec 开头的 `状态：已评审通过，待实现` 改成 `状态：已实现`。
+同时把 spec 的「技术架构」一节改成兄弟文件命名约定（spec 里原来写的 slug 方案已被仓库既有约定取代）。
 
 ```bash
 git add docs/superpowers/specs/2026-10-08-chicken-rabbit-explainer-design.md
 git commit -m "docs: mark the chicken-rabbit explainer as implemented
+
+Also replaces the spec's slug-based asset layout with the sibling-file
+convention the repo had already settled on, which leaves pi-durable's
+paths untouched instead of moving them.
 
 Co-Authored-By: Claude Opus 5 (1M context) <noreply@anthropic.com>"
 ```
@@ -1297,26 +1217,31 @@ Co-Authored-By: Claude Opus 5 (1M context) <noreply@anthropic.com>"
 
 ## 自检记录
 
-对着 spec 逐节核过一遍：
+对着 spec 逐节核过：
 
 | spec 小节 | 对应任务 |
 |---|---|
-| 题目与答案 | Task 4（旁白）、Task 6–11（画面） |
-| S0–S5 六幕内容 | Task 6、7、8、9、10、11 |
-| 视觉设计（配色、形状双重区分） | Task 3 |
-| 技术架构 / 文件布局 | Task 1、2、5 |
-| 旁白脚本 40 句 | Task 4（全文照抄） |
-| 动画要点表 | Task 6–11 各自的「逐句画面」和「实现要点」 |
-| 测试与验收 4 条 | Task 12（lint / studio / **pi-durable 回归** / 抽帧） |
-| 风险：弄坏 pi-durable | Task 1 Step 3 先看失败、Step 6 渲帧验证；Task 2 Step 4 字节级回归；Task 12 Step 2 终检 |
-| 风险：旁白重生成导致错位 | 房屋风格里明令禁止写死帧号；每幕验证帧号都是从 timing 算出来的 |
-| 风险：35 头 + 94 脚排不开 | Task 6 用 `perRow={24} dot={14}`，Task 9 用 `perRow={47} dot={16}` |
-| 风险：`say` 读错数字 | Task 4 Step 1 明令 `say` 用中文汉字 |
+| 题目与答案 | Task 3（旁白）、Task 5–10（画面） |
+| S0–S5 六幕内容 | Task 5、6、7、8、9、10 |
+| 视觉设计（配色、形状双重区分） | Task 2 |
+| 技术架构 / 文件布局 | Task 1、4 —— **已按仓库既有约定改写**，见下 |
+| 旁白脚本 40 句 | Task 3（全文照抄） |
+| 动画要点表 | Task 5–10 各自的「逐句画面」和「实现要点」 |
+| 测试与验收 4 条 | Task 11（类型 / studio / pi-durable 回归 / 抽帧）。**`npm run lint` 换成 `npx tsc --noEmit`** |
+| 风险：弄坏 pi-durable | 本计划不碰它任何文件；Task 1 Step 3、Task 3 Step 5、Task 11 Step 2 三道确认 |
+| 风险：旁白重生成导致错位 | 房屋风格明令禁止写死帧号；每幕验证帧号都从 timing 算出 |
+| 风险：35 头 + 94 脚排不开 | Task 5 用 `perRow={24} dot={14}`，Task 8 用 `perRow={47} dot={16}` |
+| 风险：`say` 读错数字 | Task 3 Step 1 明令 `say` 用中文汉字；Step 4 实听一句 |
 
-命名一致性核对：`MATH_COLORS`（spec 与计划一致）、`Critter` / `CritterGrid` / `FootDots` / `LegBar`
-（Task 3 定义，Task 6–11 调用签名一致）、`audioDir="audio/chicken-rabbit"`（Task 1 与 Task 5 一致）、
-`CR_TOTAL_FRAMES`（Task 5 定义并在同任务内使用）。
+**与 spec 的两处刻意偏离：**
 
-spec 里「先 `git mv` 再改代码，分两步」被合并成 Task 1 的单个任务 —— 分两次提交会留下一个
-`npm run lint` 跑不过的中间提交。spec 的意图（移动和改码要分开验证）靠 Task 1 的 Step 3
-「确认此刻是坏的」保留了下来。
+1. **素材布局换成兄弟文件命名**（`narration.math.json` 等），不是 spec 写的 slug 目录方案。
+   原因：仓库里已有另一支视频（python-roadmap）定下了这套约定，并且 `tts.mjs` 已按它改好。
+   采用它的额外好处是 pi-durable 的路径完全不动，回归风险归零。Task 11 Step 6 顺手把 spec 改正。
+2. **类型门禁用 `npx tsc --noEmit` 而非 spec 写的 `npm run lint`。**
+   原因：`eslint src` 在本仓库挂死（`src/scenes/S7Chord.tsx` 的 JSX 文本以 `//` 开头），已实测确认。
+
+命名一致性核对：`MATH_COLORS`（Task 2 定义，Task 5–10 使用）、`Critter` / `CritterGrid` / `FootDots` /
+`LegBar`（Task 2 定义，Task 5–10 调用签名一致）、`audioDir="audio-math"`（Task 4 使用，与
+`public/audio-math` 一致）、`CR_TOTAL_FRAMES`（Task 4 定义并在同任务内使用）、
+`src/scenes-math/components/Critters.tsx` 在 Task 5 的 import 路径是 `./components/Critters`（同级目录，正确）。

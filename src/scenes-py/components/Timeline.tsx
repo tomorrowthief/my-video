@@ -11,6 +11,12 @@ export type TimelineLane = {
 		readonly end: number;
 		readonly kind: "busy" | "wait";
 		readonly label?: string;
+		/**
+		 * Sub-row within the lane, for blocks that run at the same time. Without
+		 * it, genuinely parallel blocks land on identical coordinates and read as
+		 * a single block — which is the opposite of what a parallel lane means.
+		 */
+		readonly row?: number;
 	}[];
 	readonly accent?: string;
 };
@@ -43,6 +49,11 @@ export const Timeline: React.FC<{
 				const accent = lane.accent ?? COLORS.accent;
 				const on = li === lit;
 				const p = easeOut(since(frame, start + li * 10, 14));
+				// A lane whose blocks declare sub-rows gets a taller track, so four
+				// parallel bars stay legible instead of collapsing into slivers.
+				const rows = lane.blocks.reduce((n, b) => Math.max(n, (b.row ?? 0) + 1), 1);
+				const trackH = rows > 1 ? rows * 16 + 12 : 46;
+				const slot = (trackH - 12) / rows;
 				return (
 					<div
 						key={lane.title}
@@ -72,7 +83,7 @@ export const Timeline: React.FC<{
 							style={{
 								position: "relative",
 								flex: 1,
-								height: 46,
+								height: trackH,
 								background: COLORS.bg,
 								border: `1px solid ${COLORS.border}`,
 								borderRadius: 8,
@@ -81,13 +92,14 @@ export const Timeline: React.FC<{
 						>
 							{lane.blocks.map((block, bi) => {
 								const grow = easeInOut(since(frame, start + li * 10 + bi * 6, 18));
+								const top = 6 + (block.row ?? 0) * slot;
 								return (
 									<div
 										key={bi}
 										style={{
 											position: "absolute",
-											top: 6,
-											bottom: 6,
+											top,
+											height: slot - (rows > 1 ? 3 : 0),
 											left: `${block.start * 100}%`,
 											width: `${(block.end - block.start) * 100 * grow}%`,
 											background:
@@ -100,7 +112,7 @@ export const Timeline: React.FC<{
 											paddingLeft: 10,
 										}}
 									>
-										{block.label !== undefined ? (
+										{block.label !== undefined && rows === 1 ? (
 											<span style={{ fontFamily: MONO, fontSize: 17, color: COLORS.bgDeep }}>
 												{block.label}
 											</span>

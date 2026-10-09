@@ -19,7 +19,26 @@ import type { SceneTiming, Timing } from "./types";
 
 const timing = timingJson as unknown as Timing;
 
-const BODIES: Record<string, React.FC<{ scene: SceneTiming }>> = {
+const SCENE_IDS = [
+	"p00",
+	"p01",
+	"p02",
+	"p03",
+	"p04",
+	"p05",
+	"p06",
+	"p07",
+	"p08",
+	"p09",
+	"p10",
+	"p11",
+	"p12",
+] as const;
+type SceneId = (typeof SCENE_IDS)[number];
+
+// Total over SceneId on purpose: a scene whose component is missing, renamed or
+// misspelled is a compile error here, not a blank scene at render time.
+const BODIES: Record<SceneId, React.FC<{ scene: SceneTiming }>> = {
 	p00: P0Hook,
 	p01: P1Roadmap,
 	p02: P2DataModel,
@@ -35,6 +54,8 @@ const BODIES: Record<string, React.FC<{ scene: SceneTiming }>> = {
 	p12: P12Outro,
 };
 
+const isSceneId = (id: string): id is SceneId => SCENE_IDS.some((known) => known === id);
+
 /**
  * The python advanced roadmap explainer. Same contract as PiDurable: the audio
  * timeline in timing.python.json is the single source of truth for pacing, so
@@ -45,8 +66,16 @@ export const PythonRoadmap: React.FC = () => {
 	return (
 		<AbsoluteFill style={{ background: COLORS.bgDeep }}>
 			{timing.scenes.map((scene) => {
-				const Body = BODIES[scene.id];
-				if (Body === undefined) return null;
+				// The scene list comes from timing.python.json, so an unknown id can only be
+				// caught at runtime. Returning null here would take the scene's body, caption
+				// and narration down together — a silent black hole in a still-"successful"
+				// render. Fail loudly instead.
+				const Body = isSceneId(scene.id) ? BODIES[scene.id] : undefined;
+				if (Body === undefined) {
+					throw new Error(
+						`PythonRoadmap: no body registered for scene "${scene.id}" (known ids: ${SCENE_IDS.join(", ")})`,
+					);
+				}
 				return (
 					<Sequence
 						key={scene.id}

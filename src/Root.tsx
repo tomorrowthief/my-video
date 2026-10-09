@@ -1,5 +1,6 @@
 import "./index.css";
 import { Composition, Folder } from "remotion";
+import { ChickenRabbit, CR_TOTAL_FRAMES } from "./ChickenRabbit";
 import { HelloWorld } from "./HelloWorld";
 import { Logo } from "./HelloWorld/Logo";
 import { Title } from "./HelloWorld/Title";
@@ -13,6 +14,16 @@ export const RemotionRoot: React.FC = () => {
 					id="PiDurable"
 					component={PiDurable}
 					durationInFrames={TOTAL_FRAMES}
+					fps={30}
+					width={1920}
+					height={1080}
+				/>
+			</Folder>
+			<Folder name="Math">
+				<Composition
+					id="ChickenRabbit"
+					component={ChickenRabbit}
+					durationInFrames={CR_TOTAL_FRAMES}
 					fps={30}
 					width={1920}
 					height={1080}

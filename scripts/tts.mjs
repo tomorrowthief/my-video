@@ -2,9 +2,10 @@
 // Run: node scripts/tts.mjs [narrationPath] [timingOutPath] [audioOutDir]
 // All three arguments are optional and project-root-relative; see the argument
 // contract below. With no arguments this reproduces the pi-durable paths.
+/* global process, console */
 import { execFileSync } from "node:child_process";
 import { mkdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
-import { dirname, join, sep } from "node:path";
+import { dirname, join, resolve, sep } from "node:path";
 import { fileURLToPath } from "node:url";
 
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
@@ -16,8 +17,13 @@ const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 const [narrationArg = "narration.json", timingArg = "src/timing.json", audioArg = "public/audio"] =
 	process.argv.slice(2);
 
-const outDir = join(root, audioArg);
-const timingPath = join(root, timingArg);
+// resolve (not join) so that an absolute argument stays absolute and is rejected
+// below instead of being silently rebased under the root as `<root>/tmp/...`.
+const argPath = (arg) => resolve(root, arg);
+
+const narrationPath = argPath(narrationArg);
+const outDir = argPath(audioArg);
+const timingPath = argPath(timingArg);
 const tmpDir = join(root, ".tts-tmp");
 
 // outDir is handed to rmSync(..., { recursive: true, force: true }) below, so an
@@ -26,7 +32,7 @@ const tmpDir = join(root, ".tts-tmp");
 // the project root; reject anything else before touching the filesystem.
 const insideRoot = (p) => p !== root && p.startsWith(root + sep);
 for (const [label, p] of [
-	["narration", join(root, narrationArg)],
+	["narration", narrationPath],
 	["timing", timingPath],
 	["audio", outDir],
 ]) {
@@ -39,10 +45,10 @@ for (const [label, p] of [
 
 let narrationSource;
 try {
-	narrationSource = readFileSync(join(root, narrationArg), "utf8");
+	narrationSource = readFileSync(narrationPath, "utf8");
 } catch {
 	throw new Error(
-		`tts.mjs: cannot read the narration file "${join(root, narrationArg)}" (argument 1, project-root-relative)`,
+		`tts.mjs: cannot read the narration file "${narrationPath}" (argument 1, project-root-relative)`,
 	);
 }
 const narration = JSON.parse(narrationSource);

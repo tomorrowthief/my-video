@@ -1,43 +1,39 @@
 import "./index.css";
 import { Composition, Folder } from "remotion";
-import { ChickenRabbit, CR_TOTAL_FRAMES } from "./ChickenRabbit";
 import { HelloWorld } from "./HelloWorld";
 import { Logo } from "./HelloWorld/Logo";
 import { Title } from "./HelloWorld/Title";
-import { PiDurable, TOTAL_FRAMES } from "./PiDurable";
-import { PythonRoadmap, PY_FPS, PY_TOTAL_FRAMES } from "./PythonRoadmap";
+import { VIDEOS, type VideoDef } from "./videos";
+
+/** Videos grouped into the Studio sidebar folders they declare, in registry order. */
+const byFolder = (): readonly (readonly [string, readonly VideoDef[]])[] => {
+	const folders: string[] = [];
+	for (const video of VIDEOS) {
+		if (!folders.includes(video.folder)) folders.push(video.folder);
+	}
+	return folders.map(
+		(folder) => [folder, VIDEOS.filter((video) => video.folder === folder)] as const,
+	);
+};
 
 export const RemotionRoot: React.FC = () => {
 	return (
 		<>
-			<Folder name="Explainer">
-				<Composition
-					id="PiDurable"
-					component={PiDurable}
-					durationInFrames={TOTAL_FRAMES}
-					fps={30}
-					width={1920}
-					height={1080}
-				/>
-				<Composition
-					id="PythonRoadmap"
-					component={PythonRoadmap}
-					durationInFrames={PY_TOTAL_FRAMES}
-					fps={PY_FPS}
-					width={1920}
-					height={1080}
-				/>
-			</Folder>
-			<Folder name="Math">
-				<Composition
-					id="ChickenRabbit"
-					component={ChickenRabbit}
-					durationInFrames={CR_TOTAL_FRAMES}
-					fps={30}
-					width={1920}
-					height={1080}
-				/>
-			</Folder>
+			{byFolder().map(([folder, videos]) => (
+				<Folder key={folder} name={folder}>
+					{videos.map((video) => (
+						<Composition
+							key={video.title}
+							id={video.title}
+							component={video.Component}
+							durationInFrames={video.timing.totalFrames}
+							fps={video.timing.fps}
+							width={video.timing.width}
+							height={video.timing.height}
+						/>
+					))}
+				</Folder>
+			))}
 			<Folder name="Elements">
 				<Composition
 					id="Logo"

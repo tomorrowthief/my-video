@@ -1,0 +1,26 @@
+{
+	"pi-durable": {
+		"title": "PiDurable",
+		"brand": "pi-durable",
+		"folder": "Explainer",
+		"narration": "narration.json",
+		"timing": "src/timing.json",
+		"audio": "audio"
+	},
+	"python": {
+		"title": "PythonRoadmap",
+		"brand": "python-roadmap",
+		"folder": "Explainer",
+		"narration": "narration.python.json",
+		"timing": "src/timing.python.json",
+		"audio": "audio-py"
+	},
+	"math": {
+		"title": "ChickenRabbit",
+		"brand": "小学数学",
+		"folder": "Math",
+		"narration": "narration.math.json",
+		"timing": "src/timing.math.json",
+		"audio": "audio-math"
+	}
+}

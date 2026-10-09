@@ -1,8 +1,9 @@
 import { Hero, Reveal } from "../components/Bits";
 import { useSceneFrame } from "../components/Stage";
-import { COLORS, FONT, MATH_COLORS, MONO, clamp01, easeInOut, easeOut, since } from "../theme";
+import { COLORS, FONT, MONO, clamp01, easeInOut, easeOut, since } from "../theme";
 import type { SceneTiming } from "../types";
 import { CritterGrid } from "./components/Critters";
+import { MATH_COLORS } from "./palette";
 
 const DOT = 20;
 const GAP = 11;

@@ -1,7 +1,8 @@
 import { Reveal } from "../components/Bits";
 import { useSceneFrame } from "../components/Stage";
-import { COLORS, FONT, MATH_COLORS, MONO, easeInOut, easeOut, since } from "../theme";
+import { COLORS, FONT, MONO, easeInOut, easeOut, since } from "../theme";
 import type { SceneTiming } from "../types";
+import { MATH_COLORS } from "./palette";
 
 const METHODS = [
 	{ name: "列表法", essence: "试出规律", at: 2, color: MATH_COLORS.chicken },

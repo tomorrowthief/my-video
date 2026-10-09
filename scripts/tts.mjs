@@ -1,7 +1,7 @@
 // Generates narration audio with macOS `say` and writes the timing JSON.
-// Run: node scripts/tts.mjs [narrationPath] [timingOutPath] [audioOutDir]
-// All three arguments are optional and project-root-relative; see the argument
-// contract below. With no arguments this reproduces the pi-durable paths.
+// Run: node scripts/tts.mjs <video>   — a key from videos.json, e.g. `math`
+//  or: node scripts/tts.mjs [narrationPath] [timingOutPath] [audioOutDir]
+// Paths are project-root-relative; see the argument contract below.
 /* global process, console */
 import { execFileSync } from "node:child_process";
 import { mkdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
@@ -10,12 +10,33 @@ import { fileURLToPath } from "node:url";
 
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 
-// Optional positional args so one project can host more than one explainer:
-//   node scripts/tts.mjs [narrationPath] [timingOutPath] [audioOutDir]
-// Paths are relative to the project root. Defaults reproduce the original
-// pi-durable behaviour exactly.
-const [narrationArg = "narration.json", timingArg = "src/timing.json", audioArg = "public/audio"] =
-	process.argv.slice(2);
+// Either a key from videos.json — `node scripts/tts.mjs math` — or the three
+// explicit paths, project-root-relative. The key form is preferred; the
+// positional form is kept because the python roadmap plan documents it.
+//
+// There is deliberately no zero-argument default any more. It used to mean
+// "pi-durable", which made a bare `node scripts/tts.mjs` silently regenerate
+// a finished video's 106 wavs. Say `pi-durable` if that is what you want.
+const args = process.argv.slice(2);
+const manifest = JSON.parse(readFileSync(join(root, "videos.json"), "utf8"));
+const known = Object.keys(manifest);
+
+let narrationArg;
+let timingArg;
+let audioArg;
+
+if (args.length === 1 && manifest[args[0]] !== undefined) {
+	const entry = manifest[args[0]];
+	narrationArg = entry.narration;
+	timingArg = entry.timing;
+	audioArg = join("public", entry.audio);
+} else if (args.length === 3) {
+	[narrationArg, timingArg, audioArg] = args;
+} else {
+	console.error(`Usage: node scripts/tts.mjs <video>        (one of: ${known.join(", ")})`);
+	console.error("   or: node scripts/tts.mjs <narrationPath> <timingOutPath> <audioOutDir>");
+	process.exit(1);
+}
 
 // resolve (not join) so that an absolute argument stays absolute and is rejected
 // below instead of being silently rebased under the root as `<root>/tmp/...`.

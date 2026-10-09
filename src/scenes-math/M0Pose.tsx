@@ -1,8 +1,9 @@
 import { Chip, Hero, Reveal } from "../components/Bits";
 import { useSceneFrame } from "../components/Stage";
-import { COLORS, FONT, MATH_COLORS, MONO, easeOut, since } from "../theme";
+import { COLORS, FONT, MONO, easeOut, since } from "../theme";
 import type { SceneTiming } from "../types";
 import { CritterGrid, FootDots } from "./components/Critters";
+import { MATH_COLORS } from "./palette";
 
 const Counter: React.FC<{ label: string; value: string; color: string }> = ({ label, value, color }) => (
 	<div style={{ display: "flex", alignItems: "baseline", gap: 14 }}>

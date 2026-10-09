@@ -1,7 +1,8 @@
 import { Reveal } from "../components/Bits";
 import { useSceneFrame } from "../components/Stage";
-import { COLORS, FONT, MATH_COLORS, MONO, easeOut, since } from "../theme";
+import { COLORS, FONT, MONO, easeOut, since } from "../theme";
 import type { SceneTiming } from "../types";
+import { MATH_COLORS } from "./palette";
 
 /** A check line that writes itself in from the left, then gets its tick. */
 const Check: React.FC<{ at: number; frame: number; children: React.ReactNode; faded: number }> = ({

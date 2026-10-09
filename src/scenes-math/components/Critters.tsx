@@ -1,6 +1,7 @@
 import type { CSSProperties } from "react";
 import { interpolateColors } from "remotion";
-import { MATH_COLORS, MONO, clamp01, easeOut } from "../../theme";
+import { MONO, clamp01, easeOut } from "../../theme";
+import { MATH_COLORS } from "../palette";
 
 /**
  * One animal. `morph` 0 is a chicken (round, warm yellow, two feet), 1 is a

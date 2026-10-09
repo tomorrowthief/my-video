@@ -1,8 +1,9 @@
 import { Reveal } from "../components/Bits";
 import { useSceneFrame } from "../components/Stage";
-import { COLORS, FONT, MATH_COLORS, MONO, clamp01, easeInOut, easeOut, since } from "../theme";
+import { COLORS, FONT, MONO, clamp01, easeInOut, easeOut, since } from "../theme";
 import type { SceneTiming } from "../types";
 import { CritterGrid, LegBar } from "./components/Critters";
+import { MATH_COLORS } from "./palette";
 
 const Eq: React.FC<{ children: React.ReactNode; size?: number; color?: string }> = ({
 	children,

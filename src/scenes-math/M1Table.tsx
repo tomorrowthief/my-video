@@ -1,8 +1,9 @@
 import { Hero, Reveal } from "../components/Bits";
 import { useSceneFrame } from "../components/Stage";
-import { COLORS, FONT, MATH_COLORS, MONO, easeInOut, since } from "../theme";
+import { COLORS, FONT, MONO, easeInOut, since } from "../theme";
 import type { SceneTiming } from "../types";
 import { LegBar } from "./components/Critters";
+import { MATH_COLORS } from "./palette";
 
 /** Each guess, and the paragraph it lands on. */
 const ROWS = [

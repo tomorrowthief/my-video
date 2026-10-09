@@ -26,6 +26,33 @@
 
 「渲染抽帧」是本项目里最接近测试的东西：几秒内告诉你场景组件是不是崩了、有没有溢出。**每个场景任务都必须做这一步**。
 
+### ⚠️ 渲染必须走终端面板，不能用普通 Bash 工具
+
+macOS Seatbelt 沙箱不允许 Chromium 注册 Mach 端口，`npx remotion still` 会在打包完成后
+死在浏览器启动，报：
+
+```
+[FATAL:mach_port_rendezvous_mac.cc] bootstrap_check_in
+org.chromium.Chromium.MachPortRendezvousServer: Permission denied (1100)
+```
+
+这是沙箱，不是代码问题。所有 `remotion still` / `remotion render` 一律用
+`mcp__terminal__run_in_terminal` 工具（跑在用户的交互 shell 里、沙箱之外），
+开 tab 时 `cwd` 设成项目根。实测沙箱外打包约 0.9s、单帧约 0.3s。
+
+`say` / `afconvert`（TTS）同样受影响：沙箱里能建出 wav 文件但内容是**空的**
+（4.1KB 的壳，0.00s）。TTS 也要走终端面板。
+
+### ⚠️ 本计划写于 registry 改造之前
+
+`src/PythonRoadmap.tsx` 已被删除，合成入口改由 `src/videos.ts` 的 registry 驱动。
+对本计划的影响：
+
+- 计划里的 `npx remotion still PythonRoadmap ...` **仍然有效** —— 那是 composition id，没变
+- 新增场景组件后，若 scene id 与 `src/timing.python.json` 对不上，
+  `src/videos.ts` 会在模块加载时抛错并同时列出两边的差集
+- 13 个场景的 id→组件映射现在在 `src/videos.ts` 里，不在各自的合成文件里
+
 ### ⚠️ 不要跑 `npm run lint`
 
 `npm run lint` 展开是 `eslint src && tsc`。**`eslint src` 在本仓库现在是挂死的**，100% CPU 死循环、永不退出，与本计划的改动无关。

@@ -5,6 +5,7 @@ import { HelloWorld } from "./HelloWorld";
 import { Logo } from "./HelloWorld/Logo";
 import { Title } from "./HelloWorld/Title";
 import { PiDurable, TOTAL_FRAMES } from "./PiDurable";
+import { PythonRoadmap, PY_FPS, PY_TOTAL_FRAMES } from "./PythonRoadmap";
 
 export const RemotionRoot: React.FC = () => {
 	return (
@@ -15,6 +16,14 @@ export const RemotionRoot: React.FC = () => {
 					component={PiDurable}
 					durationInFrames={TOTAL_FRAMES}
 					fps={30}
+					width={1920}
+					height={1080}
+				/>
+				<Composition
+					id="PythonRoadmap"
+					component={PythonRoadmap}
+					durationInFrames={PY_TOTAL_FRAMES}
+					fps={PY_FPS}
 					width={1920}
 					height={1080}
 				/>

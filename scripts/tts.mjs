@@ -1,8 +1,11 @@
-// Generates narration audio with macOS `say` and writes src/timing.json.
-// Run: node scripts/tts.mjs
+// Generates narration audio with macOS `say` and writes the timing JSON.
+// Run: node scripts/tts.mjs [narrationPath] [timingOutPath] [audioOutDir]
+// All three arguments are optional and project-root-relative; see the argument
+// contract below. With no arguments this reproduces the pi-durable paths.
+/* global process, console */
 import { execFileSync } from "node:child_process";
 import { mkdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
-import { dirname, join } from "node:path";
+import { dirname, join, resolve, sep } from "node:path";
 import { fileURLToPath } from "node:url";
 
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
@@ -14,10 +17,41 @@ const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 const [narrationArg = "narration.json", timingArg = "src/timing.json", audioArg = "public/audio"] =
 	process.argv.slice(2);
 
-const narration = JSON.parse(readFileSync(join(root, narrationArg), "utf8"));
-const outDir = join(root, audioArg);
-const timingPath = join(root, timingArg);
+// resolve (not join) so that an absolute argument stays absolute and is rejected
+// below instead of being silently rebased under the root as `<root>/tmp/...`.
+const argPath = (arg) => resolve(root, arg);
+
+const narrationPath = argPath(narrationArg);
+const outDir = argPath(audioArg);
+const timingPath = argPath(timingArg);
 const tmpDir = join(root, ".tts-tmp");
+
+// outDir is handed to rmSync(..., { recursive: true, force: true }) below, so an
+// empty argument, "." or ".." would delete the project itself — or a directory
+// outside it. Arguments are project-root-relative and must land strictly inside
+// the project root; reject anything else before touching the filesystem.
+const insideRoot = (p) => p !== root && p.startsWith(root + sep);
+for (const [label, p] of [
+	["narration", narrationPath],
+	["timing", timingPath],
+	["audio", outDir],
+]) {
+	if (!insideRoot(p)) {
+		throw new Error(
+			`tts.mjs: refusing to use the ${label} path "${p}" — it must be a non-empty path inside the project root (${root})`,
+		);
+	}
+}
+
+let narrationSource;
+try {
+	narrationSource = readFileSync(narrationPath, "utf8");
+} catch {
+	throw new Error(
+		`tts.mjs: cannot read the narration file "${narrationPath}" (argument 1, project-root-relative)`,
+	);
+}
+const narration = JSON.parse(narrationSource);
 
 const FPS = 30;
 const { voice, rate, gapSeconds, leadInSeconds, tailSeconds } = narration;

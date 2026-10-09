@@ -74,10 +74,26 @@
 | 文件 | 改动 |
 |---|---|
 | `src/components/Stage.tsx` | `Stage` 加可选 `brand` / `audioDir` prop，透传给 `SceneHeader` / `Narration` |
-| `scripts/tts.mjs` | 加三个可选位置参数，缺省行为不变 |
+| `scripts/tts.mjs` | 加三个可选位置参数，缺省行为不变；并加路径守卫（见下） |
 | `src/Root.tsx` | 新增 `Composition id="PythonRoadmap"` |
 
 **不动：** `narration.json`、`src/timing.json`、`public/audio/`、`src/scenes/`、`src/PiDurable.tsx`。
+
+### `tts.mjs` 的调用契约（务必照做）
+
+参数是**相对项目根**的路径，`join(root, arg)` 拼接，所以绝对路径会被静默重写成根目录下的相对路径（`/tmp/x` → `<root>/tmp/x`）。
+
+**永远显式传满三个参数**，或一个都不传：
+
+```bash
+node scripts/tts.mjs narration.python.json src/timing.python.json public/audio-py   # ✅
+node scripts/tts.mjs                                                                # ✅ 缺省 = pi-durable
+node scripts/tts.mjs narration.python.json                                          # ❌ 另外两个回落到缺省，会重写冻结的 src/timing.json 和 public/audio/
+```
+
+第三种写法是真实陷阱：脚本对音频目录执行 `rmSync(..., { recursive: true, force: true })`，所以在迭代 python 旁白时漏掉后两个参数，会删掉 pi-durable 的 106 个 wav。脚本已加守卫，会拒绝空参数、`.`、`..` 这类会删掉项目本身的路径，但**「只传一个参数」它拦不住**，因为那是合法的缺省行为。
+
+本计划里 4 处调用全部合规。如果你临时手敲，先存档：`git stash` 或先确认 `git status` 干净。
 
 ---
 
@@ -101,7 +117,7 @@
 | 三条路线选型 | `p11` | 7 | ecosystem |
 | 收尾：8 周计划 | `p12` | 8 | plan |
 
-合计 93 段。按 rate 183 估算约 865 秒旁白 + 场景开销约 30 秒 ≈ **895 秒 ≈ 14.9 分钟**，落在 13–17 分钟区间内。
+合计 92 段。实测（Task 3 跑完后回填）：语音净长 970 秒，加上段落间隔与场景开销共约 46 秒，合计 **1016 秒 ≈ 16 分 56 秒**，落在 13–17 分钟区间内——但已贴近上界，所以后续任何任务都不要再往旁白里加句子。此处原先写的「93 段 / 约 14.9 分钟」是笔误：上表的 6+8+7×10+8 = 92，且原估算漏算了每段约 0.5 秒的间隔开销。
 
 ---
 
@@ -650,7 +666,7 @@ Expected: 终端逐场景打印，形如：
 p00  6 句  62.1s
 p01  8 句  78.4s
 ...
-total 14m 52s 26760 frames
+total 16m 56s 30471 frames
 ```
 
 - [ ] **Step 3: 检查总时长**
@@ -665,7 +681,7 @@ Expected: 场景数 13，总时长在 **13–17 分钟**之间。
 
 Run: `ls public/audio-py | head -20 && ls public/audio-py | wc -l`
 
-Expected: 文件名形如 `p00-0.wav` … `p12-7.wav`，**总数 93**。
+Expected: 文件名形如 `p00-0.wav` … `p12-7.wav`，**总数 92**。
 
 Run: `afplay public/audio-py/p00-0.wav`
 
@@ -2127,11 +2143,14 @@ export const PXX: React.FC<{ scene: SceneTiming }> = ({ scene }) => {
 };
 ```
 
-三条约定，每个场景任务都适用：
+四条约定，每个场景任务都适用：
 
 1. **不要在自己的 body 里重复 `scene.heading`。** `Stage` 的 `SceneHeader` 已经在左上角渲染了序号和 heading，重复一次会出现两行一样的标题。
 2. **第 5 段是切换点。** 前 5 段（下标 0–4）讲机制，后 2 段（下标 5–6）整屏是练习面板。上面骨架里的 `at={5}` 不要改。
 3. **母题组件消耗 `active` 来决定点亮状态**，映射关系在每个任务的表格里给出。`active` 是场景内相对段落下标，从 0 开始。
+4. **内容别压到字幕带上。** `Stage` 给内容区的是 `top: 132; bottom: 148`，也就是 y ∈ [132, 932]。字幕条贴在 `bottom: 44`，左右内边距 26 + 上下 16 + 字号 31×1.5，单行时顶边约 y=955（离 932 只剩约 23px），一旦 `show` 太长折成两行，顶边就会升到约 y=909，直接压进内容区底部。所以：内容底部自觉留白（一般止于 y≈880），别把整屏用到 932；`show` 文案保持单行（目前全片最长 56 个显示宽，离 `maxWidth: 1520` 的上限还有三成余量，别用满）。
+
+> 注意：Task 4 建 `src/scenes-py/*.tsx` 时写的是**一次性占位**，那些 body 为了占位重复了 `scene.heading`。这是唯一一处故意违反约定 1 的地方，Tasks 11–21 重写这些文件时按骨架来，不要照抄占位。
 
 每个场景任务仍然要抽帧验证，命令模板：
 

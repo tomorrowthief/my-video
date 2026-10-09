@@ -148,7 +148,7 @@ node scripts/tts.mjs narration.python.json                                      
 
 ---
 
-## Task 0: 建立基线分支并提交现有工作
+## ✅ Task 0: 建立基线分支并提交现有工作
 
 工作树里整条 pi-durable 视频（`narration.json`、`src/scenes/`、`src/PiDurable.tsx`、`src/components/`、`src/theme.ts`、`scripts/`）都还没提交。后续任务要频繁提交，需要一个干净的起点。
 
@@ -194,7 +194,7 @@ Expected: 生成 PNG，无报错。这是后面回归对比的基准。
 
 ---
 
-## Task 1: 参数化 `Stage.tsx`
+## ✅ Task 1: 参数化 `Stage.tsx`
 
 `Stage.tsx` 有两处硬编码，导致它只能服务 pi-durable：页眉右角的品牌名（`Stage.tsx:97` 的 `pi-durable`）和音频目录（`Stage.tsx:175` 的 `audio/${file}`）。
 
@@ -317,7 +317,7 @@ git commit -m "refactor: make Stage brand and audio dir configurable
 Co-Authored-By: Claude Code <noreply@anthropic.com>"
 ```
 
-## Task 2: 参数化 `scripts/tts.mjs`
+## ✅ Task 2: 参数化 `scripts/tts.mjs`
 
 脚本目前写死读 `narration.json`、写 `src/timing.json`、输出 `public/audio/`。加三个可选位置参数，缺省时行为与现在完全一致。
 
@@ -448,7 +448,7 @@ Co-Authored-By: Claude Code <noreply@anthropic.com>"
 
 ---
 
-## Task 3: 写完整旁白并跑通 TTS
+## ✅ Task 3: 写完整旁白并跑通 TTS
 
 **这是全片最关键的一步。** 时长、节奏、每个场景的画面切换点全部由这一步的产出决定。旁白定稿之前不要开始画任何场景。
 
@@ -725,7 +725,7 @@ Co-Authored-By: Claude Code <noreply@anthropic.com>"
 
 ---
 
-## Task 4: 合成入口与 13 个占位场景
+## ✅ Task 4: 合成入口与 13 个占位场景
 
 先让整条时间轴能跑起来、能预览，再逐个把占位换成真画面。这样任何时刻仓库都是可运行的，任何一步出错都能定位到单个场景。
 
@@ -901,7 +901,7 @@ Co-Authored-By: Claude Code <noreply@anthropic.com>"
 
 ---
 
-## Task 5: `PracticeBox` 组件
+## ✅ Task 5: `PracticeBox` 组件
 
 全片 10 个内容场景右侧都用它。固定版式才能让观众形成「这块是练法」的条件反射。
 
@@ -1062,7 +1062,7 @@ Co-Authored-By: Claude Code <noreply@anthropic.com>"
 
 ---
 
-## Task 6: `CodeCompare` 组件（语言内核母题）
+## ✅ Task 6: `CodeCompare` 组件（语言内核母题）
 
 服务 `p02`–`p05`。左右两栏代码，差异行高亮，随段落推进逐行点亮。
 
@@ -1214,7 +1214,7 @@ Co-Authored-By: Claude Code <noreply@anthropic.com>"
 
 ---
 
-## Task 7: `Timeline` 组件（并发母题）
+## ✅ Task 7: `Timeline` 组件（并发母题）
 
 服务 `p06`–`p08`。横向时间轴，展示不同并发方式下任务的执行块分布，用来把「GIL 让多线程无效」变成看得见的形状。
 
@@ -1416,7 +1416,7 @@ Co-Authored-By: Claude Code <noreply@anthropic.com>"
 
 ---
 
-## Task 8: `TreeCompare` 组件（工程化母题）
+## ✅ Task 8: `TreeCompare` 组件（工程化母题）
 
 服务 `p09`–`p10`。左边目录树，右边对应的配置片段，两边同段落一起点亮。
 
@@ -1614,7 +1614,7 @@ Co-Authored-By: Claude Code <noreply@anthropic.com>"
 
 ---
 
-## Task 9: `EcosystemPicker` 组件（生态母题）
+## ✅ Task 9: `EcosystemPicker` 组件（生态母题）
 
 服务 `p11`。三列路线卡片，按目标打勾。
 
@@ -1783,7 +1783,7 @@ Co-Authored-By: Claude Code <noreply@anthropic.com>"
 
 ---
 
-## Task 10: `P0Hook` 与 `P1Roadmap`（两个框架场景，完整参考实现）
+## ✅ Task 10: `P0Hook` 与 `P1Roadmap`（两个框架场景，完整参考实现）
 
 这两个场景没有母题组件可复用，画面从零写。它们是全片的框架，也是后面 10 个内容场景的**风格参考**——先做这两个，把版式基调定下来。
 
@@ -2188,7 +2188,7 @@ npx remotion still PythonRoadmap /tmp/<scene-id>-<para>.png --frame=<段起始�
 
 ---
 
-## Task 11: `P2DataModel`（语言内核 · 数据模型）
+## ✅ Task 11: `P2DataModel`（语言内核 · 数据模型）
 
 **Files:**
 - Modify: `src/scenes-py/P2DataModel.tsx`
@@ -2290,7 +2290,7 @@ Co-Authored-By: Claude Code <noreply@anthropic.com>"
 
 ---
 
-## Task 12: `P3Decorators`（语言内核 · 装饰器与闭包）
+## ✅ Task 12: `P3Decorators`（语言内核 · 装饰器与闭包）
 
 **Files:**
 - Modify: `src/scenes-py/P3Decorators.tsx`
@@ -2393,7 +2393,7 @@ Co-Authored-By: Claude Code <noreply@anthropic.com>"
 
 ---
 
-## Task 13: `P4Generators`（语言内核 · 迭代器与生成器）
+## ✅ Task 13: `P4Generators`（语言内核 · 迭代器与生成器）
 
 **Files:**
 - Modify: `src/scenes-py/P4Generators.tsx`
@@ -2494,7 +2494,7 @@ Co-Authored-By: Claude Code <noreply@anthropic.com>"
 
 ---
 
-## Task 14: `P5Typing`（语言内核 · 类型系统）
+## ✅ Task 14: `P5Typing`（语言内核 · 类型系统）
 
 **Files:**
 - Modify: `src/scenes-py/P5Typing.tsx`
@@ -2596,7 +2596,7 @@ Co-Authored-By: Claude Code <noreply@anthropic.com>"
 
 ---
 
-## Task 15: `P6Gil`（并发 · GIL 与选型）
+## ✅ Task 15: `P6Gil`（并发 · GIL 与选型）
 
 Task 7 已经写了这个场景的可用版本（含四条泳道的数据）。这个任务把它定稿：加上练习面板切换，并核验泳道点亮映射。
 
@@ -2719,7 +2719,7 @@ Co-Authored-By: Claude Code <noreply@anthropic.com>"
 
 ---
 
-## Task 16: `P7Asyncio`（并发 · asyncio）
+## ✅ Task 16: `P7Asyncio`（并发 · asyncio）
 
 **Files:**
 - Modify: `src/scenes-py/P7Asyncio.tsx`
@@ -2837,7 +2837,7 @@ Co-Authored-By: Claude Code <noreply@anthropic.com>"
 
 ---
 
-## Task 17: `P8Profiling`（性能 · 先测量再优化）
+## ✅ Task 17: `P8Profiling`（性能 · 先测量再优化）
 
 这个场景**不用 `Timeline`**。它的内容是「顺序」，不是「时间分布」——强行套时间轴会把论证讲糊。改用两个一次性组件：左边 cProfile 热点排行，右边优化顺序阶梯。
 
@@ -2995,7 +2995,7 @@ Co-Authored-By: Claude Code <noreply@anthropic.com>"
 
 ---
 
-## Task 18: `P9Structure`（工程化 · 项目结构与依赖）
+## ✅ Task 18: `P9Structure`（工程化 · 项目结构与依赖）
 
 Task 8 已经写了这个场景的可用版本。定稿：加练习面板切换。
 
@@ -3096,7 +3096,7 @@ Co-Authored-By: Claude Code <noreply@anthropic.com>"
 
 ---
 
-## Task 19: `P10Testing`（工程化 · 测试与质量）
+## ✅ Task 19: `P10Testing`（工程化 · 测试与质量）
 
 **Files:**
 - Modify: `src/scenes-py/P10Testing.tsx`
@@ -3232,7 +3232,7 @@ Co-Authored-By: Claude Code <noreply@anthropic.com>"
 
 ---
 
-## Task 20: `P11Ecosystem`（生态 · 三条路线）
+## ✅ Task 20: `P11Ecosystem`（生态 · 三条路线）
 
 Task 9 已经写了这个场景的可用版本。定稿：确认点亮映射，加练习面板切换。
 
@@ -3335,7 +3335,7 @@ Co-Authored-By: Claude Code <noreply@anthropic.com>"
 
 ---
 
-## Task 21: `P12Outro`（收尾 · 八周计划）
+## ✅ Task 21: `P12Outro`（收尾 · 八周计划）
 
 这个场景**不用切换**——八周计划表本身就是「怎么练」，所以它没有独立的练习面板。8 段里前 7 段逐周点亮，第 8 段是收尾 slogan。
 

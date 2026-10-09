@@ -1,7 +1,7 @@
 # 鸡兔同笼讲解视频 — 设计
 
 日期：2026-10-08
-状态：已评审通过，待实现
+状态：已实现（2026-10-09，分支 `chicken-rabbit`）
 
 ## 目标
 
@@ -114,15 +114,20 @@
 
 ### 文件布局
 
+实现时改用了仓库已有的**兄弟文件命名**约定（python-roadmap 视频先定下的），
+而不是本节原先设想的 slug 目录方案。好处是 pi-durable 的路径完全不动，回归风险归零：
+
 ```
-narration/pi-durable.json          （从仓库根的 narration.json 移入）
-narration/chicken-rabbit.json      新增
+narration.json          src/timing.json        public/audio/        pi-durable
+narration.python.json   src/timing.python.json public/audio-py/     python-roadmap
+narration.math.json     src/timing.math.json   public/audio-math/   本片
+```
 
-src/timing/pi-durable.json         （从 src/timing.json 移入）
-src/timing/chicken-rabbit.json     新增
+`scripts/tts.mjs` 收三个可选位置参数 `[narrationPath] [timingOutPath] [audioOutDir]`，
+缺省值复现 pi-durable 的原行为：
 
-public/audio/pi-durable/*.wav      （从 public/audio/ 移入）
-public/audio/chicken-rabbit/*.wav  新增
+```bash
+node scripts/tts.mjs narration.math.json src/timing.math.json public/audio-math
 ```
 
 ### 改动清单
@@ -256,9 +261,12 @@ public/audio/chicken-rabbit/*.wav  新增
 
 这是视频项目，没有单元测试可写。验收靠：
 
-1. `npm run lint`（`eslint src && tsc`）必须过
-2. `npx remotion studio` 打开 `ChickenRabbit` composition，逐幕看一遍
-3. **`PiDurable` composition 必须仍然正常播放** —— 素材分家后的回归检查，这一条最容易出错
+1. `npx tsc --noEmit` 必须过。**不要跑 `npm run lint`** —— `eslint src` 在本仓库挂死
+   （`src/scenes/S7Chord.tsx` 第 162、170 行是以 `//` 开头的 JSX 文本，ESLint 9 在它上面转不出来）
+2. `npx remotion still` 逐句抽帧。**渲染必须走终端面板**，沙箱里 Chromium 起不来
+   （Seatbelt 拒绝 Mach 端口注册）
+3. **`PiDurable` composition 必须仍然正常播放** —— 本片全程不碰它的任何文件，所以这一条是
+   「`git status` 对那些路径为空」加一次渲帧
 4. 抽帧截图检查：每幕取中间一帧，确认没有文字溢出、没有元素重叠
 
 ## 风险

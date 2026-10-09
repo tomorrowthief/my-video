@@ -1,0 +1,903 @@
+{
+  "fps": 30,
+  "width": 1920,
+  "height": 1080,
+  "voice": "Tingting",
+  "rate": 183,
+  "totalFrames": 30471,
+  "totalSeconds": 1015.726,
+  "scenes": [
+    {
+      "id": "p00",
+      "index": "00",
+      "title": "开场",
+      "heading": "能跑，不等于会用",
+      "visual": "hook",
+      "startFrame": 0,
+      "durationInFrames": 1835,
+      "durationSeconds": 61.18,
+      "paragraphs": [
+        {
+          "index": 0,
+          "file": "p00-0.wav",
+          "text": "一段能跑、结果也对的「两年代码」",
+          "startFrame": 17,
+          "durationInFrames": 331,
+          "durationSeconds": 11.03
+        },
+        {
+          "index": 1,
+          "file": "p00-1.wav",
+          "text": "问题：吃满内存 / 没法测 / 拿不到中间结果",
+          "startFrame": 357,
+          "durationInFrames": 357,
+          "durationSeconds": 11.889
+        },
+        {
+          "index": 2,
+          "file": "p00-2.wav",
+          "text": "答案不在语法里，在数据模型、生成器、工程化",
+          "startFrame": 723,
+          "durationInFrames": 268,
+          "durationSeconds": 8.94
+        },
+        {
+          "index": 3,
+          "file": "p00-3.wav",
+          "text": "卡住的原因：不知道下一步学什么，学到什么程度算会",
+          "startFrame": 1001,
+          "durationInFrames": 308,
+          "durationSeconds": 10.263
+        },
+        {
+          "index": 4,
+          "file": "p00-4.wav",
+          "text": "四层地图 + 每个知识点的可验证练法",
+          "startFrame": 1319,
+          "durationInFrames": 297,
+          "durationSeconds": 9.892
+        },
+        {
+          "index": 5,
+          "file": "p00-5.wav",
+          "text": "15 分钟，10 个知识点：地图 + 走法",
+          "startFrame": 1625,
+          "durationInFrames": 179,
+          "durationSeconds": 5.968
+        }
+      ]
+    },
+    {
+      "id": "p01",
+      "index": "01",
+      "title": "路线图",
+      "heading": "四层地图，和一套走法",
+      "visual": "roadmap",
+      "startFrame": 1835,
+      "durationInFrames": 2585,
+      "durationSeconds": 86.178,
+      "paragraphs": [
+        {
+          "index": 0,
+          "file": "p01-0.wav",
+          "text": "语言内核 → 并发与性能 → 工程化 → 生态方向",
+          "startFrame": 17,
+          "durationInFrames": 294,
+          "durationSeconds": 9.799
+        },
+        {
+          "index": 1,
+          "file": "p01-1.wav",
+          "text": "内核决定理解上限：不懂生成器，异步迭代器就是黑盒",
+          "startFrame": 320,
+          "durationInFrames": 389,
+          "durationSeconds": 12.98
+        },
+        {
+          "index": 2,
+          "file": "p01-2.wav",
+          "text": "第二层是分水岭：还在用同步思维解决一切",
+          "startFrame": 719,
+          "durationInFrames": 268,
+          "durationSeconds": 8.94
+        },
+        {
+          "index": 3,
+          "file": "p01-3.wav",
+          "text": "工程化：让代码能被别人用、改、信任",
+          "startFrame": 997,
+          "durationInFrames": 325,
+          "durationSeconds": 10.821
+        },
+        {
+          "index": 4,
+          "file": "p01-4.wav",
+          "text": "方向选错，浪费一年",
+          "startFrame": 1331,
+          "durationInFrames": 262,
+          "durationSeconds": 8.731
+        },
+        {
+          "index": 5,
+          "file": "p01-5.wav",
+          "text": "走法一：读官方文档对应章节，不是教程",
+          "startFrame": 1603,
+          "durationInFrames": 315,
+          "durationSeconds": 10.495
+        },
+        {
+          "index": 6,
+          "file": "p01-6.wav",
+          "text": "走法二：最小复现，跑通，再故意弄坏 / 走法三：读真实库源码",
+          "startFrame": 1927,
+          "durationInFrames": 333,
+          "durationSeconds": 11.099
+        },
+        {
+          "index": 7,
+          "file": "p01-7.wav",
+          "text": "走法四：真实项目用上，留下可验证产物",
+          "startFrame": 2270,
+          "durationInFrames": 284,
+          "durationSeconds": 9.474
+        }
+      ]
+    },
+    {
+      "id": "p02",
+      "index": "02",
+      "title": "数据模型",
+      "heading": "数据模型：一切都是协议",
+      "visual": "code",
+      "startFrame": 4420,
+      "durationInFrames": 2548,
+      "durationSeconds": 84.929,
+      "paragraphs": [
+        {
+          "index": 0,
+          "file": "p02-0.wav",
+          "text": "为什么是 len(x)，不是 x.length()",
+          "startFrame": 17,
+          "durationInFrames": 286,
+          "durationSeconds": 9.543
+        },
+        {
+          "index": 1,
+          "file": "p02-1.wav",
+          "text": "len(x) → x.__len__()：内置函数是协议入口",
+          "startFrame": 312,
+          "durationInFrames": 380,
+          "durationSeconds": 12.678
+        },
+        {
+          "index": 2,
+          "file": "p02-2.wav",
+          "text": "dunder 不是语法糖，是统一的接口约定",
+          "startFrame": 702,
+          "durationInFrames": 304,
+          "durationSeconds": 10.147
+        },
+        {
+          "index": 3,
+          "file": "p02-3.wav",
+          "text": "with open 能自动关文件 → __enter__ / __exit__",
+          "startFrame": 1016,
+          "durationInFrames": 382,
+          "durationSeconds": 12.725
+        },
+        {
+          "index": 4,
+          "file": "p02-4.wav",
+          "text": "a + b → a.__add__(b)：运算符也是协议",
+          "startFrame": 1408,
+          "durationInFrames": 343,
+          "durationSeconds": 11.424
+        },
+        {
+          "index": 5,
+          "file": "p02-5.wav",
+          "text": "练：给自己的类实现 3 个协议（with / 迭代 / 比较或相加）",
+          "startFrame": 1760,
+          "durationInFrames": 294,
+          "durationSeconds": 9.799
+        },
+        {
+          "index": 6,
+          "file": "p02-6.wav",
+          "text": "读 docs：Data Model 一章，看全部协议与触发场景",
+          "startFrame": 2064,
+          "durationInFrames": 453,
+          "durationSeconds": 15.093
+        }
+      ]
+    },
+    {
+      "id": "p03",
+      "index": "03",
+      "title": "装饰器",
+      "heading": "装饰器：闭包是底，functools 是标准答案",
+      "visual": "code",
+      "startFrame": 6968,
+      "durationInFrames": 2280,
+      "durationSeconds": 75.99,
+      "paragraphs": [
+        {
+          "index": 0,
+          "file": "p03-0.wav",
+          "text": "会写 @wraps，说不清为什么成立",
+          "startFrame": 17,
+          "durationInFrames": 194,
+          "durationSeconds": 6.455
+        },
+        {
+          "index": 1,
+          "file": "p03-1.wav",
+          "text": "闭包：内层函数记住外层变量 → 装饰器是语法包装",
+          "startFrame": 220,
+          "durationInFrames": 369,
+          "durationSeconds": 12.307
+        },
+        {
+          "index": 2,
+          "file": "p03-2.wav",
+          "text": "先写 func = deco(func)，再引入 @ 语法",
+          "startFrame": 599,
+          "durationInFrames": 343,
+          "durationSeconds": 11.424
+        },
+        {
+          "index": 3,
+          "file": "p03-3.wav",
+          "text": "三段式：不带参 → 带参 → 类装饰器",
+          "startFrame": 951,
+          "durationInFrames": 318,
+          "durationSeconds": 10.612
+        },
+        {
+          "index": 4,
+          "file": "p03-4.wav",
+          "text": "functools：wraps / lru_cache / partial",
+          "startFrame": 1279,
+          "durationInFrames": 354,
+          "durationSeconds": 11.796
+        },
+        {
+          "index": 5,
+          "file": "p03-5.wav",
+          "text": "练：手写 @retry(次数, 间隔)，保留函数名，超限抛异常",
+          "startFrame": 1642,
+          "durationInFrames": 337,
+          "durationSeconds": 11.239
+        },
+        {
+          "index": 6,
+          "file": "p03-6.wav",
+          "text": "@retry 串起闭包 + 参数 + 异常 + functools",
+          "startFrame": 1989,
+          "durationInFrames": 259,
+          "durationSeconds": 8.638
+        }
+      ]
+    },
+    {
+      "id": "p04",
+      "index": "04",
+      "title": "生成器",
+      "heading": "生成器：把函数变成一个状态机",
+      "visual": "code",
+      "startFrame": 9248,
+      "durationInFrames": 2344,
+      "durationSeconds": 78.126,
+      "paragraphs": [
+        {
+          "index": 0,
+          "file": "p04-0.wav",
+          "text": "生成器 = 惰性求值",
+          "startFrame": 17,
+          "durationInFrames": 130,
+          "durationSeconds": 4.342
+        },
+        {
+          "index": 1,
+          "file": "p04-1.wav",
+          "text": "一次读完 → 内存随文件增长；逐行读 → 内存恒定",
+          "startFrame": 156,
+          "durationInFrames": 320,
+          "durationSeconds": 10.681
+        },
+        {
+          "index": 2,
+          "file": "p04-2.wav",
+          "text": "出现 yield → 变成状态机，从上次停的地方继续",
+          "startFrame": 486,
+          "durationInFrames": 327,
+          "durationSeconds": 10.913
+        },
+        {
+          "index": 3,
+          "file": "p04-3.wav",
+          "text": "误解：生成器省时间。实际：省内存，通常更慢",
+          "startFrame": 823,
+          "durationInFrames": 371,
+          "durationSeconds": 12.353
+        },
+        {
+          "index": 4,
+          "file": "p04-4.wav",
+          "text": "itertools：分组 / 切片 / 组合 / 无限序列",
+          "startFrame": 1204,
+          "durationInFrames": 358,
+          "durationSeconds": 11.935
+        },
+        {
+          "index": 5,
+          "file": "p04-5.wav",
+          "text": "练：重写词频统计（生成器 + Counter + nlargest），压几百兆日志",
+          "startFrame": 1571,
+          "durationInFrames": 371,
+          "durationSeconds": 12.353
+        },
+        {
+          "index": 6,
+          "file": "p04-6.wav",
+          "text": "生成器 → 迭代器协议 → 异步迭代器：同一条思想链",
+          "startFrame": 1951,
+          "durationInFrames": 361,
+          "durationSeconds": 12.028
+        }
+      ]
+    },
+    {
+      "id": "p05",
+      "index": "05",
+      "title": "类型系统",
+      "heading": "类型提示：写给工具，不是写给解释器",
+      "visual": "code",
+      "startFrame": 11592,
+      "durationInFrames": 2386,
+      "durationSeconds": 79.542,
+      "paragraphs": [
+        {
+          "index": 0,
+          "file": "p05-0.wav",
+          "text": "类型提示不改变运行：给工具和人看",
+          "startFrame": 17,
+          "durationInFrames": 326,
+          "durationSeconds": 10.867
+        },
+        {
+          "index": 1,
+          "file": "p05-1.wav",
+          "text": "价值：补全 / 静态检查 / 函数签名即文档",
+          "startFrame": 352,
+          "durationInFrames": 291,
+          "durationSeconds": 9.706
+        },
+        {
+          "index": 2,
+          "file": "p05-2.wav",
+          "text": "门槛：TypeVar 泛型 / Protocol / Literal",
+          "startFrame": 653,
+          "durationInFrames": 347,
+          "durationSeconds": 11.564
+        },
+        {
+          "index": 3,
+          "file": "p05-3.wav",
+          "text": "Protocol = 鸭子类型的类型化写法：不继承，只要长得像",
+          "startFrame": 1009,
+          "durationInFrames": 358,
+          "durationSeconds": 11.935
+        },
+        {
+          "index": 4,
+          "file": "p05-4.wav",
+          "text": "工具：mypy / pyright / ruff，接进编辑器实时标红",
+          "startFrame": 1377,
+          "durationInFrames": 323,
+          "durationSeconds": 10.751
+        },
+        {
+          "index": 5,
+          "file": "p05-5.wav",
+          "text": "练：给 200 行脚本加全类型标注，跑 mypy 看挑出多少",
+          "startFrame": 1709,
+          "durationInFrames": 364,
+          "durationSeconds": 12.121
+        },
+        {
+          "index": 6,
+          "file": "p05-6.wav",
+          "text": "别追零报错，先让它一直开着，慢慢清零",
+          "startFrame": 2082,
+          "durationInFrames": 272,
+          "durationSeconds": 9.079
+        }
+      ]
+    },
+    {
+      "id": "p06",
+      "index": "06",
+      "title": "GIL 与选型",
+      "heading": "GIL：它到底限制了什么",
+      "visual": "timeline",
+      "startFrame": 13978,
+      "durationInFrames": 2553,
+      "durationSeconds": 85.115,
+      "paragraphs": [
+        {
+          "index": 0,
+          "file": "p06-0.wav",
+          "text": "分水岭：并发。误解最多的 GIL",
+          "startFrame": 17,
+          "durationInFrames": 194,
+          "durationSeconds": 6.478
+        },
+        {
+          "index": 1,
+          "file": "p06-1.wav",
+          "text": "GIL：同一时刻只有一个线程执行字节码 → CPU 密集多线程无效",
+          "startFrame": 220,
+          "durationInFrames": 345,
+          "durationSeconds": 11.494
+        },
+        {
+          "index": 2,
+          "file": "p06-2.wav",
+          "text": "锁的是字节码，不是等待 → IO 密集多线程有效",
+          "startFrame": 575,
+          "durationInFrames": 435,
+          "durationSeconds": 14.513
+        },
+        {
+          "index": 3,
+          "file": "p06-3.wav",
+          "text": "CPU 密集 → 多进程 / 高并发 IO → asyncio / 普通 IO → 线程池",
+          "startFrame": 1020,
+          "durationInFrames": 473,
+          "durationSeconds": 15.766
+        },
+        {
+          "index": 4,
+          "file": "p06-4.wav",
+          "text": "3.13 起有自由线程模式，但非默认、生态未跟上",
+          "startFrame": 1502,
+          "durationInFrames": 380,
+          "durationSeconds": 12.655
+        },
+        {
+          "index": 5,
+          "file": "p06-5.wav",
+          "text": "练：同一任务用串行 / 线程 / 进程各跑一遍，记耗时做表",
+          "startFrame": 1892,
+          "durationInFrames": 378,
+          "durationSeconds": 12.608
+        },
+        {
+          "index": 6,
+          "file": "p06-6.wav",
+          "text": "自己跑出来的数字，比十篇文章管用",
+          "startFrame": 2280,
+          "durationInFrames": 242,
+          "durationSeconds": 8.081
+        }
+      ]
+    },
+    {
+      "id": "p07",
+      "index": "07",
+      "title": "asyncio",
+      "heading": "asyncio：事件循环不是线程",
+      "visual": "timeline",
+      "startFrame": 16531,
+      "durationInFrames": 2377,
+      "durationSeconds": 79.241,
+      "paragraphs": [
+        {
+          "index": 0,
+          "file": "p07-0.wav",
+          "text": "asyncio 最常被当成多线程理解",
+          "startFrame": 17,
+          "durationInFrames": 201,
+          "durationSeconds": 6.711
+        },
+        {
+          "index": 1,
+          "file": "p07-1.wav",
+          "text": "单线程 + 事件循环，轮流跑，谁等 IO 就切走",
+          "startFrame": 227,
+          "durationInFrames": 356,
+          "durationSeconds": 11.865
+        },
+        {
+          "index": 2,
+          "file": "p07-2.wav",
+          "text": "await = 让出执行权，不是启动并发",
+          "startFrame": 593,
+          "durationInFrames": 281,
+          "durationSeconds": 9.381
+        },
+        {
+          "index": 3,
+          "file": "p07-3.wav",
+          "text": "并发要先 create_task，再 gather / TaskGroup",
+          "startFrame": 884,
+          "durationInFrames": 323,
+          "durationSeconds": 10.774
+        },
+        {
+          "index": 4,
+          "file": "p07-4.wav",
+          "text": "最大的坑：协程里调同步库 → 整个事件循环被卡住",
+          "startFrame": 1217,
+          "durationInFrames": 408,
+          "durationSeconds": 13.607
+        },
+        {
+          "index": 5,
+          "file": "p07-5.wav",
+          "text": "练：requests 串行 → httpx 异步并发，比耗时",
+          "startFrame": 1635,
+          "durationInFrames": 365,
+          "durationSeconds": 12.167
+        },
+        {
+          "index": 6,
+          "file": "p07-6.wav",
+          "text": "进阶：gather 异常行为 / 超时 / TaskGroup 的由来",
+          "startFrame": 2009,
+          "durationInFrames": 336,
+          "durationSeconds": 11.215
+        }
+      ]
+    },
+    {
+      "id": "p08",
+      "index": "08",
+      "title": "性能",
+      "heading": "性能：先测量，再优化",
+      "visual": "timeline",
+      "startFrame": 18908,
+      "durationInFrames": 2147,
+      "durationSeconds": 71.555,
+      "paragraphs": [
+        {
+          "index": 0,
+          "file": "p08-0.wav",
+          "text": "性能优化，唯一重要的是顺序",
+          "startFrame": 17,
+          "durationInFrames": 145,
+          "durationSeconds": 4.83
+        },
+        {
+          "index": 1,
+          "file": "p08-1.wav",
+          "text": "大部分优化是白做的：猜错了瓶颈",
+          "startFrame": 171,
+          "durationInFrames": 215,
+          "durationSeconds": 7.175
+        },
+        {
+          "index": 2,
+          "file": "p08-2.wav",
+          "text": "先测量：cProfile 函数级 / timeit 片段 / tracemalloc 内存",
+          "startFrame": 396,
+          "durationInFrames": 372,
+          "durationSeconds": 12.4
+        },
+        {
+          "index": 3,
+          "file": "p08-3.wav",
+          "text": "顺序：算法与数据结构 → 缓存 → C 扩展 / 向量化",
+          "startFrame": 777,
+          "durationInFrames": 492,
+          "durationSeconds": 16.393
+        },
+        {
+          "index": 4,
+          "file": "p08-4.wav",
+          "text": "并发和微优化放最后，一上来就做等于没效果",
+          "startFrame": 1279,
+          "durationInFrames": 217,
+          "durationSeconds": 7.245
+        },
+        {
+          "index": 5,
+          "file": "p08-5.wav",
+          "text": "练：给一个慢脚本跑 cProfile，记下 top 热点",
+          "startFrame": 1506,
+          "durationInFrames": 249,
+          "durationSeconds": 8.313
+        },
+        {
+          "index": 6,
+          "file": "p08-6.wav",
+          "text": "只改第一名，再测；没动就是方向错了，别接着猜",
+          "startFrame": 1765,
+          "durationInFrames": 350,
+          "durationSeconds": 11.68
+        }
+      ]
+    },
+    {
+      "id": "p09",
+      "index": "09",
+      "title": "项目结构",
+      "heading": "工程化一：把脚本变成包",
+      "visual": "tree",
+      "startFrame": 21055,
+      "durationInFrames": 2266,
+      "durationSeconds": 75.549,
+      "paragraphs": [
+        {
+          "index": 0,
+          "file": "p09-0.wav",
+          "text": "工程化第一步：项目结构",
+          "startFrame": 17,
+          "durationInFrames": 121,
+          "durationSeconds": 4.04
+        },
+        {
+          "index": 1,
+          "file": "p09-1.wav",
+          "text": "src 目录 + pyproject.toml + 虚拟环境",
+          "startFrame": 147,
+          "durationInFrames": 369,
+          "durationSeconds": 12.307
+        },
+        {
+          "index": 2,
+          "file": "p09-2.wav",
+          "text": "src layout：强制安装后导入，提前暴露打包问题",
+          "startFrame": 526,
+          "durationInFrames": 416,
+          "durationSeconds": 13.862
+        },
+        {
+          "index": 3,
+          "file": "p09-3.wav",
+          "text": "依赖管理：直接用 uv（环境 + 依赖 + 锁定 + 运行）",
+          "startFrame": 952,
+          "durationInFrames": 377,
+          "durationSeconds": 12.562
+        },
+        {
+          "index": 4,
+          "file": "p09-4.wav",
+          "text": "纪律：依赖全部写进 pyproject，锁文件提交",
+          "startFrame": 1338,
+          "durationInFrames": 309,
+          "durationSeconds": 10.286
+        },
+        {
+          "index": 5,
+          "file": "p09-5.wav",
+          "text": "练：把散装脚本改成 src layout 的包",
+          "startFrame": 1656,
+          "durationInFrames": 254,
+          "durationSeconds": 8.475
+        },
+        {
+          "index": 6,
+          "file": "p09-6.wav",
+          "text": "踩坑清单：相对导入 / 模块找不到 / 路径写死",
+          "startFrame": 1920,
+          "durationInFrames": 315,
+          "durationSeconds": 10.495
+        }
+      ]
+    },
+    {
+      "id": "p10",
+      "index": "10",
+      "title": "测试与质量",
+      "heading": "工程化二：让它能被信任",
+      "visual": "tree",
+      "startFrame": 23321,
+      "durationInFrames": 2296,
+      "durationSeconds": 76.524,
+      "paragraphs": [
+        {
+          "index": 0,
+          "file": "p10-0.wav",
+          "text": "测试回答：凭什么别人敢用你的代码",
+          "startFrame": 17,
+          "durationInFrames": 173,
+          "durationSeconds": 5.759
+        },
+        {
+          "index": 1,
+          "file": "p10-1.wav",
+          "text": "pytest：assert / fixture / 参数化",
+          "startFrame": 199,
+          "durationInFrames": 319,
+          "durationSeconds": 10.635
+        },
+        {
+          "index": 2,
+          "file": "p10-2.wav",
+          "text": "好测试测行为，不测实现",
+          "startFrame": 528,
+          "durationInFrames": 320,
+          "durationSeconds": 10.658
+        },
+        {
+          "index": 3,
+          "file": "p10-3.wav",
+          "text": "ruff + mypy/pyright + pre-commit 挂提交前",
+          "startFrame": 857,
+          "durationInFrames": 414,
+          "durationSeconds": 13.816
+        },
+        {
+          "index": 4,
+          "file": "p10-4.wav",
+          "text": "CI 最小版：每次 push 跑测试 + lint",
+          "startFrame": 1281,
+          "durationInFrames": 361,
+          "durationSeconds": 12.028
+        },
+        {
+          "index": 5,
+          "file": "p10-5.wav",
+          "text": "练：给最核心的函数补测试 + 边界，再接 ruff/mypy/pre-commit",
+          "startFrame": 1651,
+          "durationInFrames": 292,
+          "durationSeconds": 9.729
+        },
+        {
+          "index": 6,
+          "file": "p10-6.wav",
+          "text": "顺序：先测试后工具。工具保证不了逻辑",
+          "startFrame": 1953,
+          "durationInFrames": 311,
+          "durationSeconds": 10.379
+        }
+      ]
+    },
+    {
+      "id": "p11",
+      "index": "11",
+      "title": "生态方向",
+      "heading": "生态：三条路，选一条走",
+      "visual": "ecosystem",
+      "startFrame": 25617,
+      "durationInFrames": 2392,
+      "durationSeconds": 79.728,
+      "paragraphs": [
+        {
+          "index": 0,
+          "file": "p11-0.wav",
+          "text": "三条路的进阶顺序完全不同",
+          "startFrame": 17,
+          "durationInFrames": 238,
+          "durationSeconds": 7.941
+        },
+        {
+          "index": 1,
+          "file": "p11-1.wav",
+          "text": "Web：FastAPI → Pydantic → SQLAlchemy → 架构与部署",
+          "startFrame": 264,
+          "durationInFrames": 415,
+          "durationSeconds": 13.839
+        },
+        {
+          "index": 2,
+          "file": "p11-2.wav",
+          "text": "数据：pandas → polars → NumPy 向量化 → 可视化",
+          "startFrame": 689,
+          "durationInFrames": 358,
+          "durationSeconds": 11.935
+        },
+        {
+          "index": 3,
+          "file": "p11-3.wav",
+          "text": "AI/Agent：模型 API + 流式 → 向量检索 → 工具调用与状态管理",
+          "startFrame": 1057,
+          "durationInFrames": 467,
+          "durationSeconds": 15.581
+        },
+        {
+          "index": 4,
+          "file": "p11-4.wav",
+          "text": "选一条走完，胜过三条浅尝",
+          "startFrame": 1534,
+          "durationInFrames": 318,
+          "durationSeconds": 10.588
+        },
+        {
+          "index": 5,
+          "file": "p11-5.wav",
+          "text": "练：写下一年最想做成的一件事，反推选哪条路",
+          "startFrame": 1861,
+          "durationInFrames": 224,
+          "durationSeconds": 7.477
+        },
+        {
+          "index": 6,
+          "file": "p11-6.wav",
+          "text": "选定后用四步法过一遍，不是学完",
+          "startFrame": 2095,
+          "durationInFrames": 265,
+          "durationSeconds": 8.847
+        }
+      ]
+    },
+    {
+      "id": "p12",
+      "index": "12",
+      "title": "收尾",
+      "heading": "八周，每周一个可验证的产出",
+      "visual": "plan",
+      "startFrame": 28009,
+      "durationInFrames": 2462,
+      "durationSeconds": 82.068,
+      "paragraphs": [
+        {
+          "index": 0,
+          "file": "p12-0.wav",
+          "text": "八周，每周一个能拿出来的东西",
+          "startFrame": 17,
+          "durationInFrames": 226,
+          "durationSeconds": 7.547
+        },
+        {
+          "index": 1,
+          "file": "p12-1.wav",
+          "text": "W1 数据模型 + 装饰器 → 自定义类实现 3 协议 + 手写 @retry",
+          "startFrame": 252,
+          "durationInFrames": 258,
+          "durationSeconds": 8.615
+        },
+        {
+          "index": 2,
+          "file": "p12-2.wav",
+          "text": "W2 生成器 → 大文件脚本改流式 / W3 类型 → 200 行 mypy 全绿",
+          "startFrame": 521,
+          "durationInFrames": 380,
+          "durationSeconds": 12.655
+        },
+        {
+          "index": 3,
+          "file": "p12-3.wav",
+          "text": "W4-W5 并发与性能 → 对比表 + profiling 报告与优化结果",
+          "startFrame": 910,
+          "durationInFrames": 335,
+          "durationSeconds": 11.169
+        },
+        {
+          "index": 4,
+          "file": "p12-4.wav",
+          "text": "W6-W7 工程化 → 规范包 + 测试 + ruff/mypy/pre-commit + CI",
+          "startFrame": 1254,
+          "durationInFrames": 325,
+          "durationSeconds": 10.821
+        },
+        {
+          "index": 5,
+          "file": "p12-5.wav",
+          "text": "W8 方向 → 用选定路线做一个小工具，只做不学",
+          "startFrame": 1589,
+          "durationInFrames": 286,
+          "durationSeconds": 9.52
+        },
+        {
+          "index": 6,
+          "file": "p12-6.wav",
+          "text": "八周后你手里有七个可展示的产物",
+          "startFrame": 1884,
+          "durationInFrames": 325,
+          "durationSeconds": 10.821
+        },
+        {
+          "index": 7,
+          "file": "p12-7.wav",
+          "text": "听懂不算会，留下东西才算",
+          "startFrame": 2218,
+          "durationInFrames": 212,
+          "durationSeconds": 7.082
+        }
+      ]
+    }
+  ]
+}

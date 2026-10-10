@@ -7,6 +7,13 @@
 			"runtimeArgs": ["remotion", "studio", "--port", "3100"],
 			"port": 3100,
 			"autoPort": false
+		},
+		{
+			"name": "web-player",
+			"runtimeExecutable": "npx",
+			"runtimeArgs": ["vite", "--config", "web/vite.config.ts", "--port", "3200"],
+			"port": 3200,
+			"autoPort": false
 		}
 	]
 }

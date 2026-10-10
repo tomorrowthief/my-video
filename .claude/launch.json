@@ -14,6 +14,13 @@
 			"runtimeArgs": ["vite", "--config", "web/vite.config.ts", "--port", "3200"],
 			"port": 3200,
 			"autoPort": false
+		},
+		{
+			"name": "web-preview",
+			"runtimeExecutable": "npx",
+			"runtimeArgs": ["vite", "preview", "--config", "web/vite.config.ts", "--port", "3300"],
+			"port": 3300,
+			"autoPort": false
 		}
 	]
 }

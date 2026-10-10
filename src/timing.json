@@ -19,7 +19,7 @@
       "paragraphs": [
         {
           "index": 0,
-          "file": "s0-0.wav",
+          "file": "s0-0.m4a",
           "text": "Agent 跑到第 12 个工具调用，进程被 kill",
           "startFrame": 17,
           "durationInFrames": 269,
@@ -27,7 +27,7 @@
         },
         {
           "index": 1,
-          "file": "s0-1.wav",
+          "file": "s0-1.m4a",
           "text": "更常见：token 超限、用户取消",
           "startFrame": 295,
           "durationInFrames": 159,
@@ -35,7 +35,7 @@
         },
         {
           "index": 2,
-          "file": "s0-2.wav",
+          "file": "s0-2.m4a",
           "text": "传统做法：重来一次，或者 try/catch + 状态文件",
           "startFrame": 463,
           "durationInFrames": 270,
@@ -43,7 +43,7 @@
         },
         {
           "index": 3,
-          "file": "s0-3.wav",
+          "file": "s0-3.m4a",
           "text": "pi-durable：把 Agent 循环重写成可恢复的状态机",
           "startFrame": 743,
           "durationInFrames": 257,
@@ -51,7 +51,7 @@
         },
         {
           "index": 4,
-          "file": "s0-4.wav",
+          "file": "s0-4.m4a",
           "text": "断电重启 → 从最后检查点继续；知道哪些工具不能重跑",
           "startFrame": 1010,
           "durationInFrames": 320,
@@ -59,7 +59,7 @@
         },
         {
           "index": 5,
-          "file": "s0-5.wav",
+          "file": "s0-5.m4a",
           "text": "今天讲三件事：保证什么 / 为什么这么设计 / 源码长什么样",
           "startFrame": 1340,
           "durationInFrames": 340,
@@ -79,7 +79,7 @@
       "paragraphs": [
         {
           "index": 0,
-          "file": "s1-0.wav",
+          "file": "s1-0.m4a",
           "text": "@earendil-works/pi-durable 1.0.4 (experimental)",
           "startFrame": 17,
           "durationInFrames": 391,
@@ -87,7 +87,7 @@
         },
         {
           "index": 1,
-          "file": "s1-1.wav",
+          "file": "s1-1.m4a",
           "text": "不是 UI，不是 CLI —— 是运行时",
           "startFrame": 417,
           "durationInFrames": 342,
@@ -95,7 +95,7 @@
         },
         {
           "index": 2,
-          "file": "s1-2.wav",
+          "file": "s1-2.m4a",
           "text": "Storage —— 唯一真相：Memory / JSONL / SQLite",
           "startFrame": 769,
           "durationInFrames": 457,
@@ -103,7 +103,7 @@
         },
         {
           "index": 3,
-          "file": "s1-3.wav",
+          "file": "s1-3.m4a",
           "text": "Session —— 一条变更线 + 原子提交",
           "startFrame": 1235,
           "durationInFrames": 234,
@@ -111,7 +111,7 @@
         },
         {
           "index": 4,
-          "file": "s1-4.wav",
+          "file": "s1-4.m4a",
           "text": "Harness —— 任务调度器 / 会话生命周期 / agent 配置",
           "startFrame": 1479,
           "durationInFrames": 142,
@@ -119,7 +119,7 @@
         },
         {
           "index": 5,
-          "file": "s1-5.wav",
+          "file": "s1-5.m4a",
           "text": "Extensions / Env / Tools —— 工具、section、hook、wrap",
           "startFrame": 1630,
           "durationInFrames": 273,
@@ -127,7 +127,7 @@
         },
         {
           "index": 6,
-          "file": "s1-6.wav",
+          "file": "s1-6.m4a",
           "text": "每层只依赖下层 —— 这是后面所有设计的前提",
           "startFrame": 1913,
           "durationInFrames": 225,
@@ -147,7 +147,7 @@
       "paragraphs": [
         {
           "index": 0,
-          "file": "s2-0.wav",
+          "file": "s2-0.m4a",
           "text": "docs/spec.md —— 规范文档，写明所有不变式",
           "startFrame": 17,
           "durationInFrames": 185,
@@ -155,7 +155,7 @@
         },
         {
           "index": 1,
-          "file": "s2-1.wav",
+          "file": "s2-1.m4a",
           "text": "一次提交原子写入 entries + tasks + documents；只有已提交的状态可观察",
           "startFrame": 211,
           "durationInFrames": 359,
@@ -163,7 +163,7 @@
         },
         {
           "index": 2,
-          "file": "s2-2.wav",
+          "file": "s2-2.m4a",
           "text": "内存里没有「半成品」的分发路径",
           "startFrame": 580,
           "durationInFrames": 242,
@@ -171,7 +171,7 @@
         },
         {
           "index": 3,
-          "file": "s2-3.wav",
+          "file": "s2-3.m4a",
           "text": "每条进度 / 每次 UI 更新 / 每个 watch 回调，都来自已落盘的记录",
           "startFrame": 832,
           "durationInFrames": 244,
@@ -179,7 +179,7 @@
         },
         {
           "index": 4,
-          "file": "s2-4.wav",
+          "file": "s2-4.m4a",
           "text": "规范拆成 8 条编号不变式",
           "startFrame": 1085,
           "durationInFrames": 135,
@@ -187,7 +187,7 @@
         },
         {
           "index": 5,
-          "file": "s2-5.wav",
+          "file": "s2-5.m4a",
           "text": "1. 一次提交在所有记录和文档写入上原子",
           "startFrame": 1230,
           "durationInFrames": 156,
@@ -195,7 +195,7 @@
         },
         {
           "index": 6,
-          "file": "s2-6.wav",
+          "file": "s2-6.m4a",
           "text": "3. 所有可见进度都持久 —— 不存在易失的发布路径",
           "startFrame": 1396,
           "durationInFrames": 169,
@@ -203,7 +203,7 @@
         },
         {
           "index": 7,
-          "file": "s2-7.wav",
+          "file": "s2-7.m4a",
           "text": "8. 不确定的存储失败对 Session 致命：什么都不发布，必须重开",
           "startFrame": 1574,
           "durationInFrames": 241,
@@ -211,7 +211,7 @@
         },
         {
           "index": 8,
-          "file": "s2-8.wav",
+          "file": "s2-8.m4a",
           "text": "记住第 8 条 —— 结尾会回到它",
           "startFrame": 1825,
           "durationInFrames": 84,
@@ -231,7 +231,7 @@
       "paragraphs": [
         {
           "index": 0,
-          "file": "s3-0.wav",
+          "file": "s3-0.m4a",
           "text": "内存先改、异步落盘 → 中间断电就分叉",
           "startFrame": 17,
           "durationInFrames": 340,
@@ -239,7 +239,7 @@
         },
         {
           "index": 1,
-          "file": "s3-1.wav",
+          "file": "s3-1.m4a",
           "text": "解法：把所有变更串到一条队列上",
           "startFrame": 366,
           "durationInFrames": 145,
@@ -247,7 +247,7 @@
         },
         {
           "index": 2,
-          "file": "s3-2.wav",
+          "file": "s3-2.m4a",
           "text": "src/session/session.ts:101 —— #enqueue 串在 #tail 上，提交不并发",
           "startFrame": 521,
           "durationInFrames": 378,
@@ -255,7 +255,7 @@
         },
         {
           "index": 3,
-          "file": "s3-3.wav",
+          "file": "s3-3.m4a",
           "text": "真正干活的 #runCommit —— 五步",
           "startFrame": 908,
           "durationInFrames": 191,
@@ -263,7 +263,7 @@
         },
         {
           "index": 4,
-          "file": "s3-4.wav",
+          "file": "s3-4.m4a",
           "text": "1  构造 Transaction，跑回调 —— 只登记意图，不写",
           "startFrame": 1109,
           "durationInFrames": 339,
@@ -271,7 +271,7 @@
         },
         {
           "index": 5,
-          "file": "s3-5.wav",
+          "file": "s3-5.m4a",
           "text": "2  settleSuccess —— 草稿同步收敛或撤销（spec 第 6 条）",
           "startFrame": 1457,
           "durationInFrames": 417,
@@ -279,7 +279,7 @@
         },
         {
           "index": 6,
-          "file": "s3-6.wav",
+          "file": "s3-6.m4a",
           "text": "回调 settle 之后，草稿不复存在",
           "startFrame": 1883,
           "durationInFrames": 180,
@@ -287,7 +287,7 @@
         },
         {
           "index": 7,
-          "file": "s3-7.wav",
+          "file": "s3-7.m4a",
           "text": "3  storage.commit —— 唯一真正落盘的地方",
           "startFrame": 2073,
           "durationInFrames": 137,
@@ -295,7 +295,7 @@
         },
         {
           "index": 8,
-          "file": "s3-8.wav",
+          "file": "s3-8.m4a",
           "text": "withoutAbortSignal(context) —— 一旦被接纳，取消不再打断结算",
           "startFrame": 2219,
           "durationInFrames": 417,
@@ -303,7 +303,7 @@
         },
         {
           "index": 9,
-          "file": "s3-9.wav",
+          "file": "s3-9.m4a",
           "text": "一旦开始写，就必须写完",
           "startFrame": 2645,
           "durationInFrames": 176,
@@ -311,7 +311,7 @@
         },
         {
           "index": 10,
-          "file": "s3-10.wav",
+          "file": "s3-10.m4a",
           "text": "4  adopt(seq) —— 内存指针换到已提交版本",
           "startFrame": 2831,
           "durationInFrames": 335,
@@ -319,7 +319,7 @@
         },
         {
           "index": 11,
-          "file": "s3-11.wav",
+          "file": "s3-11.m4a",
           "text": "5  publish —— 此刻 document 才推给 watch / view / 事件流",
           "startFrame": 3175,
           "durationInFrames": 251,
@@ -327,7 +327,7 @@
         },
         {
           "index": 12,
-          "file": "s3-12.wav",
+          "file": "s3-12.m4a",
           "text": "publish 排在链条最后 —— 没有更短的路径",
           "startFrame": 3436,
           "durationInFrames": 335,
@@ -347,7 +347,7 @@
       "paragraphs": [
         {
           "index": 0,
-          "file": "s4-0.wav",
+          "file": "s4-0.m4a",
           "text": "两处 catch 里都有：this.#poison = { error }",
           "startFrame": 17,
           "durationInFrames": 201,
@@ -355,7 +355,7 @@
         },
         {
           "index": 1,
-          "file": "s4-1.wav",
+          "file": "s4-1.m4a",
           "text": "条件：if (!(error instanceof StorageRejected))",
           "startFrame": 227,
           "durationInFrames": 200,
@@ -363,7 +363,7 @@
         },
         {
           "index": 2,
-          "file": "s4-2.wav",
+          "file": "s4-2.m4a",
           "text": "StorageRejected 是承诺：这一批什么都没写 → 回滚安全",
           "startFrame": 437,
           "durationInFrames": 239,
@@ -371,7 +371,7 @@
         },
         {
           "index": 3,
-          "file": "s4-3.wav",
+          "file": "s4-3.m4a",
           "text": "存储已接受、内存没跟上 → 没有安全恢复路径",
           "startFrame": 685,
           "durationInFrames": 428,
@@ -379,7 +379,7 @@
         },
         {
           "index": 4,
-          "file": "s4-4.wav",
+          "file": "s4-4.m4a",
           "text": "session.ts:545 —— poisoned 之后每个操作都抛错",
           "startFrame": 1123,
           "durationInFrames": 336,
@@ -387,7 +387,7 @@
         },
         {
           "index": 5,
-          "file": "s4-5.wav",
+          "file": "s4-5.m4a",
           "text": "宁可整会话报废，也不让内存与存储分叉",
           "startFrame": 1468,
           "durationInFrames": 302,
@@ -395,7 +395,7 @@
         },
         {
           "index": 6,
-          "file": "s4-6.wav",
+          "file": "s4-6.m4a",
           "text": "避免方式：在提交之前就把冲突拒掉",
           "startFrame": 1779,
           "durationInFrames": 227,
@@ -403,7 +403,7 @@
         },
         {
           "index": 7,
-          "file": "s4-7.wav",
+          "file": "s4-7.m4a",
           "text": "ReadAfterWrite —— 写过表再读表直接抛（读到的是旧快照）",
           "startFrame": 2016,
           "durationInFrames": 339,
@@ -411,7 +411,7 @@
         },
         {
           "index": 8,
-          "file": "s4-8.wav",
+          "file": "s4-8.m4a",
           "text": "owner 校验 —— 任务不能在自己结束的提交里创建子工作",
           "startFrame": 2364,
           "durationInFrames": 202,
@@ -419,7 +419,7 @@
         },
         {
           "index": 9,
-          "file": "s4-9.wav",
+          "file": "s4-9.m4a",
           "text": "一个文档一次只有一条内容指令；delta 的 base 版本必须匹配",
           "startFrame": 2576,
           "durationInFrames": 231,
@@ -427,7 +427,7 @@
         },
         {
           "index": 10,
-          "file": "s4-10.wav",
+          "file": "s4-10.m4a",
           "text": "提交前拒绝 = 重试回调 ｜ 提交后失败 = 报废会话",
           "startFrame": 2817,
           "durationInFrames": 347,
@@ -447,7 +447,7 @@
       "paragraphs": [
         {
           "index": 0,
-          "file": "s5-0.wav",
+          "file": "s5-0.m4a",
           "text": "下半场：存什么",
           "startFrame": 17,
           "durationInFrames": 119,
@@ -455,7 +455,7 @@
         },
         {
           "index": 1,
-          "file": "s5-1.wav",
+          "file": "s5-1.m4a",
           "text": "Agent 的每一步都是一个 task —— 存储里的一行，不是内存对象",
           "startFrame": 145,
           "durationInFrames": 272,
@@ -463,7 +463,7 @@
         },
         {
           "index": 2,
-          "file": "s5-2.wav",
+          "file": "s5-2.m4a",
           "text": "pending → running → waiting → completing → terminal",
           "startFrame": 426,
           "durationInFrames": 148,
@@ -471,7 +471,7 @@
         },
         {
           "index": 3,
-          "file": "s5-3.wav",
+          "file": "s5-3.m4a",
           "text": "completed / failed / aborted / orphaned / faulted",
           "startFrame": 584,
           "durationInFrames": 181,
@@ -479,7 +479,7 @@
         },
         {
           "index": 4,
-          "file": "s5-4.wav",
+          "file": "s5-4.m4a",
           "text": "两个非直觉设计",
           "startFrame": 774,
           "durationInFrames": 103,
@@ -487,7 +487,7 @@
         },
         {
           "index": 5,
-          "file": "s5-5.wav",
+          "file": "s5-5.m4a",
           "text": "#terminate —— 先看：还有活着的子任务吗",
           "startFrame": 887,
           "durationInFrames": 311,
@@ -495,7 +495,7 @@
         },
         {
           "index": 6,
-          "file": "s5-6.wav",
+          "file": "s5-6.m4a",
           "text": "有 → completing；子工作干完 → #finalize 写终态",
           "startFrame": 1208,
           "durationInFrames": 240,
@@ -503,7 +503,7 @@
         },
         {
           "index": 7,
-          "file": "s5-7.wav",
+          "file": "s5-7.m4a",
           "text": "「结束」与「被观察到结束」之间隔着子任务生命周期",
           "startFrame": 1458,
           "durationInFrames": 474,
@@ -511,7 +511,7 @@
         },
         {
           "index": 8,
-          "file": "s5-8.wav",
+          "file": "s5-8.m4a",
           "text": "只有调度器能写 faulted / orphaned",
           "startFrame": 1941,
           "durationInFrames": 243,
@@ -519,7 +519,7 @@
         },
         {
           "index": 9,
-          "file": "s5-9.wav",
+          "file": "s5-9.m4a",
           "text": "abort 只是标记位 abortRequested，转换由调度器做",
           "startFrame": 2194,
           "durationInFrames": 226,
@@ -527,7 +527,7 @@
         },
         {
           "index": 10,
-          "file": "s5-10.wav",
+          "file": "s5-10.m4a",
           "text": "#step —— 变更线上同步判断，优先级固定六条",
           "startFrame": 2430,
           "durationInFrames": 232,
@@ -535,7 +535,7 @@
         },
         {
           "index": 11,
-          "file": "s5-11.wav",
+          "file": "s5-11.m4a",
           "text": "1  终态 / completing / waiting → 停",
           "startFrame": 2672,
           "durationInFrames": 123,
@@ -543,7 +543,7 @@
         },
         {
           "index": 12,
-          "file": "s5-12.wav",
+          "file": "s5-12.m4a",
           "text": "2  Session 正在关闭 → 停",
           "startFrame": 2804,
           "durationInFrames": 75,
@@ -551,7 +551,7 @@
         },
         {
           "index": 13,
-          "file": "s5-13.wav",
+          "file": "s5-13.m4a",
           "text": "3  有 abort 标记 → 跑 abort handler（必须提交结果）",
           "startFrame": 2888,
           "durationInFrames": 192,
@@ -559,7 +559,7 @@
         },
         {
           "index": 14,
-          "file": "s5-14.wav",
+          "file": "s5-14.m4a",
           "text": "4  未捕获错误 → faulted",
           "startFrame": 3089,
           "durationInFrames": 116,
@@ -567,7 +567,7 @@
         },
         {
           "index": 15,
-          "file": "s5-15.wav",
+          "file": "s5-15.m4a",
           "text": "5  有持久化进度 → 刷新快照 / 交给替换定义",
           "startFrame": 3214,
           "durationInFrames": 309,
@@ -575,7 +575,7 @@
         },
         {
           "index": 16,
-          "file": "s5-16.wav",
+          "file": "s5-16.m4a",
           "text": "6  没有持久化进度 → faulted",
           "startFrame": 3533,
           "durationInFrames": 111,
@@ -583,7 +583,7 @@
         },
         {
           "index": 17,
-          "file": "s5-17.wav",
+          "file": "s5-17.m4a",
           "text": "第 6 条：转一圈什么都没写 = 死循环烧 token，直接判死",
           "startFrame": 3654,
           "durationInFrames": 342,
@@ -603,7 +603,7 @@
       "paragraphs": [
         {
           "index": 0,
-          "file": "s6-0.wav",
+          "file": "s6-0.m4a",
           "text": "想 · 做 · 记不住就压缩",
           "startFrame": 17,
           "durationInFrames": 212,
@@ -611,7 +611,7 @@
         },
         {
           "index": 1,
-          "file": "s6-1.wav",
+          "file": "s6-1.m4a",
           "text": "pi.generation —— checkpoint: prepare | request | retry | poll | tools",
           "startFrame": 239,
           "durationInFrames": 297,
@@ -619,7 +619,7 @@
         },
         {
           "index": 2,
-          "file": "s6-2.wav",
+          "file": "s6-2.m4a",
           "text": "prepare —— 渲染 sections、算 pi.system 补丁、判断压缩",
           "startFrame": 546,
           "durationInFrames": 210,
@@ -627,7 +627,7 @@
         },
         {
           "index": 3,
-          "file": "s6-3.wav",
+          "file": "s6-3.m4a",
           "text": "blocking 压缩 → 自己起 compaction 子任务并等它",
           "startFrame": 766,
           "durationInFrames": 209,
@@ -635,7 +635,7 @@
         },
         {
           "index": 4,
-          "file": "s6-4.wav",
+          "file": "s6-4.m4a",
           "text": "request —— partial 也持久化，节流，同时只有一个提交在飞",
           "startFrame": 984,
           "durationInFrames": 366,
@@ -643,7 +643,7 @@
         },
         {
           "index": 5,
-          "file": "s6-5.wav",
+          "file": "s6-5.m4a",
           "text": "convertPartial —— 半截输出转成 aborted 的 assistant entry",
           "startFrame": 1359,
           "durationInFrames": 474,
@@ -651,7 +651,7 @@
         },
         {
           "index": 6,
-          "file": "s6-6.wav",
+          "file": "s6-6.m4a",
           "text": "模型说了一半的话，也是持久历史",
           "startFrame": 1843,
           "durationInFrames": 180,
@@ -659,7 +659,7 @@
         },
         {
           "index": 7,
-          "file": "s6-7.wav",
+          "file": "s6-7.m4a",
           "text": "pi.tool —— 两阶段",
           "startFrame": 2033,
           "durationInFrames": 144,
@@ -667,7 +667,7 @@
         },
         {
           "index": 8,
-          "file": "s6-8.wav",
+          "file": "s6-8.m4a",
           "text": "call —— 解析 / 校验 / beforeTool 钩子（可拦截或改写）",
           "startFrame": 2186,
           "durationInFrames": 254,
@@ -675,7 +675,7 @@
         },
         {
           "index": 9,
-          "file": "s6-9.wav",
+          "file": "s6-9.m4a",
           "text": "提交执行意图 { phase: \"execute\", arguments, replay } —— 还没执行",
           "startFrame": 2449,
           "durationInFrames": 328,
@@ -683,7 +683,7 @@
         },
         {
           "index": 10,
-          "file": "s6-10.wav",
+          "file": "s6-10.m4a",
           "text": "execute —— 只有恢复的时候才会走到这里",
           "startFrame": 2787,
           "durationInFrames": 150,
@@ -691,7 +691,7 @@
         },
         {
           "index": 11,
-          "file": "s6-11.wav",
+          "file": "s6-11.m4a",
           "text": "条件：存储里的 replay 和当前代码的 replay 都是 \"safe\"",
           "startFrame": 2946,
           "durationInFrames": 238,
@@ -699,7 +699,7 @@
         },
         {
           "index": 12,
-          "file": "s6-12.wav",
+          "file": "s6-12.m4a",
           "text": "否则 → 从已提交槽位判定 interrupted，落 failed",
           "startFrame": 3193,
           "durationInFrames": 184,
@@ -707,7 +707,7 @@
         },
         {
           "index": 13,
-          "file": "s6-13.wav",
+          "file": "s6-13.m4a",
           "text": "幂等工具标 replay: \"safe\" → 断电后可接着跑",
           "startFrame": 3387,
           "durationInFrames": 306,
@@ -715,7 +715,7 @@
         },
         {
           "index": 14,
-          "file": "s6-14.wav",
+          "file": "s6-14.m4a",
           "text": "有副作用标 unsafe → 宁可报失败，也不重复执行",
           "startFrame": 3702,
           "durationInFrames": 210,
@@ -723,7 +723,7 @@
         },
         {
           "index": 15,
-          "file": "s6-15.wav",
+          "file": "s6-15.m4a",
           "text": "pi.compaction —— select / summarize / retry",
           "startFrame": 3921,
           "durationInFrames": 154,
@@ -731,7 +731,7 @@
         },
         {
           "index": 16,
-          "file": "s6-16.wav",
+          "file": "s6-16.m4a",
           "text": "select —— 不把 assistant 和它的 tool result 拆开",
           "startFrame": 4085,
           "durationInFrames": 208,
@@ -739,7 +739,7 @@
         },
         {
           "index": 17,
-          "file": "s6-17.wav",
+          "file": "s6-17.m4a",
           "text": "否则模型会看到非法序列；也不能从裸 tool result 开始",
           "startFrame": 4303,
           "durationInFrames": 319,
@@ -747,7 +747,7 @@
         },
         {
           "index": 18,
-          "file": "s6-18.wav",
+          "file": "s6-18.m4a",
           "text": "摘要包在 <summary>，cacheRetention: \"none\"",
           "startFrame": 4632,
           "durationInFrames": 316,
@@ -767,7 +767,7 @@
       "paragraphs": [
         {
           "index": 0,
-          "file": "s7-0.wav",
+          "file": "s7-0.m4a",
           "text": "要持久化的另一类东西：当前状态，不是历史",
           "startFrame": 17,
           "durationInFrames": 312,
@@ -775,7 +775,7 @@
         },
         {
           "index": 1,
-          "file": "s7-1.wav",
+          "file": "s7-1.m4a",
           "text": "document = Chord 跟踪的 JSON：base + deltas",
           "startFrame": 338,
           "durationInFrames": 286,
@@ -783,7 +783,7 @@
         },
         {
           "index": 2,
-          "file": "s7-2.wav",
+          "file": "s7-2.m4a",
           "text": "scope: session | conversation | task ｜ history: latest | rewindable",
           "startFrame": 633,
           "durationInFrames": 331,
@@ -791,7 +791,7 @@
         },
         {
           "index": 3,
-          "file": "s7-3.wav",
+          "file": "s7-3.m4a",
           "text": "fork: current | initial | asOf",
           "startFrame": 974,
           "durationInFrames": 188,
@@ -799,7 +799,7 @@
         },
         {
           "index": 4,
-          "file": "s7-4.wav",
+          "file": "s7-4.m4a",
           "text": "pi.agent · pi.provider · pi.live · pi.inbox · pi.usage",
           "startFrame": 1172,
           "durationInFrames": 166,
@@ -807,7 +807,7 @@
         },
         {
           "index": 5,
-          "file": "s7-5.wav",
+          "file": "s7-5.m4a",
           "text": "src/harness/view.ts —— 这套设计最漂亮的地方",
           "startFrame": 1347,
           "durationInFrames": 179,
@@ -815,7 +815,7 @@
         },
         {
           "index": 6,
-          "file": "s7-6.wav",
+          "file": "s7-6.m4a",
           "text": "前端不需要知道怎么订阅存储 —— 从 publication 推导 ops",
           "startFrame": 1536,
           "durationInFrames": 210,
@@ -823,7 +823,7 @@
         },
         {
           "index": 7,
-          "file": "s7-7.wav",
+          "file": "s7-7.m4a",
           "text": "append → [\"p\", [\"entries\"], n, 0, [value]]；文档挂在 [\"docs\", kind]",
           "startFrame": 1755,
           "durationInFrames": 251,
@@ -831,7 +831,7 @@
         },
         {
           "index": 8,
-          "file": "s7-8.wav",
+          "file": "s7-8.m4a",
           "text": "UI 状态与存储状态，是同一个东西的两种投影",
           "startFrame": 2016,
           "durationInFrames": 328,
@@ -851,7 +851,7 @@
       "paragraphs": [
         {
           "index": 0,
-          "file": "s8-0.wav",
+          "file": "s8-0.m4a",
           "text": "Memory / JSONL（追加提交标记 + sidecar）/ SQLite",
           "startFrame": 17,
           "durationInFrames": 385,
@@ -859,7 +859,7 @@
         },
         {
           "index": 1,
-          "file": "s8-1.wav",
+          "file": "s8-1.m4a",
           "text": "SQLite 里的几个具体细节",
           "startFrame": 411,
           "durationInFrames": 111,
@@ -867,7 +867,7 @@
         },
         {
           "index": 2,
-          "file": "s8-2.wav",
+          "file": "s8-2.m4a",
           "text": "next_id 存成 TEXT —— node:sqlite 拒绝超出安全整数范围的 INTEGER",
           "startFrame": 532,
           "durationInFrames": 311,
@@ -875,7 +875,7 @@
         },
         {
           "index": 3,
-          "file": "s8-3.wav",
+          "file": "s8-3.m4a",
           "text": "record_ids —— 五种记录共用 id 空间，ID 永不复用",
           "startFrame": 853,
           "durationInFrames": 433,
@@ -883,7 +883,7 @@
         },
         {
           "index": 4,
-          "file": "s8-4.wav",
+          "file": "s8-4.m4a",
           "text": "STRICT 表 + CHECK (json_valid(record))；写入是一次事务",
           "startFrame": 1296,
           "durationInFrames": 474,
@@ -891,7 +891,7 @@
         },
         {
           "index": 5,
-          "file": "s8-5.wav",
+          "file": "s8-5.m4a",
           "text": "admitRead —— close 等待进行中的多查询读，避免撕裂读",
           "startFrame": 1779,
           "durationInFrames": 263,
@@ -911,7 +911,7 @@
       "paragraphs": [
         {
           "index": 0,
-          "file": "s9-0.wav",
+          "file": "s9-0.m4a",
           "text": "最后，一个观察",
           "startFrame": 17,
           "durationInFrames": 55,
@@ -919,7 +919,7 @@
         },
         {
           "index": 1,
-          "file": "s9-1.wav",
+          "file": "s9-1.m4a",
           "text": "两万行代码的复杂度，几乎全部来自一个约束",
           "startFrame": 81,
           "durationInFrames": 293,
@@ -927,7 +927,7 @@
         },
         {
           "index": 2,
-          "file": "s9-2.wav",
+          "file": "s9-2.m4a",
           "text": "completing 延迟终态 · poisoned Session · ReadAfterWrite · abort 标记 · partial 持久化",
           "startFrame": 383,
           "durationInFrames": 332,
@@ -935,7 +935,7 @@
         },
         {
           "index": 3,
-          "file": "s9-3.wav",
+          "file": "s9-3.m4a",
           "text": "把「断电」放在前提里，它们全是被推出来的",
           "startFrame": 724,
           "durationInFrames": 281,
@@ -943,7 +943,7 @@
         },
         {
           "index": 4,
-          "file": "s9-4.wav",
+          "file": "s9-4.m4a",
           "text": "建议：先把不变式写下来，一条一条编号",
           "startFrame": 1015,
           "durationInFrames": 268,
@@ -951,7 +951,7 @@
         },
         {
           "index": 5,
-          "file": "s9-5.wav",
+          "file": "s9-5.m4a",
           "text": "很多纠结的取舍，写不变式的时候就有答案了",
           "startFrame": 1293,
           "durationInFrames": 197,
@@ -959,7 +959,7 @@
         },
         {
           "index": 6,
-          "file": "s9-6.wav",
+          "file": "s9-6.m4a",
           "text": "github.com/earendil-works/pi → packages/durable",
           "startFrame": 1499,
           "durationInFrames": 238,
@@ -967,7 +967,7 @@
         },
         {
           "index": 7,
-          "file": "s9-7.wav",
+          "file": "s9-7.m4a",
           "text": "建议从 spec 第 8 条不变式开始读",
           "startFrame": 1746,
           "durationInFrames": 236,

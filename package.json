@@ -6,20 +6,24 @@
 	"license": "UNLICENSED",
 	"private": true,
 	"dependencies": {
+		"@react-three/fiber": "9.8.2",
 		"@remotion/cli": "4.0.533",
 		"@remotion/player": "4.0.533",
 		"@remotion/tailwind-v4": "4.0.533",
+		"@remotion/three": "4.0.533",
 		"@remotion/zod-types": "4.0.533",
 		"react": "19.2.3",
 		"react-dom": "19.2.3",
 		"remotion": "4.0.533",
 		"tailwindcss": "4.0.0",
+		"three": "0.186.1",
 		"zod": "4.5.4"
 	},
 	"devDependencies": {
 		"@remotion/eslint-config-flat": "4.0.533",
 		"@types/react": "19.2.7",
 		"@types/react-dom": "^19.2.3",
+		"@types/three": "0.186.0",
 		"@types/web": "0.0.166",
 		"@vitejs/plugin-react-swc": "^4.3.3",
 		"eslint": "9.39.5",
@@ -32,6 +36,8 @@
 		"build": "remotion bundle",
 		"upgrade": "remotion upgrade",
 		"lint": "eslint src && tsc",
+		"tts:sample": "node scripts/tts-bailian.mjs",
+		"tts:generate": "node scripts/tts-batch.mjs",
 		"web:dev": "vite --config web/vite.config.ts --port 3200",
 		"web:build": "vite build --config web/vite.config.ts",
 		"web:preview": "vite preview --config web/vite.config.ts --port 3300"

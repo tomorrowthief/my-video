@@ -2,10 +2,11 @@
   "fps": 30,
   "width": 1920,
   "height": 1080,
-  "voice": "Tingting",
-  "rate": 165,
-  "totalFrames": 5208,
-  "totalSeconds": 173.627,
+  "provider": "bailian",
+  "model": "qwen3-tts-flash",
+  "voice": "Cherry",
+  "totalFrames": 5137,
+  "totalSeconds": 171.23333333333332,
   "scenes": [
     {
       "id": "s0",
@@ -14,48 +15,48 @@
       "heading": "35 个头，94 只脚",
       "visual": "pose",
       "startFrame": 0,
-      "durationInFrames": 499,
-      "durationSeconds": 16.632,
+      "durationInFrames": 506,
+      "durationSeconds": 16.866666666666667,
       "paragraphs": [
         {
           "index": 0,
-          "file": "s0-0.m4a",
+          "file": "s0-0-f023747803.m4a",
           "text": "笼子里有鸡，也有兔子",
           "startFrame": 17,
           "durationInFrames": 68,
-          "durationSeconds": 2.276
+          "durationSeconds": 2.24
         },
         {
           "index": 1,
-          "file": "s0-1.m4a",
+          "file": "s0-1-1095121513.m4a",
           "text": "头：35 个",
-          "startFrame": 97,
-          "durationInFrames": 75,
-          "durationSeconds": 2.508
+          "startFrame": 98,
+          "durationInFrames": 77,
+          "durationSeconds": 2.56
         },
         {
           "index": 2,
-          "file": "s0-2.m4a",
+          "file": "s0-2-ac19bcff1c.m4a",
           "text": "脚：94 只",
-          "startFrame": 185,
-          "durationInFrames": 83,
-          "durationSeconds": 2.763
+          "startFrame": 188,
+          "durationInFrames": 82,
+          "durationSeconds": 2.72
         },
         {
           "index": 3,
-          "file": "s0-3.m4a",
+          "file": "s0-3-9658777858.m4a",
           "text": "鸡几只？兔几只？",
-          "startFrame": 281,
-          "durationInFrames": 91,
-          "durationSeconds": 3.019
+          "startFrame": 283,
+          "durationInFrames": 106,
+          "durationSeconds": 3.52
         },
         {
           "index": 4,
-          "file": "s0-4.m4a",
+          "file": "s0-4-e2ffbb1ebf.m4a",
           "text": "先猜一猜",
-          "startFrame": 384,
-          "durationInFrames": 84,
-          "durationSeconds": 2.786
+          "startFrame": 402,
+          "durationInFrames": 72,
+          "durationSeconds": 2.4
         }
       ]
     },
@@ -65,65 +66,65 @@
       "title": "列表法",
       "heading": "一个一个试",
       "visual": "table",
-      "startFrame": 499,
-      "durationInFrames": 1008,
-      "durationSeconds": 33.61,
+      "startFrame": 506,
+      "durationInFrames": 1045,
+      "durationSeconds": 34.833333333333336,
       "paragraphs": [
         {
           "index": 0,
-          "file": "s1-0.m4a",
+          "file": "s1-0-2c65e8f718.m4a",
           "text": "最笨的办法：一个一个试",
           "startFrame": 17,
-          "durationInFrames": 88,
-          "durationSeconds": 2.949
+          "durationInFrames": 70,
+          "durationSeconds": 2.32
         },
         {
           "index": 1,
-          "file": "s1-1.m4a",
+          "file": "s1-1-c828f22de0.m4a",
           "text": "35 鸡 + 0 兔 = 70 只脚",
-          "startFrame": 118,
-          "durationInFrames": 140,
-          "durationSeconds": 4.667
+          "startFrame": 100,
+          "durationInFrames": 164,
+          "durationSeconds": 5.44
         },
         {
           "index": 2,
-          "file": "s1-2.m4a",
+          "file": "s1-2-c802697881.m4a",
           "text": "脚不够，换 5 只兔进来",
-          "startFrame": 270,
-          "durationInFrames": 77,
-          "durationSeconds": 2.554
+          "startFrame": 277,
+          "durationInFrames": 82,
+          "durationSeconds": 2.72
         },
         {
           "index": 3,
-          "file": "s1-3.m4a",
+          "file": "s1-3-8cc48c29e0.m4a",
           "text": "30 鸡 + 5 兔 = 80 只脚",
-          "startFrame": 359,
-          "durationInFrames": 134,
-          "durationSeconds": 4.481
+          "startFrame": 372,
+          "durationInFrames": 125,
+          "durationSeconds": 4.16
         },
         {
           "index": 4,
-          "file": "s1-4.m4a",
+          "file": "s1-4-f6dcfb33e3.m4a",
           "text": "25 鸡 + 10 兔 = 90 只脚",
-          "startFrame": 506,
-          "durationInFrames": 95,
-          "durationSeconds": 3.158
+          "startFrame": 510,
+          "durationInFrames": 128,
+          "durationSeconds": 4.24
         },
         {
           "index": 5,
-          "file": "s1-5.m4a",
+          "file": "s1-5-6b75ed702c.m4a",
           "text": "23 鸡 + 12 兔 = 94 只脚 ✓",
-          "startFrame": 614,
-          "durationInFrames": 171,
-          "durationSeconds": 5.689
+          "startFrame": 651,
+          "durationInFrames": 178,
+          "durationSeconds": 5.92
         },
         {
           "index": 6,
-          "file": "s1-6.m4a",
+          "file": "s1-6-7d435a02c0.m4a",
           "text": "每多 1 只兔，脚多 2 只",
-          "startFrame": 797,
-          "durationInFrames": 180,
-          "durationSeconds": 5.991
+          "startFrame": 842,
+          "durationInFrames": 171,
+          "durationSeconds": 5.68
         }
       ]
     },
@@ -133,81 +134,81 @@
       "title": "假设法",
       "heading": "全当成鸡",
       "visual": "assume",
-      "startFrame": 1507,
-      "durationInFrames": 1123,
-      "durationSeconds": 37.422,
+      "startFrame": 1551,
+      "durationInFrames": 1107,
+      "durationSeconds": 36.9,
       "paragraphs": [
         {
           "index": 0,
-          "file": "s2-0.m4a",
+          "file": "s2-0-5be8e04099.m4a",
           "text": "每多 1 只兔，脚多 2 只",
           "startFrame": 17,
-          "durationInFrames": 134,
-          "durationSeconds": 4.481
+          "durationInFrames": 137,
+          "durationSeconds": 4.56
         },
         {
           "index": 1,
-          "file": "s2-1.m4a",
+          "file": "s2-1-c7d7b4fe0a.m4a",
           "text": "不用试了",
-          "startFrame": 164,
-          "durationInFrames": 77,
-          "durationSeconds": 2.554
+          "startFrame": 167,
+          "durationInFrames": 75,
+          "durationSeconds": 2.48
         },
         {
           "index": 2,
-          "file": "s2-2.m4a",
+          "file": "s2-2-105e78c9fd.m4a",
           "text": "假设：全是鸡",
-          "startFrame": 253,
-          "durationInFrames": 79,
-          "durationSeconds": 2.647
+          "startFrame": 255,
+          "durationInFrames": 84,
+          "durationSeconds": 2.8
         },
         {
           "index": 3,
-          "file": "s2-3.m4a",
+          "file": "s2-3-d3eba623ea.m4a",
           "text": "35 × 2 = 70 只脚",
-          "startFrame": 345,
-          "durationInFrames": 132,
-          "durationSeconds": 4.389
+          "startFrame": 352,
+          "durationInFrames": 128,
+          "durationSeconds": 4.24
         },
         {
           "index": 4,
-          "file": "s2-4.m4a",
+          "file": "s2-4-10d4e7428e.m4a",
           "text": "实际：94 只脚",
-          "startFrame": 489,
-          "durationInFrames": 70,
-          "durationSeconds": 2.322
+          "startFrame": 493,
+          "durationInFrames": 68,
+          "durationSeconds": 2.24
         },
         {
           "index": 5,
-          "file": "s2-5.m4a",
+          "file": "s2-5-2a308ae9df.m4a",
           "text": "94 − 70 = 24 只脚不见了",
-          "startFrame": 571,
-          "durationInFrames": 107,
-          "durationSeconds": 3.576
+          "startFrame": 574,
+          "durationInFrames": 113,
+          "durationSeconds": 3.76
         },
         {
           "index": 6,
-          "file": "s2-6.m4a",
+          "file": "s2-6-c81e984141.m4a",
           "text": "这 24 只脚是兔子的",
-          "startFrame": 691,
-          "durationInFrames": 138,
-          "durationSeconds": 4.598
+          "startFrame": 700,
+          "durationInFrames": 137,
+          "durationSeconds": 4.56
         },
         {
           "index": 7,
-          "file": "s2-7.m4a",
+          "file": "s2-7-e7519ecbb2.m4a",
           "text": "24 ÷ 2 = 12 只兔",
-          "startFrame": 842,
-          "durationInFrames": 145,
-          "durationSeconds": 4.83
+          "startFrame": 850,
+          "durationInFrames": 128,
+          "durationSeconds": 4.24
         },
         {
           "index": 8,
-          "file": "s2-8.m4a",
+          "file": "s2-8-2bb51e6d6c.m4a",
           "text": "35 − 12 = 23 只鸡",
-          "startFrame": 999,
-          "durationInFrames": 92,
-          "durationSeconds": 3.065
+          "startFrame": 991,
+          "durationInFrames": 84,
+          "durationSeconds": 2.8
         }
       ]
     },
@@ -217,73 +218,73 @@
       "title": "抬腿法",
       "heading": "吹一声哨",
       "visual": "lift",
-      "startFrame": 2630,
-      "durationInFrames": 1018,
-      "durationSeconds": 33.937,
+      "startFrame": 2658,
+      "durationInFrames": 966,
+      "durationSeconds": 32.2,
       "paragraphs": [
         {
           "index": 0,
-          "file": "s3-0.m4a",
+          "file": "s3-0-a15ea8a25b.m4a",
           "text": "还有更妙的办法",
           "startFrame": 17,
-          "durationInFrames": 54,
-          "durationSeconds": 1.788
+          "durationInFrames": 56,
+          "durationSeconds": 1.84
         },
         {
           "index": 1,
-          "file": "s3-1.m4a",
+          "file": "s3-1-1ca08a0c89.m4a",
           "text": "吹一声哨",
-          "startFrame": 83,
-          "durationInFrames": 89,
-          "durationSeconds": 2.972
+          "startFrame": 86,
+          "durationInFrames": 70,
+          "durationSeconds": 2.32
         },
         {
           "index": 2,
-          "file": "s3-2.m4a",
+          "file": "s3-2-5a92b93c8a.m4a",
           "text": "所有动物抬起两只脚",
-          "startFrame": 185,
-          "durationInFrames": 102,
-          "durationSeconds": 3.413
+          "startFrame": 169,
+          "durationInFrames": 89,
+          "durationSeconds": 2.96
         },
         {
           "index": 3,
-          "file": "s3-3.m4a",
+          "file": "s3-3-9698e99b52.m4a",
           "text": "抬起 35 × 2 = 70 只脚",
-          "startFrame": 300,
-          "durationInFrames": 109,
-          "durationSeconds": 3.646
+          "startFrame": 271,
+          "durationInFrames": 96,
+          "durationSeconds": 3.2
         },
         {
           "index": 4,
-          "file": "s3-4.m4a",
+          "file": "s3-4-2772ebf469.m4a",
           "text": "地上还剩 94 − 70 = 24 只脚",
-          "startFrame": 421,
-          "durationInFrames": 116,
-          "durationSeconds": 3.855
+          "startFrame": 380,
+          "durationInFrames": 118,
+          "durationSeconds": 3.92
         },
         {
           "index": 5,
-          "file": "s3-5.m4a",
+          "file": "s3-5-9a67793baa.m4a",
           "text": "鸡的脚全抬起来了",
-          "startFrame": 550,
-          "durationInFrames": 142,
-          "durationSeconds": 4.737
+          "startFrame": 511,
+          "durationInFrames": 111,
+          "durationSeconds": 3.68
         },
         {
           "index": 6,
-          "file": "s3-6.m4a",
+          "file": "s3-6-20828631f0.m4a",
           "text": "地上的脚全是兔子的",
-          "startFrame": 704,
-          "durationInFrames": 112,
-          "durationSeconds": 3.738
+          "startFrame": 635,
+          "durationInFrames": 113,
+          "durationSeconds": 3.76
         },
         {
           "index": 7,
-          "file": "s3-7.m4a",
+          "file": "s3-7-d0d29820c7.m4a",
           "text": "24 ÷ 2 = 12 只兔",
-          "startFrame": 829,
-          "durationInFrames": 157,
-          "durationSeconds": 5.248
+          "startFrame": 761,
+          "durationInFrames": 173,
+          "durationSeconds": 5.76
         }
       ]
     },
@@ -293,57 +294,57 @@
       "title": "三解合一",
       "heading": "其实是同一句话",
       "visual": "converge",
-      "startFrame": 3648,
-      "durationInFrames": 757,
-      "durationSeconds": 25.248,
+      "startFrame": 3624,
+      "durationInFrames": 709,
+      "durationSeconds": 23.633333333333333,
       "paragraphs": [
         {
           "index": 0,
-          "file": "s4-0.m4a",
+          "file": "s4-0-6f087a9435.m4a",
           "text": "三种办法，同一个答案",
           "startFrame": 17,
-          "durationInFrames": 99,
-          "durationSeconds": 3.297
+          "durationInFrames": 101,
+          "durationSeconds": 3.36
         },
         {
           "index": 1,
-          "file": "s4-1.m4a",
+          "file": "s4-1-9fa865d72d.m4a",
           "text": "再看一眼",
-          "startFrame": 128,
-          "durationInFrames": 56,
-          "durationSeconds": 1.858
+          "startFrame": 131,
+          "durationInFrames": 46,
+          "durationSeconds": 1.52
         },
         {
           "index": 2,
-          "file": "s4-2.m4a",
+          "file": "s4-2-4809e6bb4e.m4a",
           "text": "列表法：试出规律",
-          "startFrame": 196,
-          "durationInFrames": 79,
-          "durationSeconds": 2.624
+          "startFrame": 190,
+          "durationInFrames": 75,
+          "durationSeconds": 2.48
         },
         {
           "index": 3,
-          "file": "s4-3.m4a",
+          "file": "s4-3-1d287f4854.m4a",
           "text": "假设法：用规律算",
-          "startFrame": 288,
+          "startFrame": 278,
           "durationInFrames": 96,
-          "durationSeconds": 3.204
+          "durationSeconds": 3.2
         },
         {
           "index": 4,
-          "file": "s4-4.m4a",
+          "file": "s4-4-01233e5bef.m4a",
           "text": "抬腿法：把规律变成动作",
-          "startFrame": 396,
-          "durationInFrames": 118,
-          "durationSeconds": 3.924
+          "startFrame": 387,
+          "durationInFrames": 101,
+          "durationSeconds": 3.36
         },
         {
           "index": 5,
-          "file": "s4-5.m4a",
+          "file": "s4-5-46cfd75ea6.m4a",
           "text": "一只兔比一只鸡多 2 只脚",
-          "startFrame": 527,
-          "durationInFrames": 199,
-          "durationSeconds": 6.641
+          "startFrame": 501,
+          "durationInFrames": 176,
+          "durationSeconds": 5.84
         }
       ]
     },
@@ -353,49 +354,49 @@
       "title": "验算与留题",
       "heading": "换你了",
       "visual": "outro",
-      "startFrame": 4405,
-      "durationInFrames": 803,
-      "durationSeconds": 26.779,
+      "startFrame": 4333,
+      "durationInFrames": 804,
+      "durationSeconds": 26.8,
       "paragraphs": [
         {
           "index": 0,
-          "file": "s5-0.m4a",
+          "file": "s5-0-36c3aa46b7.m4a",
           "text": "23 + 12 = 35 个头 ✓",
           "startFrame": 17,
-          "durationInFrames": 146,
-          "durationSeconds": 4.853
+          "durationInFrames": 168,
+          "durationSeconds": 5.6
         },
         {
           "index": 1,
-          "file": "s5-1.m4a",
+          "file": "s5-1-7916fcc639.m4a",
           "text": "46 + 48 = 94 只脚 ✓",
-          "startFrame": 175,
-          "durationInFrames": 202,
-          "durationSeconds": 6.734
+          "startFrame": 198,
+          "durationInFrames": 188,
+          "durationSeconds": 6.24
         },
         {
           "index": 2,
-          "file": "s5-2.m4a",
+          "file": "s5-2-fb5c320218.m4a",
           "text": "换你了",
-          "startFrame": 389,
-          "durationInFrames": 55,
-          "durationSeconds": 1.834
+          "startFrame": 399,
+          "durationInFrames": 46,
+          "durationSeconds": 1.52
         },
         {
           "index": 3,
-          "file": "s5-3.m4a",
+          "file": "s5-3-7801a8a473.m4a",
           "text": "10 辆车，26 个轮子",
-          "startFrame": 457,
-          "durationInFrames": 166,
-          "durationSeconds": 5.55
+          "startFrame": 458,
+          "durationInFrames": 159,
+          "durationSeconds": 5.28
         },
         {
           "index": 4,
-          "file": "s5-4.m4a",
+          "file": "s5-4-95ff02a69a.m4a",
           "text": "这次每换一辆，轮子只多 1 个",
-          "startFrame": 636,
-          "durationInFrames": 136,
-          "durationSeconds": 4.528
+          "startFrame": 630,
+          "durationInFrames": 142,
+          "durationSeconds": 4.72
         }
       ]
     }

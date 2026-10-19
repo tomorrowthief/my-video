@@ -1,0 +1,228 @@
+{
+  "fps": 30,
+  "width": 1920,
+  "height": 1080,
+  "provider": "bailian",
+  "model": "qwen3-tts-flash",
+  "voice": "Cherry",
+  "totalFrames": 2996,
+  "totalSeconds": 99.86666666666666,
+  "scenes": [
+    {
+      "id": "opening",
+      "index": "01",
+      "title": "翻开故事书",
+      "heading": "拔苗助长",
+      "visual": "book",
+      "startFrame": 0,
+      "durationInFrames": 394,
+      "durationSeconds": 13.133333333333333,
+      "paragraphs": [
+        {
+          "index": 0,
+          "file": "opening-0-9f5062e5e0.m4a",
+          "text": "你好，我是小禾。今天，一起听一个拔苗助长的故事。",
+          "startFrame": 24,
+          "durationInFrames": 154,
+          "durationSeconds": 5.12
+        },
+        {
+          "index": 1,
+          "file": "opening-1-6325dd80a9.m4a",
+          "text": "小苗还没长高，能不能拉一拉，帮它快点长大呢？",
+          "startFrame": 192,
+          "durationInFrames": 130,
+          "durationSeconds": 4.32
+        }
+      ]
+    },
+    {
+      "id": "garden",
+      "index": "02",
+      "title": "农夫的小苗",
+      "heading": "快快长大吧",
+      "visual": "garden",
+      "startFrame": 394,
+      "durationInFrames": 373,
+      "durationSeconds": 12.433333333333334,
+      "paragraphs": [
+        {
+          "index": 0,
+          "file": "garden-0-7715bcfe99.m4a",
+          "text": "从前，有位农夫种了一田小苗。嫩绿的小叶子，真可爱！",
+          "startFrame": 24,
+          "durationInFrames": 164,
+          "durationSeconds": 5.44
+        },
+        {
+          "index": 1,
+          "file": "garden-1-c8451936b4.m4a",
+          "text": "他每天都去看，盼着小苗快快长高。",
+          "startFrame": 202,
+          "durationInFrames": 99,
+          "durationSeconds": 3.28
+        }
+      ]
+    },
+    {
+      "id": "waiting",
+      "index": "03",
+      "title": "着急的农夫",
+      "heading": "怎么还不长呀？",
+      "visual": "waiting",
+      "startFrame": 767,
+      "durationInFrames": 324,
+      "durationSeconds": 10.8,
+      "paragraphs": [
+        {
+          "index": 0,
+          "file": "waiting-0-8f441b36da.m4a",
+          "text": "可是，才过了一天，小苗看起来和昨天差不多。",
+          "startFrame": 24,
+          "durationInFrames": 118,
+          "durationSeconds": 3.92
+        },
+        {
+          "index": 1,
+          "file": "waiting-1-cace8ee99b.m4a",
+          "text": "农夫急了：怎么还不长呀？我来帮帮你们！",
+          "startFrame": 156,
+          "durationInFrames": 96,
+          "durationSeconds": 3.2
+        }
+      ]
+    },
+    {
+      "id": "pulling",
+      "index": "04",
+      "title": "往上拔一拔",
+      "heading": "高了一点点？",
+      "visual": "pulling",
+      "startFrame": 1091,
+      "durationInFrames": 370,
+      "durationSeconds": 12.333333333333334,
+      "paragraphs": [
+        {
+          "index": 0,
+          "file": "pulling-0-67636bf3f8.m4a",
+          "text": "他弯下腰，把小苗一棵一棵，往上拔了一点点。",
+          "startFrame": 24,
+          "durationInFrames": 147,
+          "durationSeconds": 4.88
+        },
+        {
+          "index": 1,
+          "file": "pulling-1-59333f54c6.m4a",
+          "text": "看！一下子高了这么多！农夫得意地笑了。",
+          "startFrame": 185,
+          "durationInFrames": 113,
+          "durationSeconds": 3.76
+        }
+      ]
+    },
+    {
+      "id": "guess",
+      "index": "05",
+      "title": "你猜会怎样",
+      "heading": "小苗真的长大了吗？",
+      "visual": "guess",
+      "startFrame": 1461,
+      "durationInFrames": 288,
+      "durationSeconds": 9.6,
+      "paragraphs": [
+        {
+          "index": 0,
+          "file": "guess-0-1af985c8b8.m4a",
+          "text": "小朋友，你猜，小苗真的长大了吗？想一想，再告诉小禾。",
+          "startFrame": 24,
+          "durationInFrames": 192,
+          "durationSeconds": 6.4
+        }
+      ]
+    },
+    {
+      "id": "result",
+      "index": "06",
+      "title": "小苗低下了头",
+      "heading": "根，离开了泥土",
+      "visual": "result",
+      "startFrame": 1749,
+      "durationInFrames": 414,
+      "durationSeconds": 13.8,
+      "paragraphs": [
+        {
+          "index": 0,
+          "file": "result-0-bd84bd3a40.m4a",
+          "text": "第二天，小苗垂下了叶子。根被拔松了，小苗就没法好好吸水。",
+          "startFrame": 24,
+          "durationInFrames": 176,
+          "durationSeconds": 5.84
+        },
+        {
+          "index": 1,
+          "file": "result-1-f124d889d8.m4a",
+          "text": "农夫这才明白：我太着急，反而伤害了小苗。",
+          "startFrame": 214,
+          "durationInFrames": 128,
+          "durationSeconds": 4.24
+        }
+      ]
+    },
+    {
+      "id": "lesson",
+      "index": "07",
+      "title": "长大有自己的节奏",
+      "heading": "照顾它，也等一等",
+      "visual": "lesson",
+      "startFrame": 2163,
+      "durationInFrames": 401,
+      "durationSeconds": 13.366666666666667,
+      "paragraphs": [
+        {
+          "index": 0,
+          "file": "lesson-0-65a26bb5c8.m4a",
+          "text": "这就是拔苗助长。急着成功，用错了办法，反而把事情弄糟。",
+          "startFrame": 24,
+          "durationInFrames": 166,
+          "durationSeconds": 5.52
+        },
+        {
+          "index": 1,
+          "file": "lesson-1-fc84a86a45.m4a",
+          "text": "小苗需要合适的水分、阳光，还有时间，慢慢长大。",
+          "startFrame": 204,
+          "durationInFrames": 125,
+          "durationSeconds": 4.16
+        }
+      ]
+    },
+    {
+      "id": "ending",
+      "index": "08",
+      "title": "轮到你想一想",
+      "heading": "一点一点，慢慢来",
+      "visual": "ending",
+      "startFrame": 2564,
+      "durationInFrames": 432,
+      "durationSeconds": 14.4,
+      "paragraphs": [
+        {
+          "index": 0,
+          "file": "ending-0-4b33776366.m4a",
+          "text": "如果你种的小豆芽还没长高，你会拔一拔，还是照顾它，再等等呢？",
+          "startFrame": 24,
+          "durationInFrames": 156,
+          "durationSeconds": 5.2
+        },
+        {
+          "index": 1,
+          "file": "ending-1-b0af5b1a0b.m4a",
+          "text": "学骑车、学画画也一样。认真练习，一点一点来。我们下个故事见！",
+          "startFrame": 194,
+          "durationInFrames": 166,
+          "durationSeconds": 5.52
+        }
+      ]
+    }
+  ]
+}

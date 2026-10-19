@@ -3,7 +3,11 @@ import { Composition, Folder } from "remotion";
 import { HelloWorld } from "./HelloWorld";
 import { Logo } from "./HelloWorld/Logo";
 import { Title } from "./HelloWorld/Title";
+import { NNAvatar, NNEnergy } from "./nn/NNEnergy";
+import { AVATAR, MAIN } from "./nn/scenes";
 import { VIDEOS, type VideoDef } from "./videos";
+import { CarCompositions } from "./car/CarEnergyFlow";
+import { IdiomCompositions } from "./idioms/SeedlingStory";
 
 /** Videos grouped into the Studio sidebar folders they declare, in registry order. */
 const byFolder = (): readonly (readonly [string, readonly VideoDef[]])[] => {
@@ -19,6 +23,8 @@ const byFolder = (): readonly (readonly [string, readonly VideoDef[]])[] => {
 export const RemotionRoot: React.FC = () => {
 	return (
 		<>
+			<CarCompositions />
+			<IdiomCompositions />
 			{byFolder().map(([folder, videos]) => (
 				<Folder key={folder} name={folder}>
 					{videos.map((video) => (
@@ -34,6 +40,27 @@ export const RemotionRoot: React.FC = () => {
 					))}
 				</Folder>
 			))}
+			{/* 氛围循环。不进 VIDEOS 注册表：那个表是"带旁白的解说视频"的表，
+			    它的 defineVideo 强制要求 narration + timing + 音频三件套。 */}
+			<Folder name="Ambient">
+				<Composition
+					id="NNEnergy"
+					component={NNEnergy}
+					durationInFrames={MAIN.durationInFrames}
+					fps={MAIN.fps}
+					width={MAIN.width}
+					height={MAIN.height}
+				/>
+				{/* 方形变体，给 GIF / 头像用。尺寸和帧率都来自 AVATAR，不在这里重复写。 */}
+				<Composition
+					id="NNAvatar"
+					component={NNAvatar}
+					durationInFrames={AVATAR.durationInFrames}
+					fps={AVATAR.fps}
+					width={AVATAR.width}
+					height={AVATAR.height}
+				/>
+			</Folder>
 			<Folder name="Elements">
 				<Composition
 					id="Logo"

@@ -1,0 +1,123 @@
+{
+  "opening": [
+    {
+      "text": "你好，我是小禾。今天，一起听一个拔苗助长的故事。",
+      "startMs": 800,
+      "endMs": 5933.333333333334,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "小苗还没长高，能不能拉一拉，帮它快点长大呢？",
+      "startMs": 6400,
+      "endMs": 10733.333333333332,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "garden": [
+    {
+      "text": "从前，有位农夫种了一田小苗。嫩绿的小叶子，真可爱！",
+      "startMs": 800,
+      "endMs": 6266.666666666667,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "他每天都去看，盼着小苗快快长高。",
+      "startMs": 6733.333333333333,
+      "endMs": 10033.333333333334,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "waiting": [
+    {
+      "text": "可是，才过了一天，小苗看起来和昨天差不多。",
+      "startMs": 800,
+      "endMs": 4733.333333333333,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "农夫急了：怎么还不长呀？我来帮帮你们！",
+      "startMs": 5200,
+      "endMs": 8400,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "pulling": [
+    {
+      "text": "他弯下腰，把小苗一棵一棵，往上拔了一点点。",
+      "startMs": 800,
+      "endMs": 5700,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "看！一下子高了这么多！农夫得意地笑了。",
+      "startMs": 6166.666666666667,
+      "endMs": 9933.333333333334,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "guess": [
+    {
+      "text": "小朋友，你猜，小苗真的长大了吗？想一想，再告诉小禾。",
+      "startMs": 800,
+      "endMs": 7200,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "result": [
+    {
+      "text": "第二天，小苗垂下了叶子。根被拔松了，小苗就没法好好吸水。",
+      "startMs": 800,
+      "endMs": 6666.666666666667,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "农夫这才明白：我太着急，反而伤害了小苗。",
+      "startMs": 7133.333333333334,
+      "endMs": 11400,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "lesson": [
+    {
+      "text": "这就是拔苗助长。急着成功，用错了办法，反而把事情弄糟。",
+      "startMs": 800,
+      "endMs": 6333.333333333333,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "小苗需要合适的水分、阳光，还有时间，慢慢长大。",
+      "startMs": 6800,
+      "endMs": 10966.666666666666,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "ending": [
+    {
+      "text": "如果你种的小豆芽还没长高，你会拔一拔，还是照顾它，再等等呢？",
+      "startMs": 800,
+      "endMs": 6000,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "学骑车、学画画也一样。认真练习，一点一点来。我们下个故事见！",
+      "startMs": 6466.666666666667,
+      "endMs": 12000,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ]
+}

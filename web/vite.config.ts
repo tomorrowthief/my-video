@@ -7,10 +7,10 @@ import { defineConfig, type Plugin } from "vite";
 const here = path.dirname(fileURLToPath(import.meta.url));
 const repoPublic = path.resolve(here, "../public");
 
-/** Extensions the site actually serves. Narration ships as AAC; the wavs the
+/** Extensions the site actually serves: AAC narration and storybook images. The wavs the
  *  TTS script leaves behind are five times the size and nothing references
  *  them, so they must not reach the bundle. */
-const SHIPPED = new Set([".m4a"]);
+const SHIPPED = new Set([".m4a", ".png", ".webp", ".jpg", ".jpeg"]);
 
 /**
  * Copies the repo's public/ into dist, but only what the site serves.

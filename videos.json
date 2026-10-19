@@ -15,12 +15,35 @@
 		"timing": "src/timing.python.json",
 		"audio": "audio-py"
 	},
+	"car-energy": {
+		"title": "CarEnergyFlow",
+		"brand": "汽车原理",
+		"folder": "Automotive",
+		"narration": "narration.car.json",
+		"timing": "src/car/timing.json",
+		"audio": "audio-car",
+		"tts": { "provider": "bailian", "model": "qwen3-tts-flash", "voice": "Ethan" }
+	},
+	"idiom-seedling": {
+		"title": "SeedlingStory",
+		"brand": "小禾的成语故事",
+		"folder": "Idioms",
+		"narration": "narration.idiom.json",
+		"timing": "src/idioms/timing.json",
+		"audio": "audio-idiom",
+		"tts": { "provider": "bailian", "model": "qwen3-tts-flash", "voice": "Cherry" }
+	},
 	"math": {
 		"title": "ChickenRabbit",
 		"brand": "小学数学",
 		"folder": "Math",
 		"narration": "narration.math.json",
 		"timing": "src/timing.math.json",
-		"audio": "audio-math"
+		"audio": "audio-math",
+		"tts": {
+			"provider": "bailian",
+			"model": "qwen3-tts-flash",
+			"voice": "Cherry"
+		}
 	}
 }

@@ -1,0 +1,188 @@
+{
+  "fps": 30,
+  "width": 1920,
+  "height": 1080,
+  "provider": "bailian",
+  "model": "qwen3-tts-flash",
+  "voice": "Ethan",
+  "totalFrames": 2840,
+  "totalSeconds": 94.66666666666667,
+  "scenes": [
+    {
+      "id": "intro",
+      "index": "01",
+      "title": "打开汽车",
+      "heading": "能量，如何驱动一辆车？",
+      "visual": "overview",
+      "startFrame": 0,
+      "durationInFrames": 284,
+      "durationSeconds": 9.466666666666667,
+      "paragraphs": [
+        {
+          "index": 0,
+          "file": "intro-0-1c7bee6d6d.m4a",
+          "text": "一辆电动汽车，怎样把电变成前进的力量？",
+          "startFrame": 18,
+          "durationInFrames": 116,
+          "durationSeconds": 3.84
+        },
+        {
+          "index": 1,
+          "file": "intro-1-d52cac5424.m4a",
+          "text": "打开车身，跟着能量走一遍",
+          "startFrame": 143,
+          "durationInFrames": 108,
+          "durationSeconds": 3.6
+        }
+      ]
+    },
+    {
+      "id": "battery",
+      "index": "02",
+      "title": "动力电池",
+      "heading": "先把能量存起来",
+      "visual": "battery",
+      "startFrame": 284,
+      "durationInFrames": 397,
+      "durationSeconds": 13.233333333333333,
+      "paragraphs": [
+        {
+          "index": 0,
+          "file": "battery-0-f4eb4eacd1.m4a",
+          "text": "动力电池储存电能，输出直流电",
+          "startFrame": 18,
+          "durationInFrames": 173,
+          "durationSeconds": 5.76
+        },
+        {
+          "index": 1,
+          "file": "battery-1-437a44b10c.m4a",
+          "text": "加速踏板发出请求，控制器分配动力",
+          "startFrame": 200,
+          "durationInFrames": 164,
+          "durationSeconds": 5.44
+        }
+      ]
+    },
+    {
+      "id": "inverter",
+      "index": "03",
+      "title": "逆变器",
+      "heading": "把电，变成电机需要的样子",
+      "visual": "inverter",
+      "startFrame": 681,
+      "durationInFrames": 526,
+      "durationSeconds": 17.533333333333335,
+      "paragraphs": [
+        {
+          "index": 0,
+          "file": "inverter-0-0b6ecd6885.m4a",
+          "text": "逆变器：直流电 → 交流电，调节电机转矩",
+          "startFrame": 18,
+          "durationInFrames": 240,
+          "durationSeconds": 8
+        },
+        {
+          "index": 1,
+          "file": "inverter-1-d09c9f756d.m4a",
+          "text": "流动粒子是能量方向的示意",
+          "startFrame": 267,
+          "durationInFrames": 226,
+          "durationSeconds": 7.52
+        }
+      ]
+    },
+    {
+      "id": "drive",
+      "index": "04",
+      "title": "电机与车轮",
+      "heading": "电能，变成向前的力量",
+      "visual": "drive",
+      "startFrame": 1207,
+      "durationInFrames": 488,
+      "durationSeconds": 16.266666666666666,
+      "paragraphs": [
+        {
+          "index": 0,
+          "file": "drive-0-2f19c811f4.m4a",
+          "text": "减速与差速传动 → 驱动轮 → 汽车前进",
+          "startFrame": 18,
+          "durationInFrames": 226,
+          "durationSeconds": 7.52
+        },
+        {
+          "index": 1,
+          "file": "drive-1-0433a8b7dc.m4a",
+          "text": "电池 → 逆变器 → 电机 → 车轮",
+          "startFrame": 253,
+          "durationInFrames": 202,
+          "durationSeconds": 6.72
+        }
+      ]
+    },
+    {
+      "id": "regen",
+      "index": "05",
+      "title": "能量回收",
+      "heading": "减速时，让能量往回走",
+      "visual": "regen",
+      "startFrame": 1695,
+      "durationInFrames": 709,
+      "durationSeconds": 23.633333333333333,
+      "paragraphs": [
+        {
+          "index": 0,
+          "file": "regen-0-1b9a2f6baa.m4a",
+          "text": "车轮 → 电机发电 → 电力电子系统 → 电池",
+          "startFrame": 18,
+          "durationInFrames": 248,
+          "durationSeconds": 8.24
+        },
+        {
+          "index": 1,
+          "file": "regen-1-8b3a6dc95e.m4a",
+          "text": "再生制动：回收部分动能",
+          "startFrame": 275,
+          "durationInFrames": 192,
+          "durationSeconds": 6.4
+        },
+        {
+          "index": 2,
+          "file": "regen-2-f0d337b52b.m4a",
+          "text": "回收有条件，也仍需要摩擦制动",
+          "startFrame": 476,
+          "durationInFrames": 200,
+          "durationSeconds": 6.64
+        }
+      ]
+    },
+    {
+      "id": "recap",
+      "index": "06",
+      "title": "一图看懂",
+      "heading": "一条主线，两种方向",
+      "visual": "recap",
+      "startFrame": 2404,
+      "durationInFrames": 436,
+      "durationSeconds": 14.533333333333333,
+      "paragraphs": [
+        {
+          "index": 0,
+          "file": "recap-0-f8fa42315e.m4a",
+          "text": "驱动：电能 → 动能　｜　回收：部分动能 → 电能",
+          "startFrame": 18,
+          "durationInFrames": 212,
+          "durationSeconds": 7.04
+        },
+        {
+          "index": 1,
+          "file": "recap-1-c5d2d7d13d.m4a",
+          "text": "看懂能量流，就看懂了电驱的主线",
+          "startFrame": 239,
+          "durationInFrames": 164,
+          "durationSeconds": 5.44
+        }
+      ]
+    }
+  ]
+}

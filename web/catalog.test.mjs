@@ -16,6 +16,11 @@ const published = [
   "python",
   "math",
   "idiom-seedling",
+  "idiom-stump",
+  "fable-fox",
+  "history-plum",
+  "dream-thief",
+  "nn-forward",
   "car-energy",
 ];
 const state = (query) => resolveCatalogState(query, published);
@@ -65,7 +70,7 @@ test("a valid video wins over conflicting tab, category, and series URL values",
   );
 });
 
-test("mathematics and technology are disjoint and technology includes the car explainer", () => {
+test("mathematics and technology are disjoint and technology includes the car and network explainers", () => {
   assert.deepEqual(
     filterCatalogKeys(published, {
       tab: "math",
@@ -80,7 +85,7 @@ test("mathematics and technology are disjoint and technology includes the car ex
       category: "all",
       series: "all",
     }),
-    ["pi-durable", "python", "car-energy"],
+    ["pi-durable", "python", "nn-forward", "car-energy"],
   );
   assert.deepEqual(
     filterCatalogKeys(published, {
@@ -88,12 +93,12 @@ test("mathematics and technology are disjoint and technology includes the car ex
       category: "all",
       series: "all",
     }),
-    ["idiom-seedling"],
+    ["idiom-seedling", "idiom-stump", "fable-fox", "history-plum", "dream-thief"],
   );
 });
 
 test("unpublished story types have no selected video instead of retaining the old player", () => {
-  for (const category of ["history", "fable", "myth", "fairytale"]) {
+  for (const category of ["myth"]) {
     const restored = state(`?tab=stories&category=${category}`);
     assert.equal(restored.category, category);
     assert.equal(restored.video, null);
@@ -103,6 +108,16 @@ test("unpublished story types have no selected video instead of retaining the ol
         .video,
       "idiom-seedling",
     );
+  }
+  for (const [category, key] of [
+    ["idiom", "idiom-seedling"],
+    ["fable", "fable-fox"],
+    ["history", "history-plum"],
+    ["fairytale", "dream-thief"],
+  ]) {
+    const restored = state(`?tab=stories&category=${category}`);
+    assert.equal(restored.category, category);
+    assert.equal(restored.video, key);
   }
 });
 
@@ -117,7 +132,7 @@ test("three kingdoms is a historical series and cannot become an unrelated filte
   );
   const history = state("?tab=stories&category=history&series=three-kingdoms");
   assert.equal(history.series, "three-kingdoms");
-  assert.equal(history.video, null);
+  assert.equal(history.video, "history-plum");
   for (const query of [
     "?tab=stories&series=three-kingdoms",
     "?tab=stories&category=idiom&series=three-kingdoms",
@@ -136,7 +151,7 @@ test("unknown, removed, and malformed query values degrade safely", () => {
   assert.equal(state("?tab=tech&video=missing").video, "pi-durable");
   assert.equal(
     state("?tab=stories&category=history&video=missing").video,
-    null,
+    "history-plum",
   );
   assert.doesNotThrow(() => state("?video=%E0%A4%A&tab=%"));
   assert.deepEqual(resolveCatalogState("?video=math", []), {
@@ -170,7 +185,7 @@ test("catalog metadata cannot publish absent videos and uncatalogued explainers 
   assert.equal(
     resolveCatalogState(
       "",
-      published.filter((key) => key !== "idiom-seedling"),
+      published.filter((key) => catalogEntry(key).tab !== "stories"),
     ).video,
     null,
   );
@@ -180,7 +195,7 @@ test("catalog metadata cannot publish absent videos and uncatalogued explainers 
       category: "all",
       series: "all",
     }),
-    ["pi-durable", "python", "car-energy", "future-explainer"],
+    ["pi-durable", "python", "nn-forward", "car-energy", "future-explainer"],
   );
   for (const entry of Object.values(VIDEO_CATALOG)) {
     if (entry.tab !== "stories") continue;

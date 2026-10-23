@@ -1,9 +1,16 @@
 // Paragraph captions use measured TTS clip boundaries, not estimated word timing.
+import { parseArgs } from "node:util";
 import { readFileSync, writeFileSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 
-const timingPath = new URL("../src/idioms/timing.json", import.meta.url);
-const target = new URL("../src/idioms/captions.json", import.meta.url);
+const { values } = parseArgs({
+  options: {
+    timing: { type: "string", default: "../src/idioms/timing.json" },
+    out: { type: "string", default: "../src/idioms/captions.json" },
+  },
+});
+const timingPath = new URL(values.timing, import.meta.url);
+const target = new URL(values.out, import.meta.url);
 const timing = JSON.parse(readFileSync(timingPath, "utf8"));
 const captions = Object.fromEntries(
   timing.scenes.map((scene) => [

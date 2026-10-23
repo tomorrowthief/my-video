@@ -1,0 +1,236 @@
+{
+  "fps": 30,
+  "width": 1920,
+  "height": 1080,
+  "provider": "bailian",
+  "model": "qwen3-tts-flash",
+  "voice": "Cherry",
+  "totalFrames": 3040,
+  "totalSeconds": 101.33333333333333,
+  "scenes": [
+    {
+      "id": "opening",
+      "index": "01",
+      "title": "翻开故事书",
+      "heading": "守株待兔",
+      "visual": "book",
+      "startFrame": 0,
+      "durationInFrames": 449,
+      "durationSeconds": 14.966666666666667,
+      "paragraphs": [
+        {
+          "index": 0,
+          "file": "opening-0-8ffdfc396c.m4a",
+          "text": "你好，我是小禾。今天，一起听一个守株待兔的故事。",
+          "startFrame": 24,
+          "durationInFrames": 135,
+          "durationSeconds": 4.48
+        },
+        {
+          "index": 1,
+          "file": "opening-1-cd80093226.m4a",
+          "text": "守株待兔。株，就是田里的树桩。树桩旁，到底在等谁呢？",
+          "startFrame": 173,
+          "durationInFrames": 204,
+          "durationSeconds": 6.8
+        }
+      ]
+    },
+    {
+      "id": "field",
+      "index": "02",
+      "title": "勤劳的农夫",
+      "heading": "一分耕耘",
+      "visual": "field",
+      "startFrame": 449,
+      "durationInFrames": 375,
+      "durationSeconds": 12.5,
+      "paragraphs": [
+        {
+          "index": 0,
+          "file": "field-0-52aa7f0794.m4a",
+          "text": "很久以前，有一位农夫，每天在田里辛苦耕作。",
+          "startFrame": 24,
+          "durationInFrames": 123,
+          "durationSeconds": 4.08
+        },
+        {
+          "index": 1,
+          "file": "field-1-ce88dbba23.m4a",
+          "text": "锄地、浇水、除杂草，样样活儿都做得认认真真。",
+          "startFrame": 161,
+          "durationInFrames": 142,
+          "durationSeconds": 4.72
+        }
+      ]
+    },
+    {
+      "id": "hare",
+      "index": "03",
+      "title": "飞来的野兔",
+      "heading": "砰的一声",
+      "visual": "hare",
+      "startFrame": 824,
+      "durationInFrames": 384,
+      "durationSeconds": 12.8,
+      "paragraphs": [
+        {
+          "index": 0,
+          "file": "hare-0-e2054bb00a.m4a",
+          "text": "忽然，一只野兔飞快地跑来，一头撞在了树桩上。",
+          "startFrame": 24,
+          "durationInFrames": 137,
+          "durationSeconds": 4.56
+        },
+        {
+          "index": 1,
+          "file": "hare-1-6e7fef4d91.m4a",
+          "text": "哎哟！野兔撞晕了，躺在地上，一动也不动。",
+          "startFrame": 175,
+          "durationInFrames": 137,
+          "durationSeconds": 4.56
+        }
+      ]
+    },
+    {
+      "id": "luck",
+      "index": "04",
+      "title": "白捡的兔子",
+      "heading": "天上掉馅饼",
+      "visual": "luck",
+      "startFrame": 1208,
+      "durationInFrames": 356,
+      "durationSeconds": 11.866666666666667,
+      "paragraphs": [
+        {
+          "index": 0,
+          "file": "luck-0-1b6b429039.m4a",
+          "text": "农夫跑过去，轻轻松松，就捡到了一只大肥兔。",
+          "startFrame": 24,
+          "durationInFrames": 118,
+          "durationSeconds": 3.92
+        },
+        {
+          "index": 1,
+          "file": "luck-1-0f1ef82299.m4a",
+          "text": "晚上，他美美地吃了一顿兔肉，心里乐开了花。",
+          "startFrame": 156,
+          "durationInFrames": 128,
+          "durationSeconds": 4.24
+        }
+      ]
+    },
+    {
+      "id": "waiting",
+      "index": "05",
+      "title": "守着树桩的人",
+      "heading": "不用干活了？",
+      "visual": "waiting",
+      "startFrame": 1564,
+      "durationInFrames": 418,
+      "durationSeconds": 13.933333333333334,
+      "paragraphs": [
+        {
+          "index": 0,
+          "file": "waiting-0-63207b6e42.m4a",
+          "text": "农夫想：种田多累呀。守着树桩，就有兔子送上门，多好！",
+          "startFrame": 24,
+          "durationInFrames": 183,
+          "durationSeconds": 6.08
+        },
+        {
+          "index": 1,
+          "file": "waiting-1-1d1f08831a.m4a",
+          "text": "从第二天起，他扔下锄头，天天坐在树桩旁边等。",
+          "startFrame": 221,
+          "durationInFrames": 125,
+          "durationSeconds": 4.16
+        }
+      ]
+    },
+    {
+      "id": "empty",
+      "index": "06",
+      "title": "荒芜的田地",
+      "heading": "什么也没等到",
+      "visual": "empty",
+      "startFrame": 1982,
+      "durationInFrames": 392,
+      "durationSeconds": 13.066666666666666,
+      "paragraphs": [
+        {
+          "index": 0,
+          "file": "empty-0-2f31ffa864.m4a",
+          "text": "一天，两天，许多天过去了，再也没有野兔撞上来。",
+          "startFrame": 24,
+          "durationInFrames": 140,
+          "durationSeconds": 4.64
+        },
+        {
+          "index": 1,
+          "file": "empty-1-b81459175d.m4a",
+          "text": "田里的庄稼枯了，长满了杂草，农夫什么也没有等到。",
+          "startFrame": 178,
+          "durationInFrames": 142,
+          "durationSeconds": 4.72
+        }
+      ]
+    },
+    {
+      "id": "lesson",
+      "index": "07",
+      "title": "小禾的笔记",
+      "heading": "运气与耕耘",
+      "visual": "lesson",
+      "startFrame": 2374,
+      "durationInFrames": 361,
+      "durationSeconds": 12.033333333333333,
+      "paragraphs": [
+        {
+          "index": 0,
+          "file": "lesson-0-4a283bb364.m4a",
+          "text": "偶尔的好运气，不会天天都来敲门。",
+          "startFrame": 24,
+          "durationInFrames": 92,
+          "durationSeconds": 3.04
+        },
+        {
+          "index": 1,
+          "file": "lesson-1-9343bcd8c2.m4a",
+          "text": "真正的收获，要靠自己一天一天，踏踏实实地耕耘。",
+          "startFrame": 130,
+          "durationInFrames": 159,
+          "durationSeconds": 5.28
+        }
+      ]
+    },
+    {
+      "id": "ending",
+      "index": "08",
+      "title": "轮到你想一想",
+      "heading": "你会怎么做",
+      "visual": "ending",
+      "startFrame": 2735,
+      "durationInFrames": 305,
+      "durationSeconds": 10.166666666666666,
+      "paragraphs": [
+        {
+          "index": 0,
+          "file": "ending-0-5005a9e526.m4a",
+          "text": "如果是你，会怎么劝这位农夫呢？",
+          "startFrame": 24,
+          "durationInFrames": 82,
+          "durationSeconds": 2.72
+        },
+        {
+          "index": 1,
+          "file": "ending-1-3f30dc7afe.m4a",
+          "text": "守株待兔，你学会了吗？我们下集，再见啦。",
+          "startFrame": 120,
+          "durationInFrames": 113,
+          "durationSeconds": 3.76
+        }
+      ]
+    }
+  ]
+}

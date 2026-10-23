@@ -28,6 +28,7 @@ export const STORY_TYPES = [
 export const STORY_SERIES = [
   { id: "xiaohe-idioms", label: "小禾的成语故事", storyType: "idiom" },
   { id: "three-kingdoms", label: "三国小故事", storyType: "history" },
+  { id: "hill-fables", label: "山林寓言", storyType: "fable" },
 ] as const;
 
 export type MainTab = (typeof MAIN_TABS)[number]["id"];
@@ -58,6 +59,15 @@ export type CatalogEntry = {
 } & Placement;
 
 export const VIDEO_CATALOG: Readonly<Record<string, CatalogEntry>> = {
+  "dream-thief": {
+    title: "偷梦的妖精",
+    label: "月光故事集",
+    tab: "stories",
+    storyType: "fairytale",
+    description:
+      "一个从未做过梦的小妖精，遇见了愿意和它一起编故事的女孩。关于想象、分享与归还的原创童话。",
+    symbol: "梦",
+  },
   "idiom-seedling": {
     title: "拔苗助长",
     label: "小禾的成语故事",
@@ -67,6 +77,36 @@ export const VIDEO_CATALOG: Readonly<Record<string, CatalogEntry>> = {
     description:
       "跟着小禾翻开绘本，看看着急的农夫做了什么。成长，需要照顾，也需要时间。",
     symbol: "芽",
+  },
+  "idiom-stump": {
+    title: "守株待兔",
+    label: "小禾的成语故事",
+    tab: "stories",
+    storyType: "idiom",
+    series: "xiaohe-idioms",
+    description:
+      "一只野兔撞上树桩，农夫从此守在桩旁等好运。运气是偶然，耕耘才靠得住。",
+    symbol: "桩",
+  },
+  "fable-fox": {
+    title: "狐假虎威",
+    label: "山林寓言",
+    tab: "stories",
+    storyType: "fable",
+    series: "hill-fables",
+    description:
+      "被抓住的狐狸自称百兽之王，借老虎的威风吓走山林。看穿借来的架子。",
+    symbol: "狐",
+  },
+  "history-plum": {
+    title: "望梅止渴",
+    label: "三国小故事",
+    tab: "stories",
+    storyType: "history",
+    series: "three-kingdoms",
+    description:
+      "盛夏行军，曹操一句“前面有梅林”，让口渴的队伍撑到了水源。取材《世说新语》。",
+    symbol: "梅",
   },
   math: {
     title: "鸡兔同笼",
@@ -98,6 +138,14 @@ export const VIDEO_CATALOG: Readonly<Record<string, CatalogEntry>> = {
     tab: "tech",
     description: "通过三维拆解与能量流动图，理解电动汽车的驱动过程与再生制动。",
     symbol: "↔",
+  },
+  "nn-forward": {
+    title: "神经网络前向传播",
+    label: "机器学习",
+    tab: "tech",
+    description:
+      "跟随一组数值穿过网络：加权、激活、逐层传播，看前向计算如何形成输出。",
+    symbol: "◉",
   },
 };
 

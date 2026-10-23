@@ -1,0 +1,130 @@
+{
+  "opening": [
+    {
+      "text": "今天，一起听一个三国小故事：望梅止渴。",
+      "startMs": 800,
+      "endMs": 5066.666666666666,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "止渴，就是让口渴停下来。望一望梅子，就能止渴吗？",
+      "startMs": 5533.333333333333,
+      "endMs": 10266.666666666668,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "march": [
+    {
+      "text": "盛夏，曹操带着大军，急急忙忙赶路。",
+      "startMs": 800,
+      "endMs": 4266.666666666667,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "太阳火辣辣的，一路上看不到一条河，也找不到一口井。",
+      "startMs": 4733.333333333333,
+      "endMs": 8900,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "thirsty": [
+    {
+      "text": "士兵们嘴唇发干，脚步越来越慢。",
+      "startMs": 800,
+      "endMs": 3600,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "水袋空空荡荡，嗓子眼儿直冒烟。",
+      "startMs": 4066.6666666666665,
+      "endMs": 6633.333333333334,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "idea": [
+    {
+      "text": "曹操骑在马上，脑筋一转，想出了一个好办法。",
+      "startMs": 800,
+      "endMs": 4166.666666666667,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "他抽出马鞭，朝前面一指。",
+      "startMs": 4633.333333333334,
+      "endMs": 6500,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "plum": [
+    {
+      "text": "将士们，前面有一大片梅林！梅子又酸又甜，好吃极了！",
+      "startMs": 800,
+      "endMs": 5466.666666666667,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "士兵们一听，都咽了咽口水。",
+      "startMs": 5933.333333333334,
+      "endMs": 8033.333333333333,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "mouths": [
+    {
+      "text": "一想到酸酸的梅子，嘴里竟真的生出了口水。",
+      "startMs": 800,
+      "endMs": 4166.666666666667,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "大家不觉得那么渴了，脚下也来了力气。",
+      "startMs": 4633.333333333334,
+      "endMs": 7533.333333333333,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "found": [
+    {
+      "text": "队伍加快脚步，终于在前方找到了水源。",
+      "startMs": 800,
+      "endMs": 3933.333333333333,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "大家痛痛快快地喝了个够。",
+      "startMs": 4400,
+      "endMs": 6266.666666666667,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "ending": [
+    {
+      "text": "望梅止渴，你学会了吗？一个小小的想象，也能帮人撑过难关。",
+      "startMs": 800,
+      "endMs": 6733.333333333333,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "这个故事取材《世说新语》，我们下集再见。",
+      "startMs": 7200,
+      "endMs": 10900,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ]
+}

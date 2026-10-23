@@ -1,0 +1,130 @@
+{
+  "opening": [
+    {
+      "text": "今天，一起听一个狐假虎威的故事。",
+      "startMs": 800,
+      "endMs": 3766.6666666666665,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "假，是借的意思。狐狸，借了谁的威风呢？",
+      "startMs": 4233.333333333333,
+      "endMs": 8233.333333333332,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "forest": [
+    {
+      "text": "大山里有一片森林，住着许多动物。",
+      "startMs": 800,
+      "endMs": 3700,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "其中最威风的，是一只大老虎。",
+      "startMs": 4166.666666666667,
+      "endMs": 7533.333333333333,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "caught": [
+    {
+      "text": "这天，老虎扑住了一只狐狸。",
+      "startMs": 800,
+      "endMs": 3600,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "哈哈，今天的午餐，有着落啦！",
+      "startMs": 4066.6666666666665,
+      "endMs": 7133.333333333334,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "trick": [
+    {
+      "text": "狐狸眼珠一转，计上心来。",
+      "startMs": 800,
+      "endMs": 3300,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "慢着！我是天帝派来的百兽之王，你敢吃我吗？",
+      "startMs": 3766.6666666666665,
+      "endMs": 7233.333333333333,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "parade": [
+    {
+      "text": "狐狸说：你跟在我后面走一圈，看看百兽见了谁敢不逃。",
+      "startMs": 800,
+      "endMs": 5466.666666666667,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "老虎半信半疑，跟在了狐狸身后。",
+      "startMs": 5933.333333333334,
+      "endMs": 9000,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "flee": [
+    {
+      "text": "森林里的动物，看见狐狸身后的大老虎，吓得四散奔逃。",
+      "startMs": 800,
+      "endMs": 6100,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "小鹿、野猪、兔子，一眨眼全都跑光了。",
+      "startMs": 6566.666666666666,
+      "endMs": 10666.666666666666,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "lesson": [
+    {
+      "text": "动物们害怕的，其实是狐狸身后的老虎。",
+      "startMs": 800,
+      "endMs": 3866.6666666666665,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "狐狸借着老虎的威风，吓走了大家。",
+      "startMs": 4333.333333333333,
+      "endMs": 7133.333333333334,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "ending": [
+    {
+      "text": "狐假虎威，你学会了吗？",
+      "startMs": 800,
+      "endMs": 3133.3333333333335,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "想想看：威风是自己的本事，还是借来的架子呢？下集再见。",
+      "startMs": 3600,
+      "endMs": 8733.333333333332,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ]
+}

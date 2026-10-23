@@ -7,14 +7,18 @@
 	"private": true,
 	"dependencies": {
 		"@react-three/fiber": "9.8.2",
+		"@remotion/bundler": "4.0.533",
 		"@remotion/cli": "4.0.533",
 		"@remotion/player": "4.0.533",
+		"@remotion/renderer": "4.0.533",
 		"@remotion/tailwind-v4": "4.0.533",
 		"@remotion/three": "4.0.533",
 		"@remotion/zod-types": "4.0.533",
+		"busboy": "^1.6.0",
 		"react": "19.2.3",
 		"react-dom": "19.2.3",
 		"remotion": "4.0.533",
+		"sharp": "^0.35.5",
 		"tailwindcss": "4.0.0",
 		"three": "0.186.1",
 		"zod": "4.5.4"
@@ -40,7 +44,11 @@
 		"tts:generate": "node scripts/tts-batch.mjs",
 		"web:dev": "vite --config web/vite.config.ts --port 3200",
 		"web:build": "vite build --config web/vite.config.ts",
-		"web:preview": "vite preview --config web/vite.config.ts --port 3300"
+		"web:preview": "vite preview --config web/vite.config.ts --port 3300",
+		"studio:server": "node --experimental-strip-types server/index.mjs",
+		"studio:dev": "vite --config web/vite.config.ts --port 3200 --open /studio",
+		"studio:test": "node --experimental-strip-types --test tests/studio/*.test.mjs",
+		"studio:server:test": "node --experimental-strip-types server/smoke-test.mjs"
 	},
 	"sideEffects": [
 		"*.css"

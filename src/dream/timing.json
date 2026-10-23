@@ -1,0 +1,236 @@
+{
+  "fps": 30,
+  "width": 1920,
+  "height": 1080,
+  "provider": "bailian",
+  "model": "qwen3-tts-flash",
+  "voice": "Cherry",
+  "totalFrames": 4001,
+  "totalSeconds": 133.36666666666667,
+  "scenes": [
+    {
+      "id": "opening",
+      "index": "01",
+      "title": "偷梦的妖精",
+      "heading": "偷梦的妖精",
+      "visual": "opening",
+      "startFrame": 0,
+      "durationInFrames": 401,
+      "durationSeconds": 13.366666666666667,
+      "paragraphs": [
+        {
+          "index": 0,
+          "file": "opening-0-d05843a2ebc1.m4a",
+          "text": "当整个小镇睡着的时候，有一扇小小的窗，还亮着月光。",
+          "startFrame": 30,
+          "durationInFrames": 149,
+          "durationSeconds": 4.947333333333333
+        },
+        {
+          "index": 1,
+          "file": "opening-1-f6d51e670614.m4a",
+          "text": "一个提着玻璃瓶的小妖精，正踮着脚尖，悄悄走来。",
+          "startFrame": 200,
+          "durationInFrames": 138,
+          "durationSeconds": 4.597791666666667
+        }
+      ]
+    },
+    {
+      "id": "collect",
+      "index": "02",
+      "title": "装进瓶子的梦",
+      "heading": "装进瓶子的梦",
+      "visual": "collect",
+      "startFrame": 401,
+      "durationInFrames": 485,
+      "durationSeconds": 16.166666666666668,
+      "paragraphs": [
+        {
+          "index": 0,
+          "file": "collect-0-d2a501ad7cae.m4a",
+          "text": "它轻轻一招手，会飞的鲸鱼、糖果城堡，都变成金色的光，钻进瓶子。",
+          "startFrame": 30,
+          "durationInFrames": 219,
+          "durationSeconds": 7.291916666666666
+        },
+        {
+          "index": 1,
+          "file": "collect-1-78dbb9da2578.m4a",
+          "text": "第二天，孩子们醒来，却怎么也想不起，昨夜梦见了什么。",
+          "startFrame": 270,
+          "durationInFrames": 152,
+          "durationSeconds": 5.034583333333333
+        }
+      ]
+    },
+    {
+      "id": "follow",
+      "index": "03",
+      "title": "一个没有睡着的女孩",
+      "heading": "一个没有睡着的女孩",
+      "visual": "follow",
+      "startFrame": 886,
+      "durationInFrames": 527,
+      "durationSeconds": 17.566666666666666,
+      "paragraphs": [
+        {
+          "index": 0,
+          "file": "follow-0-c92f86e9fdec.m4a",
+          "text": "小女孩米米决定，今晚一定要看个究竟。她闭上眼睛，偷偷留了一条缝。",
+          "startFrame": 30,
+          "durationInFrames": 209,
+          "durationSeconds": 6.9427916666666665
+        },
+        {
+          "index": 1,
+          "file": "follow-1-7d0831a43805.m4a",
+          "text": "等妖精靠近，她轻声说：我看见你啦。你把我们的梦，带到哪里去了？",
+          "startFrame": 260,
+          "durationInFrames": 204,
+          "durationSeconds": 6.772
+        }
+      ]
+    },
+    {
+      "id": "secret",
+      "index": "04",
+      "title": "森林里的秘密",
+      "heading": "森林里的秘密",
+      "visual": "secret",
+      "startFrame": 1413,
+      "durationInFrames": 532,
+      "durationSeconds": 17.733333333333334,
+      "paragraphs": [
+        {
+          "index": 0,
+          "file": "secret-0-7c0d17e4ad8b.m4a",
+          "text": "妖精带着米米，走进森林。树枝上，挂着一瓶又一瓶发光的梦。",
+          "startFrame": 30,
+          "durationInFrames": 183,
+          "durationSeconds": 6.076416666666667
+        },
+        {
+          "index": 1,
+          "file": "secret-1-6295f987fab0.m4a",
+          "text": "可是妖精的小床上，只有黑暗。它低下头说：因为，我从来没有做过梦。",
+          "startFrame": 234,
+          "durationInFrames": 235,
+          "durationSeconds": 7.811583333333333
+        }
+      ]
+    },
+    {
+      "id": "together",
+      "index": "05",
+      "title": "我们一起编一个吧",
+      "heading": "我们一起编一个吧",
+      "visual": "together",
+      "startFrame": 1945,
+      "durationInFrames": 487,
+      "durationSeconds": 16.233333333333334,
+      "paragraphs": [
+        {
+          "index": 0,
+          "file": "together-0-ac1680142746.m4a",
+          "text": "米米坐到它身边。没有梦，那我们就一起，编一个故事吧。",
+          "startFrame": 30,
+          "durationInFrames": 146,
+          "durationSeconds": 4.8566666666666665
+        },
+        {
+          "index": 1,
+          "file": "together-1-88c792af13ce.m4a",
+          "text": "一艘树叶小船，驶过星星做的海。一只怕黑的小太阳，坐在船头，等朋友来。",
+          "startFrame": 197,
+          "durationInFrames": 227,
+          "durationSeconds": 7.556666666666667
+        }
+      ]
+    },
+    {
+      "id": "first",
+      "index": "06",
+      "title": "第一个属于自己的梦",
+      "heading": "第一个属于自己的梦",
+      "visual": "first",
+      "startFrame": 2432,
+      "durationInFrames": 527,
+      "durationSeconds": 17.566666666666666,
+      "paragraphs": [
+        {
+          "index": 0,
+          "file": "first-0-b65df8df7acb.m4a",
+          "text": "听着听着，妖精睡着了。它梦见自己坐上小船，米米就在身旁。",
+          "startFrame": 30,
+          "durationInFrames": 199,
+          "durationSeconds": 6.600458333333333
+        },
+        {
+          "index": 1,
+          "file": "first-1-a095eeff9962.m4a",
+          "text": "原来，梦不一定要从别人那里拿来。一个故事，也能让自己的心，亮起来。",
+          "startFrame": 250,
+          "durationInFrames": 214,
+          "durationSeconds": 7.121666666666667
+        }
+      ]
+    },
+    {
+      "id": "return",
+      "index": "07",
+      "title": "把梦送回家",
+      "heading": "把梦送回家",
+      "visual": "return",
+      "startFrame": 2959,
+      "durationInFrames": 519,
+      "durationSeconds": 17.3,
+      "paragraphs": [
+        {
+          "index": 0,
+          "file": "return-0-36ebd3f0d9d0.m4a",
+          "text": "第二个夜晚，妖精打开所有的玻璃瓶，让鲸鱼和城堡，飞回孩子们的枕边。",
+          "startFrame": 30,
+          "durationInFrames": 201,
+          "durationSeconds": 6.685083333333333
+        },
+        {
+          "index": 1,
+          "file": "return-1-c57cb739d7de.m4a",
+          "text": "它轻轻敲了敲米米的窗。这一次，它没有拿瓶子，只带来了一朵小花。",
+          "startFrame": 252,
+          "durationInFrames": 204,
+          "durationSeconds": 6.771125
+        }
+      ]
+    },
+    {
+      "id": "ending",
+      "index": "08",
+      "title": "今天，你有没有新故事？",
+      "heading": "今天，你有没有新故事？",
+      "visual": "ending",
+      "startFrame": 3478,
+      "durationInFrames": 523,
+      "durationSeconds": 17.433333333333334,
+      "paragraphs": [
+        {
+          "index": 0,
+          "file": "ending-0-5bf7b25503e3.m4a",
+          "text": "今天，你有没有新故事？妖精轻轻地问。米米笑着，翻开了绘本。",
+          "startFrame": 30,
+          "durationInFrames": 198,
+          "durationSeconds": 6.596666666666667
+        },
+        {
+          "index": 1,
+          "file": "ending-1-21809e9f3b9e.m4a",
+          "text": "窗外，星星眨了眨眼。今晚，每个人都会有一个，属于自己的梦。",
+          "startFrame": 249,
+          "durationInFrames": 211,
+          "durationSeconds": 7.026958333333333
+        }
+      ]
+    }
+  ]
+}

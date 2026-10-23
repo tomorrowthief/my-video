@@ -1,4 +1,5 @@
 import type { CSSProperties, ReactNode } from "react";
+import { createContext, useContext } from "react";
 import { Audio } from "@remotion/media";
 import type { Caption } from "@remotion/captions";
 import {
@@ -369,19 +370,37 @@ export const CareIcon = ({
 
 const captions = captionsData as Record<SceneId, Caption[]>;
 
+/** Per-story settings for the shared frame: later episodes override these via context. */
+export type StoryMeta = {
+  readonly timing: Timing;
+  readonly captions: Record<string, Caption[]>;
+  readonly series: string;
+  readonly episode: string;
+  readonly audioDir: string;
+};
+
+export const StoryMetaContext = createContext<StoryMeta>({
+  timing: storyTiming,
+  captions,
+  series: "小禾的成语故事",
+  episode: "第一集",
+  audioDir: "audio-idiom",
+});
+
 export const StoryFrame = ({
   id,
   children,
   style,
 }: {
-  id: SceneId;
+  id: string;
   children: ReactNode;
   style?: CSSProperties;
 }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
-  const scene = storyTiming.scenes.find((s) => s.id === id)!;
-  const caption = captions[id].find(
+  const meta = useContext(StoryMetaContext);
+  const scene = meta.timing.scenes.find((s) => s.id === id)!;
+  const caption = (meta.captions[id] ?? []).find(
     (c) => c.startMs <= (frame / fps) * 1000 && c.endMs > (frame / fps) * 1000,
   );
   return (
@@ -418,9 +437,9 @@ export const StoryFrame = ({
             rotate: "-20deg",
           }}
         />
-        小禾的成语故事
+        {meta.series}
         <span style={{ color: "#a3a486", fontSize: 27, letterSpacing: 1 }}>
-          第一集
+          {meta.episode}
         </span>
       </div>
       <div
@@ -433,7 +452,7 @@ export const StoryFrame = ({
           letterSpacing: 2,
         }}
       >
-        {scene.index} / 08
+        {scene.index} / {String(meta.timing.scenes.length).padStart(2, "0")}
       </div>
       {caption && (
         <div
@@ -475,7 +494,7 @@ export const StoryFrame = ({
         <div
           style={{
             height: "100%",
-            width: `${((scene.startFrame + Math.max(0, frame)) / storyTiming.totalFrames) * 100}%`,
+            width: `${((scene.startFrame + Math.max(0, frame)) / meta.timing.totalFrames) * 100}%`,
             background: "#97ac78",
           }}
         />
@@ -489,7 +508,7 @@ export const StoryFrame = ({
           durationInFrames={p.durationInFrames}
           premountFor={fps}
         >
-          <Audio src={staticFile(`audio-idiom/${p.file}`)} premountFor={fps} />
+          <Audio src={staticFile(`${meta.audioDir}/${p.file}`)} premountFor={fps} />
         </Sequence>
       ))}
       <AbsoluteFill

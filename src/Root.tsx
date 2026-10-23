@@ -1,4 +1,5 @@
 import "./index.css";
+import { DreamCompositions } from "./dream/DreamStory";
 import { Composition, Folder } from "remotion";
 import { HelloWorld } from "./HelloWorld";
 import { Logo } from "./HelloWorld/Logo";
@@ -8,6 +9,11 @@ import { AVATAR, MAIN } from "./nn/scenes";
 import { VIDEOS, type VideoDef } from "./videos";
 import { CarCompositions } from "./car/CarEnergyFlow";
 import { IdiomCompositions } from "./idioms/SeedlingStory";
+import { StumpCompositions } from "./idiom-stump/StumpStory";
+import { FoxCompositions } from "./fable/FoxStory";
+import { PlumCompositions } from "./history/PlumStory";
+import { AnatomyCompositions } from "./anatomy/MotorAnatomy";
+import { NetworkExplainerComposition } from "./nn/NetworkExplainer";
 
 /** Videos grouped into the Studio sidebar folders they declare, in registry order. */
 const byFolder = (): readonly (readonly [string, readonly VideoDef[]])[] => {
@@ -23,8 +29,14 @@ const byFolder = (): readonly (readonly [string, readonly VideoDef[]])[] => {
 export const RemotionRoot: React.FC = () => {
 	return (
 		<>
+			<DreamCompositions />
+			<AnatomyCompositions />
+			<Folder name="NeuralNetwork"><NetworkExplainerComposition /></Folder>
 			<CarCompositions />
 			<IdiomCompositions />
+			<StumpCompositions />
+			<FoxCompositions />
+			<PlumCompositions />
 			{byFolder().map(([folder, videos]) => (
 				<Folder key={folder} name={folder}>
 					{videos.map((video) => (

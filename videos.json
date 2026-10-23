@@ -33,6 +33,33 @@
 		"audio": "audio-idiom",
 		"tts": { "provider": "bailian", "model": "qwen3-tts-flash", "voice": "Cherry" }
 	},
+	"idiom-stump": {
+		"title": "StumpStory",
+		"brand": "小禾的成语故事",
+		"folder": "Idioms",
+		"narration": "narration.idiom-stump.json",
+		"timing": "src/idiom-stump/timing.json",
+		"audio": "audio-idiom-stump",
+		"tts": { "provider": "bailian", "model": "qwen3-tts-flash", "voice": "Cherry" }
+	},
+	"fable-fox": {
+		"title": "FoxStory",
+		"brand": "山林寓言",
+		"folder": "Fables",
+		"narration": "narration.fable-fox.json",
+		"timing": "src/fable/timing.json",
+		"audio": "audio-fable-fox",
+		"tts": { "provider": "bailian", "model": "qwen3-tts-flash", "voice": "Cherry" }
+	},
+	"history-plum": {
+		"title": "PlumStory",
+		"brand": "三国小故事",
+		"folder": "History",
+		"narration": "narration.history-plum.json",
+		"timing": "src/history/timing.json",
+		"audio": "audio-history-plum",
+		"tts": { "provider": "bailian", "model": "qwen3-tts-flash", "voice": "Ethan" }
+	},
 	"math": {
 		"title": "ChickenRabbit",
 		"brand": "小学数学",

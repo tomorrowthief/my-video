@@ -1,0 +1,236 @@
+{
+  "fps": 30,
+  "width": 1920,
+  "height": 1080,
+  "provider": "bailian",
+  "model": "qwen3-tts-flash",
+  "voice": "Cherry",
+  "totalFrames": 2546,
+  "totalSeconds": 84.86666666666666,
+  "scenes": [
+    {
+      "id": "opening",
+      "index": "01",
+      "title": "翻开故事书",
+      "heading": "狐假虎威",
+      "visual": "book",
+      "startFrame": 0,
+      "durationInFrames": 319,
+      "durationSeconds": 10.633333333333333,
+      "paragraphs": [
+        {
+          "index": 0,
+          "file": "opening-0-74d30f158a.m4a",
+          "text": "今天，一起听一个狐假虎威的故事。",
+          "startFrame": 24,
+          "durationInFrames": 89,
+          "durationSeconds": 2.96
+        },
+        {
+          "index": 1,
+          "file": "opening-1-4754890a1b.m4a",
+          "text": "假，是借的意思。狐狸，借了谁的威风呢？",
+          "startFrame": 127,
+          "durationInFrames": 120,
+          "durationSeconds": 4
+        }
+      ]
+    },
+    {
+      "id": "forest",
+      "index": "02",
+      "title": "大山里的森林",
+      "heading": "百兽之家",
+      "visual": "forest",
+      "startFrame": 319,
+      "durationInFrames": 298,
+      "durationSeconds": 9.933333333333334,
+      "paragraphs": [
+        {
+          "index": 0,
+          "file": "forest-0-d50df6b203.m4a",
+          "text": "大山里有一片森林，住着许多动物。",
+          "startFrame": 24,
+          "durationInFrames": 87,
+          "durationSeconds": 2.88
+        },
+        {
+          "index": 1,
+          "file": "forest-1-dcb3898662.m4a",
+          "text": "其中最威风的，是一只大老虎。",
+          "startFrame": 125,
+          "durationInFrames": 101,
+          "durationSeconds": 3.36
+        }
+      ]
+    },
+    {
+      "id": "caught",
+      "index": "03",
+      "title": "老虎的午餐",
+      "heading": "被扑住的狐狸",
+      "visual": "caught",
+      "startFrame": 617,
+      "durationInFrames": 286,
+      "durationSeconds": 9.533333333333333,
+      "paragraphs": [
+        {
+          "index": 0,
+          "file": "caught-0-15c7881e06.m4a",
+          "text": "这天，老虎扑住了一只狐狸。",
+          "startFrame": 24,
+          "durationInFrames": 84,
+          "durationSeconds": 2.8
+        },
+        {
+          "index": 1,
+          "file": "caught-1-2dde9f0280.m4a",
+          "text": "哈哈，今天的午餐，有着落啦！",
+          "startFrame": 122,
+          "durationInFrames": 92,
+          "durationSeconds": 3.04
+        }
+      ]
+    },
+    {
+      "id": "trick",
+      "index": "04",
+      "title": "眼珠一转",
+      "heading": "天帝派来的王",
+      "visual": "trick",
+      "startFrame": 903,
+      "durationInFrames": 289,
+      "durationSeconds": 9.633333333333333,
+      "paragraphs": [
+        {
+          "index": 0,
+          "file": "trick-0-b2ea261df2.m4a",
+          "text": "狐狸眼珠一转，计上心来。",
+          "startFrame": 24,
+          "durationInFrames": 75,
+          "durationSeconds": 2.48
+        },
+        {
+          "index": 1,
+          "file": "trick-1-3bfacbd19d.m4a",
+          "text": "慢着！我是天帝派来的百兽之王，你敢吃我吗？",
+          "startFrame": 113,
+          "durationInFrames": 104,
+          "durationSeconds": 3.44
+        }
+      ]
+    },
+    {
+      "id": "parade",
+      "index": "05",
+      "title": "狐狸走在前面",
+      "heading": "走一圈看看",
+      "visual": "parade",
+      "startFrame": 1192,
+      "durationInFrames": 342,
+      "durationSeconds": 11.4,
+      "paragraphs": [
+        {
+          "index": 0,
+          "file": "parade-0-27e0b75619.m4a",
+          "text": "狐狸说：你跟在我后面走一圈，看看百兽见了谁敢不逃。",
+          "startFrame": 24,
+          "durationInFrames": 140,
+          "durationSeconds": 4.64
+        },
+        {
+          "index": 1,
+          "file": "parade-1-68f8bde941.m4a",
+          "text": "老虎半信半疑，跟在了狐狸身后。",
+          "startFrame": 178,
+          "durationInFrames": 92,
+          "durationSeconds": 3.04
+        }
+      ]
+    },
+    {
+      "id": "flee",
+      "index": "06",
+      "title": "吓跑的百兽",
+      "heading": "全都跑了",
+      "visual": "flee",
+      "startFrame": 1534,
+      "durationInFrames": 392,
+      "durationSeconds": 13.066666666666666,
+      "paragraphs": [
+        {
+          "index": 0,
+          "file": "flee-0-cb9ba4b958.m4a",
+          "text": "森林里的动物，看见狐狸身后的大老虎，吓得四散奔逃。",
+          "startFrame": 24,
+          "durationInFrames": 159,
+          "durationSeconds": 5.28
+        },
+        {
+          "index": 1,
+          "file": "flee-1-a93b60df0c.m4a",
+          "text": "小鹿、野猪、兔子，一眨眼全都跑光了。",
+          "startFrame": 197,
+          "durationInFrames": 123,
+          "durationSeconds": 4.08
+        }
+      ]
+    },
+    {
+      "id": "lesson",
+      "index": "07",
+      "title": "小笔记",
+      "heading": "威风是谁的",
+      "visual": "lesson",
+      "startFrame": 1926,
+      "durationInFrames": 286,
+      "durationSeconds": 9.533333333333333,
+      "paragraphs": [
+        {
+          "index": 0,
+          "file": "lesson-0-56187fec49.m4a",
+          "text": "动物们害怕的，其实是狐狸身后的老虎。",
+          "startFrame": 24,
+          "durationInFrames": 92,
+          "durationSeconds": 3.04
+        },
+        {
+          "index": 1,
+          "file": "lesson-1-767f6b5aee.m4a",
+          "text": "狐狸借着老虎的威风，吓走了大家。",
+          "startFrame": 130,
+          "durationInFrames": 84,
+          "durationSeconds": 2.8
+        }
+      ]
+    },
+    {
+      "id": "ending",
+      "index": "08",
+      "title": "轮到你想一想",
+      "heading": "真的威风",
+      "visual": "ending",
+      "startFrame": 2212,
+      "durationInFrames": 334,
+      "durationSeconds": 11.133333333333333,
+      "paragraphs": [
+        {
+          "index": 0,
+          "file": "ending-0-633e4d34fa.m4a",
+          "text": "狐假虎威，你学会了吗？",
+          "startFrame": 24,
+          "durationInFrames": 70,
+          "durationSeconds": 2.32
+        },
+        {
+          "index": 1,
+          "file": "ending-1-c31b71bca7.m4a",
+          "text": "想想看：威风是自己的本事，还是借来的架子呢？下集再见。",
+          "startFrame": 108,
+          "durationInFrames": 154,
+          "durationSeconds": 5.12
+        }
+      ]
+    }
+  ]
+}

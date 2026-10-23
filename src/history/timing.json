@@ -1,0 +1,236 @@
+{
+  "fps": 30,
+  "width": 1920,
+  "height": 1080,
+  "provider": "bailian",
+  "model": "qwen3-tts-flash",
+  "voice": "Ethan",
+  "totalFrames": 2527,
+  "totalSeconds": 84.23333333333333,
+  "scenes": [
+    {
+      "id": "opening",
+      "index": "01",
+      "title": "翻开故事书",
+      "heading": "望梅止渴",
+      "visual": "book",
+      "startFrame": 0,
+      "durationInFrames": 380,
+      "durationSeconds": 12.666666666666666,
+      "paragraphs": [
+        {
+          "index": 0,
+          "file": "opening-0-d8b3dddb60.m4a",
+          "text": "今天，一起听一个三国小故事：望梅止渴。",
+          "startFrame": 24,
+          "durationInFrames": 128,
+          "durationSeconds": 4.24
+        },
+        {
+          "index": 1,
+          "file": "opening-1-9d29fb3468.m4a",
+          "text": "止渴，就是让口渴停下来。望一望梅子，就能止渴吗？",
+          "startFrame": 166,
+          "durationInFrames": 142,
+          "durationSeconds": 4.72
+        }
+      ]
+    },
+    {
+      "id": "march",
+      "index": "02",
+      "title": "盛夏行军",
+      "heading": "火辣辣的太阳",
+      "visual": "march",
+      "startFrame": 380,
+      "durationInFrames": 339,
+      "durationSeconds": 11.3,
+      "paragraphs": [
+        {
+          "index": 0,
+          "file": "march-0-af8664ca12.m4a",
+          "text": "盛夏，曹操带着大军，急急忙忙赶路。",
+          "startFrame": 24,
+          "durationInFrames": 104,
+          "durationSeconds": 3.44
+        },
+        {
+          "index": 1,
+          "file": "march-1-21175dd3ad.m4a",
+          "text": "太阳火辣辣的，一路上看不到一条河，也找不到一口井。",
+          "startFrame": 142,
+          "durationInFrames": 125,
+          "durationSeconds": 4.16
+        }
+      ]
+    },
+    {
+      "id": "thirsty",
+      "index": "03",
+      "title": "走不动的队伍",
+      "heading": "嗓子直冒烟",
+      "visual": "thirsty",
+      "startFrame": 719,
+      "durationInFrames": 271,
+      "durationSeconds": 9.033333333333333,
+      "paragraphs": [
+        {
+          "index": 0,
+          "file": "thirsty-0-cfbfd8157a.m4a",
+          "text": "士兵们嘴唇发干，脚步越来越慢。",
+          "startFrame": 24,
+          "durationInFrames": 84,
+          "durationSeconds": 2.8
+        },
+        {
+          "index": 1,
+          "file": "thirsty-1-de9a54e812.m4a",
+          "text": "水袋空空荡荡，嗓子眼儿直冒烟。",
+          "startFrame": 122,
+          "durationInFrames": 77,
+          "durationSeconds": 2.56
+        }
+      ]
+    },
+    {
+      "id": "idea",
+      "index": "04",
+      "title": "曹操的急智",
+      "heading": "脑筋一转",
+      "visual": "idea",
+      "startFrame": 990,
+      "durationInFrames": 267,
+      "durationSeconds": 8.9,
+      "paragraphs": [
+        {
+          "index": 0,
+          "file": "idea-0-095c3f8263.m4a",
+          "text": "曹操骑在马上，脑筋一转，想出了一个好办法。",
+          "startFrame": 24,
+          "durationInFrames": 101,
+          "durationSeconds": 3.36
+        },
+        {
+          "index": 1,
+          "file": "idea-1-bfa7881e67.m4a",
+          "text": "他抽出马鞭，朝前面一指。",
+          "startFrame": 139,
+          "durationInFrames": 56,
+          "durationSeconds": 1.84
+        }
+      ]
+    },
+    {
+      "id": "plum",
+      "index": "05",
+      "title": "前面有梅林",
+      "heading": "又酸又甜",
+      "visual": "plum",
+      "startFrame": 1257,
+      "durationInFrames": 313,
+      "durationSeconds": 10.433333333333334,
+      "paragraphs": [
+        {
+          "index": 0,
+          "file": "plum-0-9b1d42cc9d.m4a",
+          "text": "将士们，前面有一大片梅林！梅子又酸又甜，好吃极了！",
+          "startFrame": 24,
+          "durationInFrames": 140,
+          "durationSeconds": 4.64
+        },
+        {
+          "index": 1,
+          "file": "plum-1-5298dd9b4f.m4a",
+          "text": "士兵们一听，都咽了咽口水。",
+          "startFrame": 178,
+          "durationInFrames": 63,
+          "durationSeconds": 2.08
+        }
+      ]
+    },
+    {
+      "id": "mouths",
+      "index": "06",
+      "title": "口中生津",
+      "heading": "想想就流口水",
+      "visual": "mouths",
+      "startFrame": 1570,
+      "durationInFrames": 298,
+      "durationSeconds": 9.933333333333334,
+      "paragraphs": [
+        {
+          "index": 0,
+          "file": "mouths-0-82544d10d7.m4a",
+          "text": "一想到酸酸的梅子，嘴里竟真的生出了口水。",
+          "startFrame": 24,
+          "durationInFrames": 101,
+          "durationSeconds": 3.36
+        },
+        {
+          "index": 1,
+          "file": "mouths-1-8a7a970b2d.m4a",
+          "text": "大家不觉得那么渴了，脚下也来了力气。",
+          "startFrame": 139,
+          "durationInFrames": 87,
+          "durationSeconds": 2.88
+        }
+      ]
+    },
+    {
+      "id": "found",
+      "index": "07",
+      "title": "找到水源",
+      "heading": "快点，跟上！",
+      "visual": "found",
+      "startFrame": 1868,
+      "durationInFrames": 260,
+      "durationSeconds": 8.666666666666666,
+      "paragraphs": [
+        {
+          "index": 0,
+          "file": "found-0-2111aa8fc2.m4a",
+          "text": "队伍加快脚步，终于在前方找到了水源。",
+          "startFrame": 24,
+          "durationInFrames": 94,
+          "durationSeconds": 3.12
+        },
+        {
+          "index": 1,
+          "file": "found-1-5735743be4.m4a",
+          "text": "大家痛痛快快地喝了个够。",
+          "startFrame": 132,
+          "durationInFrames": 56,
+          "durationSeconds": 1.84
+        }
+      ]
+    },
+    {
+      "id": "ending",
+      "index": "08",
+      "title": "轮到你想一想",
+      "heading": "想象的力量",
+      "visual": "ending",
+      "startFrame": 2128,
+      "durationInFrames": 399,
+      "durationSeconds": 13.3,
+      "paragraphs": [
+        {
+          "index": 0,
+          "file": "ending-0-34b8ffb312.m4a",
+          "text": "望梅止渴，你学会了吗？一个小小的想象，也能帮人撑过难关。",
+          "startFrame": 24,
+          "durationInFrames": 178,
+          "durationSeconds": 5.92
+        },
+        {
+          "index": 1,
+          "file": "ending-1-11fd2e421b.m4a",
+          "text": "这个故事取材《世说新语》，我们下集再见。",
+          "startFrame": 216,
+          "durationInFrames": 111,
+          "durationSeconds": 3.68
+        }
+      ]
+    }
+  ]
+}

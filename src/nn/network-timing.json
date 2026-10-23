@@ -1,0 +1,64 @@
+{
+  "fps": 30,
+  "width": 1920,
+  "height": 1080,
+  "totalFrames": 900,
+  "totalSeconds": 30,
+  "scenes": [
+    {
+      "id": "observe",
+      "index": "01",
+      "title": "观察网络",
+      "heading": "一次输入，如何穿过神经网络？",
+      "visual": "network",
+      "startFrame": 0,
+      "durationInFrames": 180,
+      "durationSeconds": 6,
+      "paragraphs": []
+    },
+    {
+      "id": "encode",
+      "index": "02",
+      "title": "输入数据",
+      "heading": "把数据编码成一组数值",
+      "visual": "input",
+      "startFrame": 180,
+      "durationInFrames": 180,
+      "durationSeconds": 6,
+      "paragraphs": []
+    },
+    {
+      "id": "activate",
+      "index": "03",
+      "title": "加权与激活",
+      "heading": "每一层，都在重新组合信息",
+      "visual": "activation",
+      "startFrame": 360,
+      "durationInFrames": 180,
+      "durationSeconds": 6,
+      "paragraphs": []
+    },
+    {
+      "id": "propagate",
+      "index": "04",
+      "title": "逐层传播",
+      "heading": "上一层的输出，成为下一层的输入",
+      "visual": "layers",
+      "startFrame": 540,
+      "durationInFrames": 180,
+      "durationSeconds": 6,
+      "paragraphs": []
+    },
+    {
+      "id": "output",
+      "index": "05",
+      "title": "形成输出",
+      "heading": "最后一层，给出任务需要的结果",
+      "visual": "output",
+      "startFrame": 720,
+      "durationInFrames": 180,
+      "durationSeconds": 6,
+      "paragraphs": []
+    }
+  ]
+}

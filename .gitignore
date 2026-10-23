@@ -18,3 +18,7 @@ out
 # Local verification build artifacts
 vout.tmp/
 vc.config.tmp.ts
+
+# Private Studio render jobs and temporary uploads
+.studio-data/
+.wrangler/

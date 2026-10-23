@@ -23,11 +23,11 @@ const PULSE_MIN = 0.22;
 /** 一个待绘制的图元，已投影完、带好深度。 */
 type Item = { readonly depth: number; readonly el: React.ReactNode };
 
-const NNScene: React.FC<{ readonly scene: Scene }> = ({ scene }) => {
+export const NNScene: React.FC<{ readonly scene: Scene; readonly progress?: number }> = ({ scene, progress }) => {
 	const frame = useCurrentFrame();
 	const { durationInFrames } = useVideoConfig();
 	// 归一化到 0..1。所有视觉量都是周期为 1 的 t 的函数 —— 无缝的全部依据。
-	const t = (frame % durationInFrames) / durationInFrames;
+	const t = progress ?? (frame % durationInFrames) / durationInFrames;
 
 	const { width, height, yaw, pitch, lens, depthSpan, bandBlur, nodeR, edgeW } = scene;
 	const { nodes, edges } = scene.network;

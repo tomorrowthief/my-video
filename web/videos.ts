@@ -1,3 +1,5 @@
+import { TaihuDrive } from "../src/taihu/TaihuDrive";
+import taihuTiming from "../src/taihu/timing.json";
 import { DreamStory } from "../src/dream/DreamStory";
 import dreamTiming from "../src/dream/timing.json";
 import { CarEnergyFlow } from "../src/car/CarEnergyFlow";
@@ -12,6 +14,12 @@ import { FoxStory } from "../src/fable/FoxStory";
 import foxTiming from "../src/fable/timing.json";
 import { PlumStory } from "../src/history/PlumStory";
 import plumTiming from "../src/history/timing.json";
+import { ArrowStory } from "../src/history-arrows/ArrowStory";
+import arrowsTiming from "../src/history-arrows/timing.json";
+import { SilkStory } from "../src/fable-silk/SilkStory";
+import silkTiming from "../src/fable-silk/timing.json";
+import { WindStory } from "../src/fable-wind/WindStory";
+import windTiming from "../src/fable-wind/timing.json";
 import { NetworkExplainer } from "../src/nn/NetworkExplainer";
 import networkTiming from "../src/nn/network-timing.json";
 
@@ -19,6 +27,7 @@ const car = manifest["car-energy"];
 
 export const VIDEOS: readonly VideoDef[] = [
   ...explainers,
+  { key: "taihu-drive", title: "TaihuDayDrive", brand: "环湖出游", folder: "Travel", timing: taihuTiming, Component: TaihuDrive },
   {
     key: "idiom-seedling",
     title: manifest["idiom-seedling"].title,
@@ -50,6 +59,30 @@ export const VIDEOS: readonly VideoDef[] = [
     folder: manifest["history-plum"].folder,
     timing: plumTiming,
     Component: PlumStory,
+  },
+  {
+    key: "history-arrows",
+    title: manifest["history-arrows"].title,
+    brand: manifest["history-arrows"].brand,
+    folder: manifest["history-arrows"].folder,
+    timing: arrowsTiming,
+    Component: ArrowStory,
+  },
+  {
+    key: "fable-silk",
+    title: manifest["fable-silk"].title,
+    brand: manifest["fable-silk"].brand,
+    folder: manifest["fable-silk"].folder,
+    timing: silkTiming,
+    Component: SilkStory,
+  },
+  {
+    key: "fable-wind",
+    title: manifest["fable-wind"].title,
+    brand: manifest["fable-wind"].brand,
+    folder: manifest["fable-wind"].folder,
+    timing: windTiming,
+    Component: WindStory,
   },
   {
     key: "dream-thief",

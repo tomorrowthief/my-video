@@ -15,6 +15,7 @@ export const MAIN_TABS = [
     label: "技术",
     description: "从编程到科学与工程，把复杂的原理讲清楚。",
   },
+  { id: "travel", label: "出游", description: "把路线、徒步和沿途美食，连成一段旅行。" },
 ] as const;
 
 export const STORY_TYPES = [
@@ -29,6 +30,7 @@ export const STORY_SERIES = [
   { id: "xiaohe-idioms", label: "小禾的成语故事", storyType: "idiom" },
   { id: "three-kingdoms", label: "三国小故事", storyType: "history" },
   { id: "hill-fables", label: "山林寓言", storyType: "fable" },
+  { id: "aesop-fables", label: "伊索寓言", storyType: "fable" },
 ] as const;
 
 export type MainTab = (typeof MAIN_TABS)[number]["id"];
@@ -49,7 +51,7 @@ type StoryPlacement = {
 
 type Placement =
   | StoryPlacement
-  | { tab: "math" | "tech"; storyType?: never; series?: never };
+  | { tab: "math" | "tech" | "travel"; storyType?: never; series?: never };
 
 export type CatalogEntry = {
   title: string;
@@ -59,6 +61,7 @@ export type CatalogEntry = {
 } & Placement;
 
 export const VIDEO_CATALOG: Readonly<Record<string, CatalogEntry>> = {
+  "taihu-drive": { title: "杭州出发 · 环太湖", label: "自驾与徒步", tab: "travel", description: "极氪 7X 环太湖一天半：住一晚、徒步两小时、七都吃蟹，第二天预计 16:00 返杭。", symbol: "湖" },
   "dream-thief": {
     title: "偷梦的妖精",
     label: "月光故事集",
@@ -108,6 +111,36 @@ export const VIDEO_CATALOG: Readonly<Record<string, CatalogEntry>> = {
       "盛夏行军，曹操一句“前面有梅林”，让口渴的队伍撑到了水源。取材《世说新语》。",
     symbol: "梅",
   },
+  "history-arrows": {
+    title: "草船借箭",
+    label: "三国小故事",
+    tab: "stories",
+    storyType: "history",
+    series: "three-kingdoms",
+    description:
+      "大雾锁江，二十条扎满草人的船擂鼓逼近曹营，借回十万支箭。改编自《三国演义》。",
+    symbol: "箭",
+  },
+  "fable-silk": {
+    title: "蚕与螳螂",
+    label: "山林寓言",
+    tab: "stories",
+    storyType: "fable",
+    series: "hill-fables",
+    description:
+      "螳螂一次次扑向快织好的茧，每一次都差一点点；蚕不声不响，一层一层织自己的家。",
+    symbol: "茧",
+  },
+  "fable-wind": {
+    title: "北风与太阳",
+    label: "伊索寓言",
+    tab: "stories",
+    storyType: "fable",
+    series: "aesop-fables",
+    description:
+      "北风用尽力气，旅人把外套裹得更紧；太阳暖暖地照，他自己脱了下来。伊索经典寓言。",
+    symbol: "风",
+  },
   math: {
     title: "鸡兔同笼",
     label: "数学思维",
@@ -115,6 +148,38 @@ export const VIDEO_CATALOG: Readonly<Record<string, CatalogEntry>> = {
     description:
       "用列表法、假设法和抬腿法，看看同一道数学题背后的三种思考方式。",
     symbol: "∑",
+  },
+  "geo-shapes": {
+    title: "形状的世界",
+    label: "几何启蒙",
+    tab: "math",
+    description:
+      "认识圆形、正方形、三角形和长方形，发现它们藏在生活中的每个角落。",
+    symbol: "△",
+  },
+  "geo-distance": {
+    title: "远近之间",
+    label: "几何启蒙",
+    tab: "math",
+    description:
+      "两点之间直线最短，点到线垂直最短，平行线处处等距——用动画理解距离的秘密。",
+    symbol: "↔",
+  },
+  "geo-dimensions": {
+    title: "从线到体",
+    label: "几何启蒙",
+    tab: "math",
+    description:
+      "一维只有长度，二维加了宽度，三维又有了高度——维度升级的直观探险。",
+    symbol: "◻",
+  },
+  "geo-measure": {
+    title: "量一量",
+    label: "几何启蒙",
+    tab: "math",
+    description:
+      "周长围一圈，面积铺一地，体积装一箱——一维、二维、三维的度量方法。",
+    symbol: "",
   },
   python: {
     title: "Python 学习路线",

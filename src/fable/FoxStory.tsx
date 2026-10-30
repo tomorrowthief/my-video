@@ -62,7 +62,7 @@ export const FoxStory = () => {
 };
 
 export const FoxCompositions = () => (
-  <Folder name="Fables">
+  <Folder name="Fox">
     <Composition
       id="FoxStory"
       component={FoxStory}

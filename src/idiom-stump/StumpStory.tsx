@@ -65,7 +65,7 @@ export const StumpStory = () => {
 };
 
 export const StumpCompositions = () => (
-  <Folder name="Idioms">
+  <Folder name="Stump">
     <Composition
       id="StumpStory"
       component={StumpStory}

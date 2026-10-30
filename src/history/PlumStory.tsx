@@ -62,7 +62,7 @@ export const PlumStory = () => {
 };
 
 export const PlumCompositions = () => (
-  <Folder name="History">
+  <Folder name="Plum">
     <Composition
       id="PlumStory"
       component={PlumStory}

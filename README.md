@@ -9,8 +9,8 @@
 | 主 Tab | 类型 | 系列与现有内容 |
 | --- | --- | --- |
 | 绘本与故事 | 成语故事 | 小禾的成语故事，目前包含《拔苗助长》《守株待兔》 |
-| 绘本与故事 | 历史典故 | 三国小故事系列，目前包含《望梅止渴》（取材《世说新语》） |
-| 绘本与故事 | 寓言故事 | 山林寓言系列，目前包含《狐假虎威》 |
+| 绘本与故事 | 历史典故 | 三国小故事系列，目前包含《望梅止渴》（取材《世说新语》）、《草船借箭》（改编自《三国演义》） |
+| 绘本与故事 | 寓言故事 | 山林寓言系列（中国风原创），目前包含《狐假虎威》《蚕与螳螂》；伊索寓言系列（西方经典），目前包含《北风与太阳》 |
 | 绘本与故事 | 神话传说 | 后续可加入传统神话与传说 |
 | 绘本与故事 | 童话绘本 | 月光故事集，目前包含《偷梦的妖精》 |
 | 数学 | 数学思维 | 目前包含《鸡兔同笼》 |
@@ -32,8 +32,8 @@
 可以直接分享视频或分类：
 
 - 成语视频：`?video=idiom-seedling`、`?video=idiom-stump`
-- 寓言故事：`?video=fable-fox`
-- 历史典故下的三国系列：`?tab=stories&category=history&series=three-kingdoms`
+- 寓言故事：`?video=fable-fox`、`?video=fable-silk`（山林寓言）、`?video=fable-wind`（伊索寓言）
+- 历史典故下的三国系列：`?tab=stories&category=history&series=three-kingdoms`（含 `?video=history-arrows`）
 - 童话绘本：`?video=dream-thief`
 - 数学：`?tab=math`
 - 技术：`?tab=tech`（含 `?video=nn-forward`）

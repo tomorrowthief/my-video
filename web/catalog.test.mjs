@@ -12,6 +12,7 @@ import {
 } from "./catalog.ts";
 
 const published = [
+  "taihu-drive",
   "pi-durable",
   "python",
   "math",
@@ -19,16 +20,23 @@ const published = [
   "idiom-stump",
   "fable-fox",
   "history-plum",
+  "history-arrows",
+  "fable-silk",
+  "fable-wind",
   "dream-thief",
   "nn-forward",
   "car-energy",
+  "geo-shapes",
+  "geo-distance",
+  "geo-dimensions",
+  "geo-measure",
 ];
 const state = (query) => resolveCatalogState(query, published);
 
 test("the homepage opens stories and only selects a published story", () => {
   assert.deepEqual(
     MAIN_TABS.map((tab) => tab.label),
-    ["绘本与故事", "数学", "技术"],
+    ["绘本与故事", "数学", "技术", "出游"],
   );
   assert.deepEqual(state(""), {
     tab: "stories",
@@ -77,7 +85,7 @@ test("mathematics and technology are disjoint and technology includes the car an
       category: "all",
       series: "all",
     }),
-    ["math"],
+    ["math", "geo-shapes", "geo-distance", "geo-dimensions", "geo-measure"],
   );
   assert.deepEqual(
     filterCatalogKeys(published, {
@@ -93,7 +101,7 @@ test("mathematics and technology are disjoint and technology includes the car an
       category: "all",
       series: "all",
     }),
-    ["idiom-seedling", "idiom-stump", "fable-fox", "history-plum", "dream-thief"],
+    ["idiom-seedling", "idiom-stump", "fable-fox", "history-plum", "history-arrows", "fable-silk", "fable-wind", "dream-thief"],
   );
 });
 
@@ -206,4 +214,9 @@ test("catalog metadata cannot publish absent videos and uncatalogued explainers 
         entry.storyType,
       );
   }
+});
+
+test("travel deep links select the Taihu player and isolate the travel category", () => {
+ assert.equal(state("?video=taihu-drive").tab, "travel");
+ assert.deepEqual(filterCatalogKeys(published, {tab:"travel",category:"all",series:"all"}), ["taihu-drive"]);
 });

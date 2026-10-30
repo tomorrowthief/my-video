@@ -60,6 +60,33 @@
 		"audio": "audio-history-plum",
 		"tts": { "provider": "bailian", "model": "qwen3-tts-flash", "voice": "Ethan" }
 	},
+	"history-arrows": {
+		"title": "ArrowStory",
+		"brand": "三国小故事",
+		"folder": "History",
+		"narration": "narration.history-arrows.json",
+		"timing": "src/history-arrows/timing.json",
+		"audio": "audio-history-arrows",
+		"tts": { "provider": "bailian", "model": "qwen3-tts-flash", "voice": "Ethan" }
+	},
+	"fable-silk": {
+		"title": "SilkStory",
+		"brand": "山林寓言",
+		"folder": "Fables",
+		"narration": "narration.fable-silk.json",
+		"timing": "src/fable-silk/timing.json",
+		"audio": "audio-fable-silk",
+		"tts": { "provider": "bailian", "model": "qwen3-tts-flash", "voice": "Cherry" }
+	},
+	"fable-wind": {
+		"title": "WindStory",
+		"brand": "伊索寓言",
+		"folder": "Fables",
+		"narration": "narration.fable-wind.json",
+		"timing": "src/fable-wind/timing.json",
+		"audio": "audio-fable-wind",
+		"tts": { "provider": "bailian", "model": "qwen3-tts-flash", "voice": "Cherry" }
+	},
 	"math": {
 		"title": "ChickenRabbit",
 		"brand": "小学数学",
@@ -72,5 +99,41 @@
 			"model": "qwen3-tts-flash",
 			"voice": "Cherry"
 		}
+	},
+	"geo-shapes": {
+		"title": "GeoShapes",
+		"brand": "几何启蒙",
+		"folder": "Geometry",
+		"narration": "narration.geo-shapes.json",
+		"timing": "src/timing.geo-shapes.json",
+		"audio": "audio-geo-shapes",
+		"tts": { "provider": "bailian", "model": "qwen3-tts-flash", "voice": "Cherry" }
+	},
+	"geo-distance": {
+		"title": "GeoDistance",
+		"brand": "几何启蒙",
+		"folder": "Geometry",
+		"narration": "narration.geo-distance.json",
+		"timing": "src/timing.geo-distance.json",
+		"audio": "audio-geo-distance",
+		"tts": { "provider": "bailian", "model": "qwen3-tts-flash", "voice": "Cherry" }
+	},
+	"geo-dimensions": {
+		"title": "GeoDimensions",
+		"brand": "几何启蒙",
+		"folder": "Geometry",
+		"narration": "narration.geo-dimensions.json",
+		"timing": "src/timing.geo-dimensions.json",
+		"audio": "audio-geo-dimensions",
+		"tts": { "provider": "bailian", "model": "qwen3-tts-flash", "voice": "Cherry" }
+	},
+	"geo-measure": {
+		"title": "GeoMeasure",
+		"brand": "几何启蒙",
+		"folder": "Geometry",
+		"narration": "narration.geo-measure.json",
+		"timing": "src/timing.geo-measure.json",
+		"audio": "audio-geo-measure",
+		"tts": { "provider": "bailian", "model": "qwen3-tts-flash", "voice": "Cherry" }
 	}
 }

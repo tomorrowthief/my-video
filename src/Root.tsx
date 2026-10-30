@@ -1,3 +1,4 @@
+import { TaihuComposition } from "./taihu/TaihuDrive";
 import "./index.css";
 import { DreamCompositions } from "./dream/DreamStory";
 import { Composition, Folder } from "remotion";
@@ -12,6 +13,9 @@ import { IdiomCompositions } from "./idioms/SeedlingStory";
 import { StumpCompositions } from "./idiom-stump/StumpStory";
 import { FoxCompositions } from "./fable/FoxStory";
 import { PlumCompositions } from "./history/PlumStory";
+import { ArrowCompositions } from "./history-arrows/ArrowStory";
+import { SilkCompositions } from "./fable-silk/SilkStory";
+import { WindCompositions } from "./fable-wind/WindStory";
 import { AnatomyCompositions } from "./anatomy/MotorAnatomy";
 import { NetworkExplainerComposition } from "./nn/NetworkExplainer";
 
@@ -29,14 +33,24 @@ const byFolder = (): readonly (readonly [string, readonly VideoDef[]])[] => {
 export const RemotionRoot: React.FC = () => {
 	return (
 		<>
+			<TaihuComposition />
 			<DreamCompositions />
 			<AnatomyCompositions />
 			<Folder name="NeuralNetwork"><NetworkExplainerComposition /></Folder>
 			<CarCompositions />
-			<IdiomCompositions />
-			<StumpCompositions />
-			<FoxCompositions />
-			<PlumCompositions />
+			<Folder name="Idioms">
+				<IdiomCompositions />
+				<StumpCompositions />
+			</Folder>
+			<Folder name="Fables">
+				<FoxCompositions />
+				<SilkCompositions />
+				<WindCompositions />
+			</Folder>
+			<Folder name="History">
+				<PlumCompositions />
+				<ArrowCompositions />
+			</Folder>
 			{byFolder().map(([folder, videos]) => (
 				<Folder key={folder} name={folder}>
 					{videos.map((video) => (

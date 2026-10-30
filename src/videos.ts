@@ -29,9 +29,38 @@ import { S6Tasks } from "./scenes/S6Tasks";
 import { S7Chord } from "./scenes/S7Chord";
 import { S8Storage } from "./scenes/S8Storage";
 import { S9Outro } from "./scenes/S9Outro";
+// Geometry series
+import { S0Intro as GS0Intro } from "./scenes-geometry/shapes/S0Intro";
+import { S1Circle } from "./scenes-geometry/shapes/S1Circle";
+import { S2Square } from "./scenes-geometry/shapes/S2Square";
+import { S3Triangle } from "./scenes-geometry/shapes/S3Triangle";
+import { S4Compare as GS4Compare } from "./scenes-geometry/shapes/S4Compare";
+import { S5Outro as GS5Outro } from "./scenes-geometry/shapes/S5Outro";
+import { D0Intro } from "./scenes-geometry/distance/D0Intro";
+import { D1PointPoint } from "./scenes-geometry/distance/D1PointPoint";
+import { D2PointLine } from "./scenes-geometry/distance/D2PointLine";
+import { D3Parallel } from "./scenes-geometry/distance/D3Parallel";
+import { D4Application } from "./scenes-geometry/distance/D4Application";
+import { D5Outro } from "./scenes-geometry/distance/D5Outro";
+import { X0Intro } from "./scenes-geometry/dimensions/X0Intro";
+import { X1Line } from "./scenes-geometry/dimensions/X1Line";
+import { X2Plane } from "./scenes-geometry/dimensions/X2Plane";
+import { X3Solid } from "./scenes-geometry/dimensions/X3Solid";
+import { X4Unfold } from "./scenes-geometry/dimensions/X4Unfold";
+import { X5Outro } from "./scenes-geometry/dimensions/X5Outro";
+import { M0Intro as GM0Intro } from "./scenes-geometry/measure/M0Intro";
+import { M1Perimeter } from "./scenes-geometry/measure/M1Perimeter";
+import { M2Area } from "./scenes-geometry/measure/M2Area";
+import { M3Volume } from "./scenes-geometry/measure/M3Volume";
+import { M4Compare } from "./scenes-geometry/measure/M4Compare";
+import { M5Outro as GM5Outro } from "./scenes-geometry/measure/M5Outro";
 import piTiming from "./timing.json";
 import mathTiming from "./timing.math.json";
 import pyTiming from "./timing.python.json";
+import geoShapesTiming from "./timing.geo-shapes.json";
+import geoDistanceTiming from "./timing.geo-distance.json";
+import geoDimensionsTiming from "./timing.geo-dimensions.json";
+import geoMeasureTiming from "./timing.geo-measure.json";
 import type { Timing } from "./types";
 
 export type VideoDef = {
@@ -116,5 +145,37 @@ export const VIDEOS: readonly VideoDef[] = [
 		s3: M3Lift,
 		s4: M4Converge,
 		s5: M5Outro,
+	}),
+	defineVideo("geo-shapes", geoShapesTiming, {
+		s0: GS0Intro,
+		s1: S1Circle,
+		s2: S2Square,
+		s3: S3Triangle,
+		s4: GS4Compare,
+		s5: GS5Outro,
+	}),
+	defineVideo("geo-distance", geoDistanceTiming, {
+		s0: D0Intro,
+		s1: D1PointPoint,
+		s2: D2PointLine,
+		s3: D3Parallel,
+		s4: D4Application,
+		s5: D5Outro,
+	}),
+	defineVideo("geo-dimensions", geoDimensionsTiming, {
+		s0: X0Intro,
+		s1: X1Line,
+		s2: X2Plane,
+		s3: X3Solid,
+		s4: X4Unfold,
+		s5: X5Outro,
+	}),
+	defineVideo("geo-measure", geoMeasureTiming, {
+		s0: GM0Intro,
+		s1: M1Perimeter,
+		s2: M2Area,
+		s3: M3Volume,
+		s4: M4Compare,
+		s5: GM5Outro,
 	}),
 ];

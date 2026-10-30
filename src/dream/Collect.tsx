@@ -1,13 +1,16 @@
-import { CinematicPage, FilmShot } from "./CinematicPage";
+import { CinematicPage } from "./CinematicPage";
 import { dreamTiming } from "./DreamArt";
-export const Collect = () => (
-  <CinematicPage index={1}>
-    <FilmShot
-      asset="bedroom"
-      alt="真实儿童模样的米米安睡在阁楼卧室，妖精提着梦瓶来到枕边"
-      duration={dreamTiming.scenes[1].durationInFrames}
-      zoom={[1, 1.065]}
-      focus="63% 54%"
-    />
-  </CinematicPage>
-);
+import { PaintedBedroom } from "./painted/Bedroom";
+export const Collect = () => {
+  const s = dreamTiming.scenes[1];
+  return (
+    <CinematicPage index={1} dreamDust={false}>
+      <PaintedBedroom
+        mode="collect"
+        duration={s.durationInFrames}
+        turn={s.paragraphs[1].startFrame}
+        label="米米在阁楼卧室里安睡，妖精把她的梦装进玻璃瓶"
+      />
+    </CinematicPage>
+  );
+};

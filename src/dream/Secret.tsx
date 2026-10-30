@@ -1,13 +1,16 @@
-import { CinematicPage, FilmShot } from "./CinematicPage";
+import { CinematicPage } from "./CinematicPage";
 import { dreamTiming } from "./DreamArt";
-export const Secret = () => (
-  <CinematicPage index={3}>
-    <FilmShot
-      asset="forest"
-      alt="米米和妖精坐在古树下，满树悬挂着金色梦瓶"
-      duration={dreamTiming.scenes[3].durationInFrames}
-      zoom={[1, 1.07]}
-      focus="60% 55%"
-    />
-  </CinematicPage>
-);
+import { PaintedForest } from "./painted/Forest";
+export const Secret = () => {
+  const s = dreamTiming.scenes[3];
+  return (
+    <CinematicPage index={3} dreamDust={false}>
+      <PaintedForest
+        mode="secret"
+        duration={s.durationInFrames}
+        turn={s.paragraphs[1].startFrame}
+        label="月光森林里，古树枝头挂满发光的梦瓶，妖精的小床却只有黑暗"
+      />
+    </CinematicPage>
+  );
+};

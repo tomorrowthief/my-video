@@ -1,0 +1,130 @@
+{
+  "opening": [
+    {
+      "text": "山林寓言第二集：蚕与螳螂。",
+      "startMs": 800,
+      "endMs": 4166.666666666667,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "一棵老桑树上，住着一只蚕；树下，住着一只螳螂。",
+      "startMs": 4633.333333333334,
+      "endMs": 9700,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "spin": [
+    {
+      "text": "蚕安安静静地吐丝，一天，又一天。",
+      "startMs": 800,
+      "endMs": 4733.333333333333,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "细细的丝线绕啊绕，慢慢织成一个白白的茧。",
+      "startMs": 5200,
+      "endMs": 9600,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "mock": [
+    {
+      "text": "螳螂举起两把大刀，笑话它：这么细的丝，要织到什么时候呀！",
+      "startMs": 800,
+      "endMs": 6400,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "蚕没有抬头，只是继续吐自己的丝。",
+      "startMs": 6866.666666666666,
+      "endMs": 10166.666666666666,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "lunge": [
+    {
+      "text": "螳螂盯上了快织好的茧，猛地一扑。",
+      "startMs": 800,
+      "endMs": 3766.6666666666665,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "哎呀！风一吹，桑叶一晃，就差那么一点点。",
+      "startMs": 4233.333333333333,
+      "endMs": 8166.666666666666,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "again": [
+    {
+      "text": "它不服气，第二扑，第三扑，每一次都扑了个空。",
+      "startMs": 800,
+      "endMs": 5133.333333333334,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "大刀砍在桑枝上，只落得几片叶子。",
+      "startMs": 5600,
+      "endMs": 8900,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "cocoon": [
+    {
+      "text": "而蚕的茧，一层又一层，织得又厚又结实。",
+      "startMs": 800,
+      "endMs": 5133.333333333334,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "它在茧里安安稳稳，睡了一个长长的觉。",
+      "startMs": 5600,
+      "endMs": 8900,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "winter": [
+    {
+      "text": "北风一吹，雪花落下来，螳螂又冷又饿，没处可去。",
+      "startMs": 800,
+      "endMs": 6100,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "茧挂在枝头，稳稳当当，一动也不动。",
+      "startMs": 6566.666666666666,
+      "endMs": 10266.666666666668,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "ending": [
+    {
+      "text": "蚕与螳螂，你学会了吗？一步一步的笨功夫，其实最结实。",
+      "startMs": 800,
+      "endMs": 6100,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "山林寓言，我们下集再见。",
+      "startMs": 6566.666666666666,
+      "endMs": 8966.666666666666,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ]
+}

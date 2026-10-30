@@ -1,0 +1,236 @@
+{
+  "fps": 30,
+  "width": 1920,
+  "height": 1080,
+  "provider": "bailian",
+  "model": "qwen3-tts-flash",
+  "voice": "Ethan",
+  "totalFrames": 2940,
+  "totalSeconds": 98,
+  "scenes": [
+    {
+      "id": "opening",
+      "index": "01",
+      "title": "翻开故事书",
+      "heading": "草船借箭",
+      "visual": "book",
+      "startFrame": 0,
+      "durationInFrames": 368,
+      "durationSeconds": 12.266666666666667,
+      "paragraphs": [
+        {
+          "index": 0,
+          "file": "opening-0-f7faaa6736.m4a",
+          "text": "今天，一起听一个三国小故事：草船借箭。",
+          "startFrame": 24,
+          "durationInFrames": 106,
+          "durationSeconds": 3.52
+        },
+        {
+          "index": 1,
+          "file": "opening-1-68a3c0c365.m4a",
+          "text": "借箭，就是把箭借回来。船是草做的，箭要怎么借呢？",
+          "startFrame": 144,
+          "durationInFrames": 152,
+          "durationSeconds": 5.04
+        }
+      ]
+    },
+    {
+      "id": "task",
+      "index": "02",
+      "title": "十万支箭",
+      "heading": "十天太久",
+      "visual": "task",
+      "startFrame": 368,
+      "durationInFrames": 382,
+      "durationSeconds": 12.733333333333333,
+      "paragraphs": [
+        {
+          "index": 0,
+          "file": "task-0-806beb8e47.m4a",
+          "text": "周瑜请诸葛亮商量军务，出了一道难题：十天之内，造出十万支箭。",
+          "startFrame": 24,
+          "durationInFrames": 171,
+          "durationSeconds": 5.68
+        },
+        {
+          "index": 1,
+          "file": "task-1-6be161cfa2.m4a",
+          "text": "诸葛亮却笑着说：何必十天，只要三天。",
+          "startFrame": 209,
+          "durationInFrames": 101,
+          "durationSeconds": 3.36
+        }
+      ]
+    },
+    {
+      "id": "prep",
+      "index": "03",
+      "title": "借船扎草人",
+      "heading": "青布遮好",
+      "visual": "prep",
+      "startFrame": 750,
+      "durationInFrames": 343,
+      "durationSeconds": 11.433333333333334,
+      "paragraphs": [
+        {
+          "index": 0,
+          "file": "prep-0-8e040e71bf.m4a",
+          "text": "他请鲁肃悄悄备下二十条船，船上绑满稻草人，再用青布遮好。",
+          "startFrame": 24,
+          "durationInFrames": 144,
+          "durationSeconds": 4.8
+        },
+        {
+          "index": 1,
+          "file": "prep-1-5282a65918.m4a",
+          "text": "大家都摸不着头脑：不造箭，扎草人做什么？",
+          "startFrame": 182,
+          "durationInFrames": 89,
+          "durationSeconds": 2.96
+        }
+      ]
+    },
+    {
+      "id": "fog",
+      "index": "04",
+      "title": "大雾锁江",
+      "heading": "对面不见人",
+      "visual": "fog",
+      "startFrame": 1093,
+      "durationInFrames": 305,
+      "durationSeconds": 10.166666666666666,
+      "paragraphs": [
+        {
+          "index": 0,
+          "file": "fog-0-03c9c3da7f.m4a",
+          "text": "第三天四更，江上大雾漫天，对面都看不见人。",
+          "startFrame": 24,
+          "durationInFrames": 118,
+          "durationSeconds": 3.92
+        },
+        {
+          "index": 1,
+          "file": "fog-1-6a51042f37.m4a",
+          "text": "船队悄悄出发，直逼曹操的水寨。",
+          "startFrame": 156,
+          "durationInFrames": 77,
+          "durationSeconds": 2.56
+        }
+      ]
+    },
+    {
+      "id": "drums",
+      "index": "05",
+      "title": "擂鼓呐喊",
+      "heading": "鼓声隆隆",
+      "visual": "drums",
+      "startFrame": 1398,
+      "durationInFrames": 298,
+      "durationSeconds": 9.933333333333334,
+      "paragraphs": [
+        {
+          "index": 0,
+          "file": "drums-0-488249012a.m4a",
+          "text": "诸葛亮下令：擂鼓！呐喊！",
+          "startFrame": 24,
+          "durationInFrames": 75,
+          "durationSeconds": 2.48
+        },
+        {
+          "index": 1,
+          "file": "drums-1-4e3a747e98.m4a",
+          "text": "鼓声隆隆，喊声震天，惊动了曹营。",
+          "startFrame": 113,
+          "durationInFrames": 113,
+          "durationSeconds": 3.76
+        }
+      ]
+    },
+    {
+      "id": "arrows",
+      "index": "06",
+      "title": "万箭齐发",
+      "heading": "箭像下雨",
+      "visual": "arrows",
+      "startFrame": 1696,
+      "durationInFrames": 442,
+      "durationSeconds": 14.733333333333333,
+      "paragraphs": [
+        {
+          "index": 0,
+          "file": "arrows-0-3819ebf445.m4a",
+          "text": "大雾里看不清虚实，曹操怕有埋伏，不许出战，只叫弓箭手朝江中放箭。",
+          "startFrame": 24,
+          "durationInFrames": 224,
+          "durationSeconds": 7.44
+        },
+        {
+          "index": 1,
+          "file": "arrows-1-a9adb374a2.m4a",
+          "text": "箭像下雨一样，密密麻麻扎进了草人。",
+          "startFrame": 262,
+          "durationInFrames": 108,
+          "durationSeconds": 3.6
+        }
+      ]
+    },
+    {
+      "id": "turn",
+      "index": "07",
+      "title": "调转船身",
+      "heading": "满载而归",
+      "visual": "turn",
+      "startFrame": 2138,
+      "durationInFrames": 408,
+      "durationSeconds": 13.6,
+      "paragraphs": [
+        {
+          "index": 0,
+          "file": "turn-0-2f29ed4371.m4a",
+          "text": "一面扎满了，船队调过头来，让另一面接着受箭。",
+          "startFrame": 24,
+          "durationInFrames": 125,
+          "durationSeconds": 4.16
+        },
+        {
+          "index": 1,
+          "file": "turn-1-4010d3c497.m4a",
+          "text": "雾快散时，船上插满了箭，远远望去，像一片移动的小森林。",
+          "startFrame": 163,
+          "durationInFrames": 173,
+          "durationSeconds": 5.76
+        }
+      ]
+    },
+    {
+      "id": "ending",
+      "index": "08",
+      "title": "交箭收兵",
+      "heading": "轮到你想一想",
+      "visual": "ending",
+      "startFrame": 2546,
+      "durationInFrames": 394,
+      "durationSeconds": 13.133333333333333,
+      "paragraphs": [
+        {
+          "index": 0,
+          "file": "ending-0-5a8dba2340.m4a",
+          "text": "天亮雾散，船队满载而归，正好十万余支箭。",
+          "startFrame": 24,
+          "durationInFrames": 111,
+          "durationSeconds": 3.68
+        },
+        {
+          "index": 1,
+          "file": "ending-1-8e96d23da6.m4a",
+          "text": "草船借箭，你学会了吗？这个故事改编自《三国演义》，我们下集再见。",
+          "startFrame": 149,
+          "durationInFrames": 173,
+          "durationSeconds": 5.76
+        }
+      ]
+    }
+  ]
+}

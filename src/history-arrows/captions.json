@@ -1,0 +1,130 @@
+{
+  "opening": [
+    {
+      "text": "今天，一起听一个三国小故事：草船借箭。",
+      "startMs": 800,
+      "endMs": 4333.333333333333,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "借箭，就是把箭借回来。船是草做的，箭要怎么借呢？",
+      "startMs": 4800,
+      "endMs": 9866.666666666668,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "task": [
+    {
+      "text": "周瑜请诸葛亮商量军务，出了一道难题：十天之内，造出十万支箭。",
+      "startMs": 800,
+      "endMs": 6500,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "诸葛亮却笑着说：何必十天，只要三天。",
+      "startMs": 6966.666666666667,
+      "endMs": 10333.333333333334,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "prep": [
+    {
+      "text": "他请鲁肃悄悄备下二十条船，船上绑满稻草人，再用青布遮好。",
+      "startMs": 800,
+      "endMs": 5600,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "大家都摸不着头脑：不造箭，扎草人做什么？",
+      "startMs": 6066.666666666666,
+      "endMs": 9033.333333333334,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "fog": [
+    {
+      "text": "第三天四更，江上大雾漫天，对面都看不见人。",
+      "startMs": 800,
+      "endMs": 4733.333333333333,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "船队悄悄出发，直逼曹操的水寨。",
+      "startMs": 5200,
+      "endMs": 7766.666666666667,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "drums": [
+    {
+      "text": "诸葛亮下令：擂鼓！呐喊！",
+      "startMs": 800,
+      "endMs": 3300,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "鼓声隆隆，喊声震天，惊动了曹营。",
+      "startMs": 3766.6666666666665,
+      "endMs": 7533.333333333333,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "arrows": [
+    {
+      "text": "大雾里看不清虚实，曹操怕有埋伏，不许出战，只叫弓箭手朝江中放箭。",
+      "startMs": 800,
+      "endMs": 8266.666666666668,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "箭像下雨一样，密密麻麻扎进了草人。",
+      "startMs": 8733.333333333332,
+      "endMs": 12333.333333333334,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "turn": [
+    {
+      "text": "一面扎满了，船队调过头来，让另一面接着受箭。",
+      "startMs": 800,
+      "endMs": 4966.666666666667,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "雾快散时，船上插满了箭，远远望去，像一片移动的小森林。",
+      "startMs": 5433.333333333334,
+      "endMs": 11200,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "ending": [
+    {
+      "text": "天亮雾散，船队满载而归，正好十万余支箭。",
+      "startMs": 800,
+      "endMs": 4500,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "草船借箭，你学会了吗？这个故事改编自《三国演义》，我们下集再见。",
+      "startMs": 4966.666666666667,
+      "endMs": 10733.333333333332,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ]
+}

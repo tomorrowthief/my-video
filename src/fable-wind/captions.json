@@ -1,0 +1,130 @@
+{
+  "opening": [
+    {
+      "text": "今天，一起听一个伊索寓言：北风与太阳。",
+      "startMs": 800,
+      "endMs": 5066.666666666666,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "他们吵起来了：到底谁的本领大？",
+      "startMs": 5533.333333333333,
+      "endMs": 8833.333333333334,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "traveler": [
+    {
+      "text": "正巧，山路上走来一位旅人，穿着厚厚的外套。",
+      "startMs": 800,
+      "endMs": 5133.333333333334,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "两人约定：谁能让旅人脱下外套，谁的本领就大。",
+      "startMs": 5600,
+      "endMs": 10500,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "wind": [
+    {
+      "text": "北风先来。它鼓起腮帮子，呼——地吹了起来。",
+      "startMs": 800,
+      "endMs": 5933.333333333334,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "风把树枝吹得摇摇晃晃，落叶沙沙地飞。",
+      "startMs": 6400,
+      "endMs": 10000,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "tight": [
+    {
+      "text": "旅人眯起眼睛，把外套裹得更紧了。",
+      "startMs": 800,
+      "endMs": 3766.6666666666665,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "风越猛，他的手就抓得越牢。",
+      "startMs": 4233.333333333333,
+      "endMs": 7300,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "harder": [
+    {
+      "text": "北风用尽全身力气，吹得脸都红了。",
+      "startMs": 800,
+      "endMs": 4100,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "旅人索性竖起衣领，缩着脖子继续赶路。",
+      "startMs": 4566.666666666666,
+      "endMs": 8166.666666666666,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "sun": [
+    {
+      "text": "轮到太阳了。它不急不忙，把暖暖的阳光洒在山路上。",
+      "startMs": 800,
+      "endMs": 5866.666666666666,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "旅人松开了手，脚步也轻快起来。",
+      "startMs": 6333.333333333333,
+      "endMs": 9300,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "off": [
+    {
+      "text": "走着走着，他额头上冒了汗。",
+      "startMs": 800,
+      "endMs": 3200,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "他自己脱下外套，搭在肩膀上，还解开了一颗纽扣。",
+      "startMs": 3666.6666666666665,
+      "endMs": 7766.666666666667,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "ending": [
+    {
+      "text": "北风与太阳，你学会了吗？让人解开的力量，往往不是使劲，而是温暖。",
+      "startMs": 800,
+      "endMs": 7466.666666666667,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "伊索寓言，我们下集再见。",
+      "startMs": 7933.333333333334,
+      "endMs": 10433.333333333334,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ]
+}

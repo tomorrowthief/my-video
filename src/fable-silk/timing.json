@@ -1,0 +1,236 @@
+{
+  "fps": 30,
+  "width": 1920,
+  "height": 1080,
+  "provider": "bailian",
+  "model": "qwen3-tts-flash",
+  "voice": "Cherry",
+  "totalFrames": 2816,
+  "totalSeconds": 93.86666666666666,
+  "scenes": [
+    {
+      "id": "opening",
+      "index": "01",
+      "title": "翻开故事书",
+      "heading": "蚕与螳螂",
+      "visual": "book",
+      "startFrame": 0,
+      "durationInFrames": 363,
+      "durationSeconds": 12.1,
+      "paragraphs": [
+        {
+          "index": 0,
+          "file": "opening-0-a2bb830577.m4a",
+          "text": "山林寓言第二集：蚕与螳螂。",
+          "startFrame": 24,
+          "durationInFrames": 101,
+          "durationSeconds": 3.36
+        },
+        {
+          "index": 1,
+          "file": "opening-1-2667156685.m4a",
+          "text": "一棵老桑树上，住着一只蚕；树下，住着一只螳螂。",
+          "startFrame": 139,
+          "durationInFrames": 152,
+          "durationSeconds": 5.04
+        }
+      ]
+    },
+    {
+      "id": "spin",
+      "index": "02",
+      "title": "一天一根丝",
+      "heading": "绕啊绕",
+      "visual": "spin",
+      "startFrame": 363,
+      "durationInFrames": 360,
+      "durationSeconds": 12,
+      "paragraphs": [
+        {
+          "index": 0,
+          "file": "spin-0-628b483465.m4a",
+          "text": "蚕安安静静地吐丝，一天，又一天。",
+          "startFrame": 24,
+          "durationInFrames": 118,
+          "durationSeconds": 3.92
+        },
+        {
+          "index": 1,
+          "file": "spin-1-d921fa0d43.m4a",
+          "text": "细细的丝线绕啊绕，慢慢织成一个白白的茧。",
+          "startFrame": 156,
+          "durationInFrames": 132,
+          "durationSeconds": 4.4
+        }
+      ]
+    },
+    {
+      "id": "mock",
+      "index": "03",
+      "title": "螳螂的嘲笑",
+      "heading": "两把大刀",
+      "visual": "mock",
+      "startFrame": 723,
+      "durationInFrames": 377,
+      "durationSeconds": 12.566666666666666,
+      "paragraphs": [
+        {
+          "index": 0,
+          "file": "mock-0-9d0f8a2d87.m4a",
+          "text": "螳螂举起两把大刀，笑话它：这么细的丝，要织到什么时候呀！",
+          "startFrame": 24,
+          "durationInFrames": 168,
+          "durationSeconds": 5.6
+        },
+        {
+          "index": 1,
+          "file": "mock-1-c108298a10.m4a",
+          "text": "蚕没有抬头，只是继续吐自己的丝。",
+          "startFrame": 206,
+          "durationInFrames": 99,
+          "durationSeconds": 3.28
+        }
+      ]
+    },
+    {
+      "id": "lunge",
+      "index": "04",
+      "title": "第一次扑空",
+      "heading": "就差一点点",
+      "visual": "lunge",
+      "startFrame": 1100,
+      "durationInFrames": 317,
+      "durationSeconds": 10.566666666666666,
+      "paragraphs": [
+        {
+          "index": 0,
+          "file": "lunge-0-6f9da360c9.m4a",
+          "text": "螳螂盯上了快织好的茧，猛地一扑。",
+          "startFrame": 24,
+          "durationInFrames": 89,
+          "durationSeconds": 2.96
+        },
+        {
+          "index": 1,
+          "file": "lunge-1-a0999df18a.m4a",
+          "text": "哎呀！风一吹，桑叶一晃，就差那么一点点。",
+          "startFrame": 127,
+          "durationInFrames": 118,
+          "durationSeconds": 3.92
+        }
+      ]
+    },
+    {
+      "id": "again",
+      "index": "05",
+      "title": "一扑再扑",
+      "heading": "又扑了个空",
+      "visual": "again",
+      "startFrame": 1417,
+      "durationInFrames": 339,
+      "durationSeconds": 11.3,
+      "paragraphs": [
+        {
+          "index": 0,
+          "file": "again-0-9f64f450bd.m4a",
+          "text": "它不服气，第二扑，第三扑，每一次都扑了个空。",
+          "startFrame": 24,
+          "durationInFrames": 130,
+          "durationSeconds": 4.32
+        },
+        {
+          "index": 1,
+          "file": "again-1-fff4fb8b7f.m4a",
+          "text": "大刀砍在桑枝上，只落得几片叶子。",
+          "startFrame": 168,
+          "durationInFrames": 99,
+          "durationSeconds": 3.28
+        }
+      ]
+    },
+    {
+      "id": "cocoon",
+      "index": "06",
+      "title": "茧结成了",
+      "heading": "又厚又结实",
+      "visual": "cocoon",
+      "startFrame": 1756,
+      "durationInFrames": 339,
+      "durationSeconds": 11.3,
+      "paragraphs": [
+        {
+          "index": 0,
+          "file": "cocoon-0-d2c54b7e0b.m4a",
+          "text": "而蚕的茧，一层又一层，织得又厚又结实。",
+          "startFrame": 24,
+          "durationInFrames": 130,
+          "durationSeconds": 4.32
+        },
+        {
+          "index": 1,
+          "file": "cocoon-1-3fd083b8a7.m4a",
+          "text": "它在茧里安安稳稳，睡了一个长长的觉。",
+          "startFrame": 168,
+          "durationInFrames": 99,
+          "durationSeconds": 3.28
+        }
+      ]
+    },
+    {
+      "id": "winter",
+      "index": "07",
+      "title": "冬天来了",
+      "heading": "北风与雪",
+      "visual": "winter",
+      "startFrame": 2095,
+      "durationInFrames": 380,
+      "durationSeconds": 12.666666666666666,
+      "paragraphs": [
+        {
+          "index": 0,
+          "file": "winter-0-6377caee2c.m4a",
+          "text": "北风一吹，雪花落下来，螳螂又冷又饿，没处可去。",
+          "startFrame": 24,
+          "durationInFrames": 159,
+          "durationSeconds": 5.28
+        },
+        {
+          "index": 1,
+          "file": "winter-1-b9ad8bc247.m4a",
+          "text": "茧挂在枝头，稳稳当当，一动也不动。",
+          "startFrame": 197,
+          "durationInFrames": 111,
+          "durationSeconds": 3.68
+        }
+      ]
+    },
+    {
+      "id": "ending",
+      "index": "08",
+      "title": "轮到你想一想",
+      "heading": "笨功夫",
+      "visual": "ending",
+      "startFrame": 2475,
+      "durationInFrames": 341,
+      "durationSeconds": 11.366666666666667,
+      "paragraphs": [
+        {
+          "index": 0,
+          "file": "ending-0-2a72e47904.m4a",
+          "text": "蚕与螳螂，你学会了吗？一步一步的笨功夫，其实最结实。",
+          "startFrame": 24,
+          "durationInFrames": 159,
+          "durationSeconds": 5.28
+        },
+        {
+          "index": 1,
+          "file": "ending-1-4087137e1c.m4a",
+          "text": "山林寓言，我们下集再见。",
+          "startFrame": 197,
+          "durationInFrames": 72,
+          "durationSeconds": 2.4
+        }
+      ]
+    }
+  ]
+}

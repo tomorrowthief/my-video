@@ -1,0 +1,236 @@
+{
+  "fps": 30,
+  "width": 1920,
+  "height": 1080,
+  "provider": "bailian",
+  "model": "qwen3-tts-flash",
+  "voice": "Cherry",
+  "totalFrames": 2745,
+  "totalSeconds": 91.5,
+  "scenes": [
+    {
+      "id": "opening",
+      "index": "01",
+      "title": "翻开故事书",
+      "heading": "北风与太阳",
+      "visual": "book",
+      "startFrame": 0,
+      "durationInFrames": 337,
+      "durationSeconds": 11.233333333333333,
+      "paragraphs": [
+        {
+          "index": 0,
+          "file": "opening-0-0b88146b81.m4a",
+          "text": "今天，一起听一个伊索寓言：北风与太阳。",
+          "startFrame": 24,
+          "durationInFrames": 128,
+          "durationSeconds": 4.24
+        },
+        {
+          "index": 1,
+          "file": "opening-1-1f282f95e4.m4a",
+          "text": "他们吵起来了：到底谁的本领大？",
+          "startFrame": 166,
+          "durationInFrames": 99,
+          "durationSeconds": 3.28
+        }
+      ]
+    },
+    {
+      "id": "traveler",
+      "index": "02",
+      "title": "山路上的旅人",
+      "heading": "厚厚的外套",
+      "visual": "traveler",
+      "startFrame": 337,
+      "durationInFrames": 387,
+      "durationSeconds": 12.9,
+      "paragraphs": [
+        {
+          "index": 0,
+          "file": "traveler-0-dfbc08acaa.m4a",
+          "text": "正巧，山路上走来一位旅人，穿着厚厚的外套。",
+          "startFrame": 24,
+          "durationInFrames": 130,
+          "durationSeconds": 4.32
+        },
+        {
+          "index": 1,
+          "file": "traveler-1-768abbe324.m4a",
+          "text": "两人约定：谁能让旅人脱下外套，谁的本领就大。",
+          "startFrame": 168,
+          "durationInFrames": 147,
+          "durationSeconds": 4.88
+        }
+      ]
+    },
+    {
+      "id": "wind",
+      "index": "03",
+      "title": "北风先来",
+      "heading": "呼——",
+      "visual": "wind",
+      "startFrame": 724,
+      "durationInFrames": 372,
+      "durationSeconds": 12.4,
+      "paragraphs": [
+        {
+          "index": 0,
+          "file": "wind-0-70e845476f.m4a",
+          "text": "北风先来。它鼓起腮帮子，呼——地吹了起来。",
+          "startFrame": 24,
+          "durationInFrames": 154,
+          "durationSeconds": 5.12
+        },
+        {
+          "index": 1,
+          "file": "wind-1-2b526042df.m4a",
+          "text": "风把树枝吹得摇摇晃晃，落叶沙沙地飞。",
+          "startFrame": 192,
+          "durationInFrames": 108,
+          "durationSeconds": 3.6
+        }
+      ]
+    },
+    {
+      "id": "tight",
+      "index": "04",
+      "title": "裹得更紧",
+      "heading": "手抓得更牢",
+      "visual": "tight",
+      "startFrame": 1096,
+      "durationInFrames": 291,
+      "durationSeconds": 9.7,
+      "paragraphs": [
+        {
+          "index": 0,
+          "file": "tight-0-2cbb886e23.m4a",
+          "text": "旅人眯起眼睛，把外套裹得更紧了。",
+          "startFrame": 24,
+          "durationInFrames": 89,
+          "durationSeconds": 2.96
+        },
+        {
+          "index": 1,
+          "file": "tight-1-25fb68c8a2.m4a",
+          "text": "风越猛，他的手就抓得越牢。",
+          "startFrame": 127,
+          "durationInFrames": 92,
+          "durationSeconds": 3.04
+        }
+      ]
+    },
+    {
+      "id": "harder",
+      "index": "05",
+      "title": "用尽力气",
+      "heading": "缩着脖子",
+      "visual": "harder",
+      "startFrame": 1387,
+      "durationInFrames": 317,
+      "durationSeconds": 10.566666666666666,
+      "paragraphs": [
+        {
+          "index": 0,
+          "file": "harder-0-5ad7359c96.m4a",
+          "text": "北风用尽全身力气，吹得脸都红了。",
+          "startFrame": 24,
+          "durationInFrames": 99,
+          "durationSeconds": 3.28
+        },
+        {
+          "index": 1,
+          "file": "harder-1-06873a7507.m4a",
+          "text": "旅人索性竖起衣领，缩着脖子继续赶路。",
+          "startFrame": 137,
+          "durationInFrames": 108,
+          "durationSeconds": 3.6
+        }
+      ]
+    },
+    {
+      "id": "sun",
+      "index": "06",
+      "title": "换太阳来",
+      "heading": "暖暖的阳光",
+      "visual": "sun",
+      "startFrame": 1704,
+      "durationInFrames": 351,
+      "durationSeconds": 11.7,
+      "paragraphs": [
+        {
+          "index": 0,
+          "file": "sun-0-69663dc188.m4a",
+          "text": "轮到太阳了。它不急不忙，把暖暖的阳光洒在山路上。",
+          "startFrame": 24,
+          "durationInFrames": 152,
+          "durationSeconds": 5.04
+        },
+        {
+          "index": 1,
+          "file": "sun-1-eccbd21af2.m4a",
+          "text": "旅人松开了手，脚步也轻快起来。",
+          "startFrame": 190,
+          "durationInFrames": 89,
+          "durationSeconds": 2.96
+        }
+      ]
+    },
+    {
+      "id": "off",
+      "index": "07",
+      "title": "自己脱下外套",
+      "heading": "搭在肩上",
+      "visual": "off",
+      "startFrame": 2055,
+      "durationInFrames": 305,
+      "durationSeconds": 10.166666666666666,
+      "paragraphs": [
+        {
+          "index": 0,
+          "file": "off-0-08e2494c74.m4a",
+          "text": "走着走着，他额头上冒了汗。",
+          "startFrame": 24,
+          "durationInFrames": 72,
+          "durationSeconds": 2.4
+        },
+        {
+          "index": 1,
+          "file": "off-1-c3282e2010.m4a",
+          "text": "他自己脱下外套，搭在肩膀上，还解开了一颗纽扣。",
+          "startFrame": 110,
+          "durationInFrames": 123,
+          "durationSeconds": 4.08
+        }
+      ]
+    },
+    {
+      "id": "ending",
+      "index": "08",
+      "title": "轮到你想一想",
+      "heading": "温和的力量",
+      "visual": "ending",
+      "startFrame": 2360,
+      "durationInFrames": 385,
+      "durationSeconds": 12.833333333333334,
+      "paragraphs": [
+        {
+          "index": 0,
+          "file": "ending-0-e9094ae414.m4a",
+          "text": "北风与太阳，你学会了吗？让人解开的力量，往往不是使劲，而是温暖。",
+          "startFrame": 24,
+          "durationInFrames": 200,
+          "durationSeconds": 6.64
+        },
+        {
+          "index": 1,
+          "file": "ending-1-fb834aac6e.m4a",
+          "text": "伊索寓言，我们下集再见。",
+          "startFrame": 238,
+          "durationInFrames": 75,
+          "durationSeconds": 2.48
+        }
+      ]
+    }
+  ]
+}

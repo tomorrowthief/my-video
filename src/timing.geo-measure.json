@@ -1,0 +1,180 @@
+{
+  "fps": 30,
+  "width": 1920,
+  "height": 1080,
+  "provider": "bailian",
+  "model": "qwen3-tts-flash",
+  "voice": "Cherry",
+  "totalFrames": 2533,
+  "totalSeconds": 84.43333333333334,
+  "scenes": [
+    {
+      "id": "s0",
+      "index": "01",
+      "title": "开场",
+      "heading": "量一量",
+      "visual": "intro",
+      "startFrame": 0,
+      "durationInFrames": 412,
+      "durationSeconds": 13.733333333333333,
+      "paragraphs": [
+        {
+          "index": 0,
+          "file": "s0-0-6344749e61.m4a",
+          "text": "围一圈？铺一地？装一箱？",
+          "startFrame": 18,
+          "durationInFrames": 149,
+          "durationSeconds": 4.96
+        },
+        {
+          "index": 1,
+          "file": "s0-1-a34c5d1094.m4a",
+          "text": "周长 · 面积 · 体积",
+          "startFrame": 179,
+          "durationInFrames": 173,
+          "durationSeconds": 5.76
+        }
+      ]
+    },
+    {
+      "id": "s1",
+      "index": "02",
+      "title": "周长",
+      "heading": "围一圈",
+      "visual": "perimeter",
+      "startFrame": 412,
+      "durationInFrames": 420,
+      "durationSeconds": 14,
+      "paragraphs": [
+        {
+          "index": 0,
+          "file": "s1-0-6410abc195.m4a",
+          "text": "周长：沿着边围一圈的长度。",
+          "startFrame": 18,
+          "durationInFrames": 171,
+          "durationSeconds": 5.68
+        },
+        {
+          "index": 1,
+          "file": "s1-1-d43c005ca1.m4a",
+          "text": "正方形：边×4，长方形：(长+宽)×2",
+          "startFrame": 201,
+          "durationInFrames": 159,
+          "durationSeconds": 5.28
+        }
+      ]
+    },
+    {
+      "id": "s2",
+      "index": "03",
+      "title": "面积",
+      "heading": "铺一地",
+      "visual": "area",
+      "startFrame": 832,
+      "durationInFrames": 461,
+      "durationSeconds": 15.366666666666667,
+      "paragraphs": [
+        {
+          "index": 0,
+          "file": "s2-0-2a96ed2444.m4a",
+          "text": "面积：形状占了多少地面。",
+          "startFrame": 18,
+          "durationInFrames": 159,
+          "durationSeconds": 5.28
+        },
+        {
+          "index": 1,
+          "file": "s2-1-92757681ce.m4a",
+          "text": "长方形：长×宽，单位是平方。",
+          "startFrame": 189,
+          "durationInFrames": 212,
+          "durationSeconds": 7.04
+        }
+      ]
+    },
+    {
+      "id": "s3",
+      "index": "04",
+      "title": "体积",
+      "heading": "装一箱",
+      "visual": "volume",
+      "startFrame": 1293,
+      "durationInFrames": 439,
+      "durationSeconds": 14.633333333333333,
+      "paragraphs": [
+        {
+          "index": 0,
+          "file": "s3-0-cbe3023306.m4a",
+          "text": "体积：物体占了多少空间。",
+          "startFrame": 18,
+          "durationInFrames": 166,
+          "durationSeconds": 5.52
+        },
+        {
+          "index": 1,
+          "file": "s3-1-48db21b512.m4a",
+          "text": "长方体：长×宽×高，单位是立方。",
+          "startFrame": 196,
+          "durationInFrames": 183,
+          "durationSeconds": 6.08
+        }
+      ]
+    },
+    {
+      "id": "s4",
+      "index": "05",
+      "title": "比一比",
+      "heading": "一维二维三维",
+      "visual": "compare",
+      "startFrame": 1732,
+      "durationInFrames": 413,
+      "durationSeconds": 13.766666666666667,
+      "paragraphs": [
+        {
+          "index": 0,
+          "file": "s4-0-90f8f86e44.m4a",
+          "text": "周长→一维，面积→二维",
+          "startFrame": 18,
+          "durationInFrames": 159,
+          "durationSeconds": 5.28
+        },
+        {
+          "index": 1,
+          "file": "s4-1-536f5293ba.m4a",
+          "text": "体积→三维，维度越高量越大。",
+          "startFrame": 189,
+          "durationInFrames": 164,
+          "durationSeconds": 5.44
+        }
+      ]
+    },
+    {
+      "id": "s5",
+      "index": "06",
+      "title": "结尾",
+      "heading": "动手量",
+      "visual": "outro",
+      "startFrame": 2145,
+      "durationInFrames": 388,
+      "durationSeconds": 12.933333333333334,
+      "paragraphs": [
+        {
+          "index": 0,
+          "file": "s5-0-c6a4ae35a3.m4a",
+          "text": "围一圈 · 数格子 · 堆方块",
+          "startFrame": 18,
+          "durationInFrames": 137,
+          "durationSeconds": 4.56
+        },
+        {
+          "index": 1,
+          "file": "s5-1-fdd7767ba8.m4a",
+          "text": "找三个盒子，动手量一量！",
+          "startFrame": 167,
+          "durationInFrames": 161,
+          "durationSeconds": 5.36
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,180 @@
+{
+  "fps": 30,
+  "width": 1920,
+  "height": 1080,
+  "provider": "bailian",
+  "model": "qwen3-tts-flash",
+  "voice": "Cherry",
+  "totalFrames": 2309,
+  "totalSeconds": 76.96666666666667,
+  "scenes": [
+    {
+      "id": "s0",
+      "index": "01",
+      "title": "开场",
+      "heading": "形状的世界",
+      "visual": "intro",
+      "startFrame": 0,
+      "durationInFrames": 333,
+      "durationSeconds": 11.1,
+      "paragraphs": [
+        {
+          "index": 0,
+          "file": "s0-0-dfd333e768.m4a",
+          "text": "欢迎来到形状的世界！",
+          "startFrame": 18,
+          "durationInFrames": 130,
+          "durationSeconds": 4.32
+        },
+        {
+          "index": 1,
+          "file": "s0-1-5fd77013d4.m4a",
+          "text": "今天，我们一起来认识几个最常见的好朋友。",
+          "startFrame": 160,
+          "durationInFrames": 113,
+          "durationSeconds": 3.76
+        }
+      ]
+    },
+    {
+      "id": "s1",
+      "index": "02",
+      "title": "圆圆的",
+      "heading": "圆形",
+      "visual": "circle",
+      "startFrame": 333,
+      "durationInFrames": 381,
+      "durationSeconds": 12.7,
+      "paragraphs": [
+        {
+          "index": 0,
+          "file": "s1-0-1d6de1cbd1.m4a",
+          "text": "圆圆的，没有角，滚来滚去真灵活。",
+          "startFrame": 18,
+          "durationInFrames": 149,
+          "durationSeconds": 4.96
+        },
+        {
+          "index": 1,
+          "file": "s1-1-79e7505c6e.m4a",
+          "text": "车轮、盘子、太阳——都是圆的。",
+          "startFrame": 179,
+          "durationInFrames": 142,
+          "durationSeconds": 4.72
+        }
+      ]
+    },
+    {
+      "id": "s2",
+      "index": "03",
+      "title": "方方的",
+      "heading": "正方形",
+      "visual": "square",
+      "startFrame": 714,
+      "durationInFrames": 396,
+      "durationSeconds": 13.2,
+      "paragraphs": [
+        {
+          "index": 0,
+          "file": "s2-0-6fe39d39d0.m4a",
+          "text": "四条边一样长，四个角一样大。",
+          "startFrame": 18,
+          "durationInFrames": 171,
+          "durationSeconds": 5.68
+        },
+        {
+          "index": 1,
+          "file": "s2-1-174ceec883.m4a",
+          "text": "手帕、瓷砖、魔方——都是方的。",
+          "startFrame": 201,
+          "durationInFrames": 135,
+          "durationSeconds": 4.48
+        }
+      ]
+    },
+    {
+      "id": "s3",
+      "index": "04",
+      "title": "尖尖的",
+      "heading": "三角形",
+      "visual": "triangle",
+      "startFrame": 1110,
+      "durationInFrames": 427,
+      "durationSeconds": 14.233333333333333,
+      "paragraphs": [
+        {
+          "index": 0,
+          "file": "s3-0-452af2ecb2.m4a",
+          "text": "三条边，三个角，像一座小山。",
+          "startFrame": 18,
+          "durationInFrames": 152,
+          "durationSeconds": 5.04
+        },
+        {
+          "index": 1,
+          "file": "s3-1-37e862fecb.m4a",
+          "text": "屋顶、三角尺、三明治——都有三角形。",
+          "startFrame": 182,
+          "durationInFrames": 185,
+          "durationSeconds": 6.16
+        }
+      ]
+    },
+    {
+      "id": "s4",
+      "index": "05",
+      "title": "长长的",
+      "heading": "长方形",
+      "visual": "rectangle",
+      "startFrame": 1537,
+      "durationInFrames": 388,
+      "durationSeconds": 12.933333333333334,
+      "paragraphs": [
+        {
+          "index": 0,
+          "file": "s4-0-1867e89aa5.m4a",
+          "text": "对边一样长，像拉长的正方形。",
+          "startFrame": 18,
+          "durationInFrames": 149,
+          "durationSeconds": 4.96
+        },
+        {
+          "index": 1,
+          "file": "s4-1-d8c683228e.m4a",
+          "text": "书本、门、黑板——都是长方形的。",
+          "startFrame": 179,
+          "durationInFrames": 149,
+          "durationSeconds": 4.96
+        }
+      ]
+    },
+    {
+      "id": "s5",
+      "index": "06",
+      "title": "结尾",
+      "heading": "找找看",
+      "visual": "outro",
+      "startFrame": 1925,
+      "durationInFrames": 384,
+      "durationSeconds": 12.8,
+      "paragraphs": [
+        {
+          "index": 0,
+          "file": "s5-0-84068bf768.m4a",
+          "text": "圆形、正方形、三角形、长方形",
+          "startFrame": 18,
+          "durationInFrames": 147,
+          "durationSeconds": 4.88
+        },
+        {
+          "index": 1,
+          "file": "s5-1-9fa81d8336.m4a",
+          "text": "找找看，它们藏在哪里？",
+          "startFrame": 177,
+          "durationInFrames": 147,
+          "durationSeconds": 4.88
+        }
+      ]
+    }
+  ]
+}

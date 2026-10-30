@@ -1,0 +1,180 @@
+{
+  "fps": 30,
+  "width": 1920,
+  "height": 1080,
+  "provider": "bailian",
+  "model": "qwen3-tts-flash",
+  "voice": "Cherry",
+  "totalFrames": 2302,
+  "totalSeconds": 76.73333333333333,
+  "scenes": [
+    {
+      "id": "s0",
+      "index": "01",
+      "title": "开场",
+      "heading": "远近之间",
+      "visual": "intro",
+      "startFrame": 0,
+      "durationInFrames": 328,
+      "durationSeconds": 10.933333333333334,
+      "paragraphs": [
+        {
+          "index": 0,
+          "file": "s0-0-2090b81c04.m4a",
+          "text": "你离妈妈近，还是离月亮近？",
+          "startFrame": 18,
+          "durationInFrames": 156,
+          "durationSeconds": 5.2
+        },
+        {
+          "index": 1,
+          "file": "s0-1-221cb4e503.m4a",
+          "text": "今天，我们就来聊聊「距离」这件事。",
+          "startFrame": 186,
+          "durationInFrames": 82,
+          "durationSeconds": 2.72
+        }
+      ]
+    },
+    {
+      "id": "s1",
+      "index": "02",
+      "title": "点到点",
+      "heading": "两点之间",
+      "visual": "point-point",
+      "startFrame": 328,
+      "durationInFrames": 415,
+      "durationSeconds": 13.833333333333334,
+      "paragraphs": [
+        {
+          "index": 0,
+          "file": "s1-0-b4ab837765.m4a",
+          "text": "两点之间，可以连很多条线。",
+          "startFrame": 18,
+          "durationInFrames": 166,
+          "durationSeconds": 5.52
+        },
+        {
+          "index": 1,
+          "file": "s1-1-27582af8b2.m4a",
+          "text": "最短的那条，是直直的线段。",
+          "startFrame": 196,
+          "durationInFrames": 159,
+          "durationSeconds": 5.28
+        }
+      ]
+    },
+    {
+      "id": "s2",
+      "index": "03",
+      "title": "点到线",
+      "heading": "垂直最短",
+      "visual": "point-line",
+      "startFrame": 743,
+      "durationInFrames": 417,
+      "durationSeconds": 13.9,
+      "paragraphs": [
+        {
+          "index": 0,
+          "file": "s2-0-6068bef3b6.m4a",
+          "text": "一个点到一条线，可以画很多条。",
+          "startFrame": 18,
+          "durationInFrames": 166,
+          "durationSeconds": 5.52
+        },
+        {
+          "index": 1,
+          "file": "s2-1-72eeca4ccc.m4a",
+          "text": "最短的那条，和线成直角。",
+          "startFrame": 196,
+          "durationInFrames": 161,
+          "durationSeconds": 5.36
+        }
+      ]
+    },
+    {
+      "id": "s3",
+      "index": "04",
+      "title": "平行线",
+      "heading": "永远不相交",
+      "visual": "parallel",
+      "startFrame": 1160,
+      "durationInFrames": 348,
+      "durationSeconds": 11.6,
+      "paragraphs": [
+        {
+          "index": 0,
+          "file": "s3-0-02ba2551e6.m4a",
+          "text": "两条平行线，永远不相交。",
+          "startFrame": 18,
+          "durationInFrames": 116,
+          "durationSeconds": 3.84
+        },
+        {
+          "index": 1,
+          "file": "s3-1-9be6645504.m4a",
+          "text": "它们之间的距离，处处相等。",
+          "startFrame": 146,
+          "durationInFrames": 142,
+          "durationSeconds": 4.72
+        }
+      ]
+    },
+    {
+      "id": "s4",
+      "index": "05",
+      "title": "生活中的距离",
+      "heading": "用一用",
+      "visual": "application",
+      "startFrame": 1508,
+      "durationInFrames": 372,
+      "durationSeconds": 12.4,
+      "paragraphs": [
+        {
+          "index": 0,
+          "file": "s4-0-d21559fc1f.m4a",
+          "text": "过马路，垂直走最近。",
+          "startFrame": 18,
+          "durationInFrames": 104,
+          "durationSeconds": 3.44
+        },
+        {
+          "index": 1,
+          "file": "s4-1-ca470b3a88.m4a",
+          "text": "量房间，也是量距离。",
+          "startFrame": 134,
+          "durationInFrames": 178,
+          "durationSeconds": 5.92
+        }
+      ]
+    },
+    {
+      "id": "s5",
+      "index": "06",
+      "title": "结尾",
+      "heading": "量一量",
+      "visual": "outro",
+      "startFrame": 1880,
+      "durationInFrames": 422,
+      "durationSeconds": 14.066666666666666,
+      "paragraphs": [
+        {
+          "index": 0,
+          "file": "s5-0-3fa0eedc5c.m4a",
+          "text": "直线最短 · 垂直最短 · 处处等距",
+          "startFrame": 18,
+          "durationInFrames": 202,
+          "durationSeconds": 6.72
+        },
+        {
+          "index": 1,
+          "file": "s5-1-0058d2e290.m4a",
+          "text": "拿起尺子，量量看！",
+          "startFrame": 232,
+          "durationInFrames": 130,
+          "durationSeconds": 4.32
+        }
+      ]
+    }
+  ]
+}

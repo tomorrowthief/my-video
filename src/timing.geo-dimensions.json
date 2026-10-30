@@ -1,0 +1,180 @@
+{
+  "fps": 30,
+  "width": 1920,
+  "height": 1080,
+  "provider": "bailian",
+  "model": "qwen3-tts-flash",
+  "voice": "Cherry",
+  "totalFrames": 2415,
+  "totalSeconds": 80.5,
+  "scenes": [
+    {
+      "id": "s0",
+      "index": "01",
+      "title": "开场",
+      "heading": "从线到体",
+      "visual": "intro",
+      "startFrame": 0,
+      "durationInFrames": 360,
+      "durationSeconds": 12,
+      "paragraphs": [
+        {
+          "index": 0,
+          "file": "s0-0-3d24e9d983.m4a",
+          "text": "一根线、一张纸、一个盒子——有什么不一样？",
+          "startFrame": 18,
+          "durationInFrames": 128,
+          "durationSeconds": 4.24
+        },
+        {
+          "index": 1,
+          "file": "s0-1-61af53b9b2.m4a",
+          "text": "答案是：它们住在不同的维度里。",
+          "startFrame": 158,
+          "durationInFrames": 142,
+          "durationSeconds": 4.72
+        }
+      ]
+    },
+    {
+      "id": "s1",
+      "index": "02",
+      "title": "一维",
+      "heading": "只有长短",
+      "visual": "line",
+      "startFrame": 360,
+      "durationInFrames": 403,
+      "durationSeconds": 13.433333333333334,
+      "paragraphs": [
+        {
+          "index": 0,
+          "file": "s1-0-f5d4419dd5.m4a",
+          "text": "一维：只能向前或向后。",
+          "startFrame": 18,
+          "durationInFrames": 140,
+          "durationSeconds": 4.64
+        },
+        {
+          "index": 1,
+          "file": "s1-1-1d086138b7.m4a",
+          "text": "一根绳子，只有长度。",
+          "startFrame": 170,
+          "durationInFrames": 173,
+          "durationSeconds": 5.76
+        }
+      ]
+    },
+    {
+      "id": "s2",
+      "index": "03",
+      "title": "二维",
+      "heading": "有了宽窄",
+      "visual": "plane",
+      "startFrame": 763,
+      "durationInFrames": 427,
+      "durationSeconds": 14.233333333333333,
+      "paragraphs": [
+        {
+          "index": 0,
+          "file": "s2-0-06dd0fb830.m4a",
+          "text": "二维：可以左右，也可以前后。",
+          "startFrame": 18,
+          "durationInFrames": 128,
+          "durationSeconds": 4.24
+        },
+        {
+          "index": 1,
+          "file": "s2-1-0d185c88c8.m4a",
+          "text": "一张纸，有长和宽，没有厚度。",
+          "startFrame": 158,
+          "durationInFrames": 209,
+          "durationSeconds": 6.96
+        }
+      ]
+    },
+    {
+      "id": "s3",
+      "index": "04",
+      "title": "三维",
+      "heading": "加上高低",
+      "visual": "solid",
+      "startFrame": 1190,
+      "durationInFrames": 425,
+      "durationSeconds": 14.166666666666666,
+      "paragraphs": [
+        {
+          "index": 0,
+          "file": "s3-0-c6b9c86132.m4a",
+          "text": "三维：还可以向上或向下。",
+          "startFrame": 18,
+          "durationInFrames": 135,
+          "durationSeconds": 4.48
+        },
+        {
+          "index": 1,
+          "file": "s3-1-56ca342339.m4a",
+          "text": "我们生活的世界，是三维的。",
+          "startFrame": 165,
+          "durationInFrames": 200,
+          "durationSeconds": 6.64
+        }
+      ]
+    },
+    {
+      "id": "s4",
+      "index": "05",
+      "title": "展开看看",
+      "heading": "三维变二维",
+      "visual": "unfold",
+      "startFrame": 1615,
+      "durationInFrames": 429,
+      "durationSeconds": 14.3,
+      "paragraphs": [
+        {
+          "index": 0,
+          "file": "s4-0-8ffbcbe678.m4a",
+          "text": "盒子拆开铺平，变成展开图。",
+          "startFrame": 18,
+          "durationInFrames": 130,
+          "durationSeconds": 4.32
+        },
+        {
+          "index": 1,
+          "file": "s4-1-242a4bb754.m4a",
+          "text": "纸折起来，就能变成三维形状。",
+          "startFrame": 160,
+          "durationInFrames": 209,
+          "durationSeconds": 6.96
+        }
+      ]
+    },
+    {
+      "id": "s5",
+      "index": "06",
+      "title": "结尾",
+      "heading": "维度升级",
+      "visual": "outro",
+      "startFrame": 2044,
+      "durationInFrames": 371,
+      "durationSeconds": 12.366666666666667,
+      "paragraphs": [
+        {
+          "index": 0,
+          "file": "s5-0-80b3a58d9e.m4a",
+          "text": "一维→长度，二维→+宽度，三维→+高度",
+          "startFrame": 18,
+          "durationInFrames": 132,
+          "durationSeconds": 4.4
+        },
+        {
+          "index": 1,
+          "file": "s5-1-bc17568289.m4a",
+          "text": "想想它有几个维度？",
+          "startFrame": 162,
+          "durationInFrames": 149,
+          "durationSeconds": 4.96
+        }
+      ]
+    }
+  ]
+}

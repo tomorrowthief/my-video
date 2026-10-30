@@ -1,0 +1,130 @@
+{
+  "fps": 30,
+  "width": 1920,
+  "height": 1080,
+  "totalFrames": 3690,
+  "totalSeconds": 123,
+  "scenes": [
+    {
+      "id": "summon",
+      "index": "1",
+      "title": "出征集结",
+      "heading": "出征集结",
+      "visual": "出征集结",
+      "startFrame": 0,
+      "durationInFrames": 180,
+      "durationSeconds": 6,
+      "paragraphs": []
+    },
+    {
+      "id": "car",
+      "index": "2",
+      "title": "极氪 7X",
+      "heading": "极氪 7X",
+      "visual": "极氪 7X",
+      "startFrame": 180,
+      "durationInFrames": 240,
+      "durationSeconds": 8,
+      "paragraphs": []
+    },
+    {
+      "id": "preparation",
+      "index": "3",
+      "title": "出发准备",
+      "heading": "出发准备",
+      "visual": "出发准备",
+      "startFrame": 420,
+      "durationInFrames": 180,
+      "durationSeconds": 6,
+      "paragraphs": []
+    },
+    {
+      "id": "lake",
+      "index": "4",
+      "title": "LET’S GO · 手绘太湖",
+      "heading": "LET’S GO · 手绘太湖",
+      "visual": "LET’S GO · 手绘太湖",
+      "startFrame": 600,
+      "durationInFrames": 90,
+      "durationSeconds": 3,
+      "paragraphs": []
+    },
+    {
+      "id": "day1",
+      "index": "5",
+      "title": "第一天 · 湖州至无锡",
+      "heading": "第一天 · 湖州至无锡",
+      "visual": "第一天 · 湖州至无锡",
+      "startFrame": 690,
+      "durationInFrames": 960,
+      "durationSeconds": 32,
+      "paragraphs": []
+    },
+    {
+      "id": "stay",
+      "index": "6",
+      "title": "酒店与露营",
+      "heading": "酒店与露营",
+      "visual": "酒店与露营",
+      "startFrame": 1650,
+      "durationInFrames": 360,
+      "durationSeconds": 12,
+      "paragraphs": []
+    },
+    {
+      "id": "day2",
+      "index": "7",
+      "title": "第二天 · 十八湾至渔洋山",
+      "heading": "第二天 · 十八湾至渔洋山",
+      "visual": "第二天 · 十八湾至渔洋山",
+      "startFrame": 2010,
+      "durationInFrames": 390,
+      "durationSeconds": 13,
+      "paragraphs": []
+    },
+    {
+      "id": "hike",
+      "index": "8",
+      "title": "渔洋山 · 两小时徒步",
+      "heading": "渔洋山 · 两小时徒步",
+      "visual": "渔洋山 · 两小时徒步",
+      "startFrame": 2400,
+      "durationInFrames": 240,
+      "durationSeconds": 8,
+      "paragraphs": []
+    },
+    {
+      "id": "towards-crab",
+      "index": "9",
+      "title": "徒步后 · 前往七都",
+      "heading": "徒步后 · 前往七都",
+      "visual": "徒步后 · 前往七都",
+      "startFrame": 2640,
+      "durationInFrames": 210,
+      "durationSeconds": 7,
+      "paragraphs": []
+    },
+    {
+      "id": "crab",
+      "index": "10",
+      "title": "七都 · 大闸蟹午餐",
+      "heading": "七都 · 大闸蟹午餐",
+      "visual": "七都 · 大闸蟹午餐",
+      "startFrame": 2850,
+      "durationInFrames": 240,
+      "durationSeconds": 8,
+      "paragraphs": []
+    },
+    {
+      "id": "return",
+      "index": "11",
+      "title": "返杭 · 预计 16:00 抵达",
+      "heading": "返杭 · 预计 16:00 抵达",
+      "visual": "返杭 · 预计 16:00 抵达",
+      "startFrame": 3090,
+      "durationInFrames": 600,
+      "durationSeconds": 20,
+      "paragraphs": []
+    }
+  ]
+}

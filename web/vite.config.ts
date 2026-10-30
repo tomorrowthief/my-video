@@ -1,4 +1,4 @@
-import { cpSync } from "node:fs";
+import { cpSync, existsSync, mkdirSync, writeFileSync } from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import react from "@vitejs/plugin-react-swc";
@@ -20,13 +20,23 @@ const SHIPPED = new Set([".m4a", ".png", ".webp", ".jpg", ".jpeg"]);
 const narrationAssets = (): Plugin => ({
 	name: "narration-assets",
 	closeBundle() {
-		cpSync(repoPublic, path.resolve(here, "dist"), {
+		const output = path.resolve(here, "dist");
+		cpSync(repoPublic, output, {
 			recursive: true,
 			filter: (src) => {
 				const ext = path.extname(src);
 				return ext === "" || SHIPPED.has(ext);
 			},
 		});
+		const demo = path.resolve(here, "../ann-demo/ann-demo.html");
+		if (existsSync(demo)) {
+			mkdirSync(path.join(output, "ann-demo"), { recursive: true });
+			cpSync(demo, path.join(output, "ann-demo/index.html"));
+		}
+		cpSync(path.resolve(here, "../cloudflare/pages-preview.mjs"), path.join(output, "_worker.js"));
+		writeFileSync(path.join(output, "_routes.json"), JSON.stringify({
+			version: 1, include: ["/api/studio", "/api/studio/*"], exclude: [],
+		}));
 	},
 });
 
@@ -36,6 +46,9 @@ export default defineConfig(({ command }) => ({
 	// before and after a build. The build takes the filtered copy instead.
 	publicDir: command === "serve" ? repoPublic : false,
 	plugins: command === "serve" ? [react()] : [react(), narrationAssets()],
+	server: {
+		proxy: { "/api/studio": "http://127.0.0.1:3401" },
+	},
 	build: {
 		outDir: path.resolve(here, "dist"),
 		emptyOutDir: true,

@@ -1,0 +1,16 @@
+{
+  "name": "video-studio-render-preview",
+  "main": "worker.mjs",
+  "compatibility_date": "2026-10-22",
+  "containers": [{
+    "class_name": "StudioRenderer",
+    "image": "./Dockerfile",
+    "max_instances": 1,
+    "instance_type": "standard-2"
+  }],
+  "durable_objects": {
+    "bindings": [{"name": "STUDIO_RENDERER", "class_name": "StudioRenderer"}]
+  },
+  "exports": {"StudioRenderer": {"type": "durable-object", "storage": "sqlite"}},
+  "r2_buckets": [{"binding": "STUDIO_FILES", "bucket_name": "replace-with-private-studio-bucket"}]
+}
